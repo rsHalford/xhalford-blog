@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="content settings">
+  {% block sidebar %}
+  {% endblock sidebar %}
+  <div class="main-container">
+    <div class="section-container">
+      <div class="account-header">
+        <h1>{% trans "Sign in" %}</h1>
+      </div>
+      
+      <div class="account-form-container">
+        {% get_providers as socialaccount_providers %}
+        <div class="account-form-providers">
+          <ul class="socialaccount_providers">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+          </ul>
+        </div>
+        
+        {% include "socialaccount/snippets/login_extra.html" %}
+        
+        <div class="account-form-options">
+          <h4>Sign in with a provider</h4>
+            <h5 class="keyline">
+              <span>OR</span>
+            </h5>
+          <h4>Sign in with your email</h4>
+        </div>
+          
+        <div class="account-form-entry">
+          <form class="form-entry" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button class="form-entry-submit" type="submit">{% trans "Sign in" %}</button>
+          </form>
+    
+          <hr>
+    
+          <div class="form-other">
+            <div class="one">
+              <a href="{% url 'account_signup' %}">Create account</a>
+            </div>
+            <div class="two">
+              <a href="{% url 'account_reset_password' %}">{% trans "Forgot password?" %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

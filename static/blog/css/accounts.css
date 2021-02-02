@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  height: 100vh;
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  background-color: #aaa;
+  z-index: 0;
+  scroll-behavior: smooth;
+}
+
+.accounts-container {
+  display: grid;
+  grid-template-columns: 5vw 20vw 35vw 35vw 5vw;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "messages messages messages messages messages"
+    ". menu content content ."
+    "footer footer footer footer footer";
+}
+
+.accounts-messages {
+  grid-area: header;
+}
+
+.accounts-menu {
+  grid-area: menu;
+}
+
+.accounts-content {
+  grid-area: content;
+  min-height: 100vh;
+  display: grid;
+  background-color: #bbb;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.accounts-footer {
+  grid-area: footer;
+}

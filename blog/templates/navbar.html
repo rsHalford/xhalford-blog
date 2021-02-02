@@ -1,0 +1,74 @@
+<!-- Navigation -->
+{% if user.is_superuser %}
+<nav class="navbar small">
+  <div class="home">
+    <a href="{% url 'index' %}">H</a>
+  </div>
+  <div class="search-container">
+    <form action="{% url 'search_results' %}" method="GET">
+      <input name="q" type="text" placeholder="Search" />
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div class="account">
+    <a
+      class="account-username"
+      href="javascript:void(0);"
+      onclick="dropdownFunction()"
+      >{{ user.username }}</a
+    >
+    <div class="account-content" id="dropdownContent">
+      <a class="create" href="{% url 'post_create' %}">Create a post</a>
+      <a href="{% url 'drafts' %}">Edit drafts</a>
+      <a href="{% url 'settings' %}">Settings</a>
+      <hr />
+      <a class="logout" id="logoutBtn">Sign out</a>
+      {% include 'account/logout.html' %}
+    </div>
+  </div>
+</nav>
+
+{% elif user.is_authenticated %}
+<nav class="navbar small">
+  <div class="home">
+    <a href="{% url 'index' %}">H</a>
+  </div>
+  <div class="search-container">
+    <form action="{% url 'search_results' %}" method="GET">
+      <input name="q" type="text" placeholder="Search" />
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div class="account">
+    <a
+      class="account-username"
+      href="javascript:void(0);"
+      onclick="dropdownFunction()"
+      >{{ user.username }}</a
+    >
+    <div class="account-content" id="dropdownContent">
+      <a class="settings" href="{% url 'settings' %}">Settings</a>
+      <hr />
+      <a class="logout" id="logoutBtn">Sign out</a>
+      {% include 'account/logout.html' %}
+    </div>
+  </div>
+</nav>
+
+{% else %}
+<nav class="navbar logout small">
+  <div class="home">
+    <a href="{% url 'index' %}">H</a>
+  </div>
+  <div class="search-container">
+    <form action="{% url 'search_results' %}" method="GET">
+      <input name="q" type="text" placeholder="Search" />
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div class="login"><a href="{% url 'account_login' %}">Sign in</a></div>
+  <div class="create-account">
+    <a href="{% url 'account_signup' %}">Create account</a>
+  </div>
+</nav>
+{% endif %}

@@ -1,0 +1,54 @@
+<div class="sidebar-section-container account">
+  <h3 class="sidebar-section-title">Settings</h3>
+  <div class="sidebar-section-list account">
+    {% if user.is_authenticated %}
+    <a class="sidebar-account email" href="{% url 'account_email' %}">
+      <div class="sidebar-link-container">
+        <i class="fas fa-at"></i>
+        <h2 class="sidebar-link-title">Emails</h2>
+      </div>
+    </a>
+    <a
+      class="sidebar-account password"
+      href="{% url 'account_change_password' %}"
+    >
+      <div class="sidebar-link-container">
+        <i class="fas fa-key"></i>
+        <h2 class="sidebar-link-title">Password</h2>
+      </div>
+    </a>
+    <a
+      class="sidebar-account social"
+      href="{% url 'socialaccount_connections' %}"
+    >
+      <div class="sidebar-link-container">
+        <i class="fas fa-address-book"></i>
+        <h2 class="sidebar-link-title">Connections</h2>
+      </div>
+    </a>
+    {% else %}
+    <a class="sidebar-account login" href="{% url 'account_login' %}">
+      <div class="sidebar-link-container">
+        <i class="fas fa-sign-in-alt"></i>
+        <h2 class="sidebar-link-title">Sign in</h2>
+      </div>
+    </a>
+    <a class="sidebar-account create" href="{% url 'account_signup' %}">
+      <div class="sidebar-link-container">
+        <i class="fas fa-user-plus"></i>
+        <h2 class="sidebar-link-title">Create account</h2>
+      </div>
+    </a>
+    {% endif %}
+    <div class="color-mode-container">
+      <i class="far fa-lightbulb" id="light-off"></i>
+      <i class="fas fa-lightbulb" id="light-on"></i>
+      <div class="color-mode-switch">
+        <label id="switch" class="switch">
+          <input type="checkbox" onchange="toggleTheme()" id="slider" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

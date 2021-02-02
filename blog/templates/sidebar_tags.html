@@ -1,0 +1,8 @@
+<div class="sidebar-section-container tags">
+  <h3 class="sidebar-section-title">Tags</h3>
+  <div class="sidebar-section-list tags">
+    {% for tag in tag_list %}
+    <a href="{% url 'tag_index' tag.slug %}">#{{ tag.slug }}</a>
+    {% endfor %}
+  </div>
+</div>

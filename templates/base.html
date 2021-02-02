@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="<% BASE_URL %>faveicon.png" />
+    <title>{% block title %}{% endblock %} | xHalford</title>
+    <meta name="keywords" content="blog, articles, tutorials, information" />
+    <meta name="description" content="Richard Halford's blog." />
+    <meta name="author" content="Richard Halford" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'blog/css/style.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'blog/css/monokai.css' %}"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
+    <script src="https://kit.fontawesome.com/5ffae73fef.js" crossorigin="anonymous"></script>
+    {% block extra_head %}
+    {% endblock extra_head %}
+  </head>
+
+  <body>
+    <div class="container">
+      {% block main %}
+
+      <!-- Header -->
+      {% block header %}
+        {% block navbar %}
+          {% include 'navbar.html' %}
+        {% endblock navbar %}
+      {% endblock header %}
+
+      <!-- Main -->
+      {% block content %}
+        {% block sidebar %}{% endblock sidebar %}
+      {% endblock content %}
+
+      {% endblock main %}
+
+      <!-- Footer -->
+      {% block footer %}
+        {% include 'footer.html' %}
+      {% endblock footer %}
+    </div>
+
+    <script>
+      {% block remove_email %}
+      {% endblock remove_email %}
+
+      // Logout Modal
+      var modal = document.getElementById("logoutModal");
+      var btn = document.getElementById("logoutBtn");
+      var span = document.getElementsByClassName("logout-close")[0];
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      // Set Theme
+      function setTheme(themeName) {
+          localStorage.setItem('theme', themeName);
+          document.documentElement.className = themeName;
+      }
+      // Toggle Theme
+      function toggleTheme() {
+          if (localStorage.getItem('theme') === 'theme-dark') {
+              setTheme('theme-light');
+              document.getElementById("light-off").style.display = "none";
+              document.getElementById("light-on").style.display = "inline-block";
+          } else {
+              setTheme('theme-dark');
+              document.getElementById("light-off").style.display = "inline-block";
+              document.getElementById("light-on").style.display = "none";
+          }
+      }
+      (function () {
+          if (localStorage.getItem('theme') === 'theme-dark') {
+              setTheme('theme-dark');
+              document.getElementById('slider').checked = false;
+          } else {
+              setTheme('theme-light');
+              document.getElementById('slider').checked = true;
+          }
+      })();
+
+
+        // Dropdown Menu (click toggle)
+//      function dropdownFunction() {
+//        if(document.getElementById(window.event.target.id+"dropdownContent").style.display=="block"){
+//          document.getElementById(window.event.target.id+"dropdownContent").style.display="none";
+//        } else {
+//          document.getElementById(window.event.target.id+"dropdownContent").style.display="block";
+//        }
+//      };
+
+        // Scroll Progress Indicator
+//      window.onscroll = function() {scrollIndicator()};
+//      function scrollIndicator() {
+//        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+//        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+//        var scrolled = (winScroll / height) * 100;
+//        document.getElementsByClassName("progress").style.width = scrolled + "%";
+//      }
+    </script>
+
+  </body>
+
+</html>
