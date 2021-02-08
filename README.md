@@ -22,6 +22,10 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
+SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=True, cast=bool)
+SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", default=True, cast=bool)
+CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", default=True, cast=bool)
+SECURE_REFERRER_POLICY = config("SECURE_REFERRER_POLICY", default="same-origin")
 EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = config('EMAIL_HOST', default='')
 EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
@@ -40,6 +44,10 @@ SECRET_KEY=
 DEBUG=True
 ALLOWED_HOSTS=.localhost,127.0.0.1
 DATABASE_URL=sqlite:///db.sqlite3
+SECURE_SSL_REDIRECT=False
+SESSION_COOKIE_SECURE=False
+CSRF_COOKIE_SECURE=False
+SECURE_REFERRER_POLICY=""
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 
 ```
