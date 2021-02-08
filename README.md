@@ -1,4 +1,4 @@
-## Personal blog hosted on xhalford.com.
+## Personal blog hosted on xhalford.com
 
 # Setup:
 
@@ -7,6 +7,8 @@
 `python3 -m venv /path/to/new/virtual/environment`
 
 `pip install -r requirements.txt`
+
+ *NB: mod-wsgi, pkg-resources and psycopg2 may have to be removed from requirements.txt when only settings up for a development environment*
 
 ## Settings.py
 ```python
@@ -35,11 +37,10 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 
 ```
 
-## Create a .env at root, and add the following:
+## Create an .env file at the project root. And add the following for either setup:
 
 ### Local Environment
 ```
-
 SECRET_KEY=
 DEBUG=True
 ALLOWED_HOSTS=.localhost,127.0.0.1
@@ -49,17 +50,14 @@ SESSION_COOKIE_SECURE=False
 CSRF_COOKIE_SECURE=False
 SECURE_REFERRER_POLICY=""
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
-
 ```
 
 ### Production Environment
 ```
-
 SECRET_KEY=
 ALLOWED_HOSTS=
 DATABASE_URL=postgres://{ db_user }:{ db_password }@{ db_host }:{ db_port }/{ db_name }
-EMAIL_HOST=smtp.domain.xyz
-EMAIL_HOST_USER=
-EMAIL_HOST_PASSWORD=
-
+EMAIL_HOST="{ smtp.domain.xyz }"
+EMAIL_HOST_USER="{ joe@blogs.xyz }"
+EMAIL_HOST_PASSWORD="{ password123 }"
 ```
