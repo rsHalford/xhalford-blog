@@ -125,6 +125,7 @@ MARKDOWN_MARKDOWNIFY_FUNCTION = "markdownx.utils.markdownify"
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
     "extra",
     "codehilite",
+    "toc",
 ]
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime("markdownx/%Y/%m/%d")
 MARKDOWNX_UPLOAD_MAX_SIZE = 50 * 1024 * 1024  # 50 MB in bytes

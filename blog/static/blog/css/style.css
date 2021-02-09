@@ -786,6 +786,10 @@ input:checked + .slider:before {
   width: auto;
 }
 
+.post-detail-content > * {
+  margin: 2rem 0;
+}
+
 .post-detail-content h1,
 .post-detail-content h2,
 .post-detail-content h3,
@@ -801,6 +805,36 @@ input:checked + .slider:before {
   margin: 2rem auto;
   object-fit: cover;
   border-radius: 0.3rem;
+}
+
+.post-detail-content blockquote {
+  color: var(--dullfont-color);
+  margin: 0;
+  padding-left: 1.5rem;
+  border-left: 0.5rem solid var(--dullfont-color);
+}
+
+.post-detail-content ul,
+.post-detail-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.post-detail-content li {
+  margin-bottom: 1rem;
+}
+
+.post-detail-content a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.post-detail-content a:hover {
+  text-decoration: underline;
+}
+
+.post-detail-content > hr {
+  border-color: var(--dullfont-color);
 }
 
 /* Create Post */
