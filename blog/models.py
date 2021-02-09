@@ -12,7 +12,7 @@ STATUS = ((0, "Draft"), (1, "Publish"))
 
 
 class Post(models.Model):
-    image = models.URLField(null=True)
+    image = models.URLField(null=True, blank=True)
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
