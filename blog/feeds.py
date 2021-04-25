@@ -20,7 +20,7 @@ class RSSFeed(Feed):
         return item.get_absolute_url()
 
     def item_description(self, item):
-        return truncatewords(item.formatted_markdown, 30)
+        return item.formatted_markdown()
 
     def item_author_name(self, item):
         return item.author
