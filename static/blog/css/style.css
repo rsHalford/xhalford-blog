@@ -592,7 +592,7 @@ input:checked + .slider:before {
 .post-entry-image img {
   border-radius: 0.3rem 0.3rem 0 0;
   min-width: calc(100% + 3rem);
-  height: 14rem;
+  height: auto;
   margin: -1.5rem -1.5rem 1rem;
   object-fit: cover;
   object-position: 0 0;
