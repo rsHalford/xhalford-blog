@@ -861,6 +861,7 @@ input:checked + .slider:before {
   grid-template-areas:
     "image"
     "title"
+    "description"
     "tags"
     "helptext"
     "content"
@@ -892,10 +893,16 @@ input:checked + .slider:before {
 }
 
 .post-form-container #id_title:focus,
+.post-form-container #id_description:focus,
 .post-form-container #id_tags:focus,
 .markdownx textarea:focus,
 .post-form-container #id_status:focus {
   outline: none;
+}
+
+.post-form-container #id_description {
+  grid-area: description;
+  margin-bottom: 2rem;
 }
 
 .post-form-container #id_tags {
@@ -903,6 +910,7 @@ input:checked + .slider:before {
 }
 
 .post-form-container #id_image,
+.post-form-container #id_description,
 .post-form-container #id_tags {
   font-size: 1rem;
   padding: 1rem 1.2rem;
