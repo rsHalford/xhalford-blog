@@ -1,60 +1,12 @@
-.theme-dark {
-  --background-color: #202020;
-  --midground-color: #292929;
-  --foreground-color: #333333;
-  --accent-color: #4f3cc4;
-  --accent2-color: #3c2e97;
-  --accentfont-color: #fff;
-  --brightfont-color: #fff;
-  --dullfont-color: #c0c0c0;
-  --footer-color: #171717;
-  --borderlight-color: #202020;
-  --borderdark-color: #1b1b1b;
-  --red-base-color: #870707;
-  --blue-base-color: #160787;
-  --green-base-color: #168707;
-}
-
-.theme-light {
-  --background-color: #eee;
-  --midground-color: #f6f6f6;
-  --foreground-color: #fff;
-  --accent-color: #6a5acd;
-  --accent2-color: #7e70d4;
-  --accentfont-color: #fff;
-  --brightfont-color: #000;
-  --dullfont-color: #444;
-  --footer-color: #ddd;
-  --borderlight-color: #eee;
-  --borderdark-color: #d6d6d6;
-  --red-base-color: #870707;
-  --blue-base-color: #160787;
-  --green-base-color: #168707;
-}
-
-::-webkit-scrollbar {
-  width: 0.8rem;
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--midground-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent2-color);
-}
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
+
+*::-webkit-scrollbar {
+  display: none; }
 
 html,
 body {
@@ -62,1773 +14,1903 @@ body {
   max-width: 100vw;
   padding: 0;
   margin: 0;
-  font-size: 16px;
-  background-color: var(--background-color);
-  z-index: 0;
-  scroll-behavior: smooth;
+  font-size: MIN(2.13vw, 16px);
   font-family: "Open Sans", sans-serif;
-}
+  scroll-behavior: smooth;
+  background-color: #1d2021;
+  scrollbar-width: none;
+  z-index: 0; }
 
 a {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
-input[type="button"],
-input[type="button"]:active,
-input[type="button"]:focus,
-input[type="submit"],
-input[type="submit"]:active,
-input[type="submit"]:focus,
-button,
-button:active,
-button:focus {
+hr {
+  height: MIN(0.4vw, 3px);
+  margin: MIN(8vw, 60px) 20%;
+  background-color: #bdae93;
+  border: 0; }
+
+input[type="button"] {
   border: none;
   outline: none;
-  cursor: pointer;
-}
+  cursor: pointer; }
+  input[type="button"]:active {
+    border: none;
+    outline: none;
+    cursor: pointer; }
+  input[type="button"]:focus {
+    border: none;
+    outline: none;
+    cursor: pointer; }
+
+input[type="submit"] {
+  border: none;
+  outline: none;
+  cursor: pointer; }
+  input[type="submit"]:active {
+    border: none;
+    outline: none;
+    cursor: pointer; }
+  input[type="submit"]:focus {
+    border: none;
+    outline: none;
+    cursor: pointer; }
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer; }
+  button:active {
+    border: none;
+    outline: none;
+    cursor: pointer; }
+  button:focus {
+    border: none;
+    outline: none;
+    cursor: pointer; }
 
 .container {
   display: grid;
-  grid-template-columns: auto 90vw auto;
+  grid-template-columns: auto MIN(90vw, 1200px) auto;
   grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "header header header"
-    ". content ."
-    "footer footer footer";
-}
-
-/* Navigation */
-.navbar {
-  grid-area: header;
-  display: grid;
-  grid-template-columns: 5vw 9rem auto 9rem 5vw;
-  grid-template-areas: ". home search account .";
-  background-color: var(--foreground-color);
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--borderdark-color);
-}
-
-.navbar.logout {
-  grid-template-columns: 5vw 9rem auto 6rem 10rem 5vw;
-  grid-template-areas: ". home search login create .";
-}
-
-.search-container {
-  grid-area: search;
-  padding: 0 0.3rem;
-}
-
-.search-container form {
-  display: grid;
-  grid-template-columns: auto min-content;
-  grid-template-rows: auto;
-  grid-template-areas: "input button";
-}
-
-.search-container form > input[type="text"] {
-  grid-area: input;
-  font-size: 1rem;
-  margin: 0.3rem 0 0.3rem 0.3rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.3rem 0 0 0.3rem;
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-}
-
-.search-container form > input[type="text"]:focus {
-  color: var(--brightfont-color);
-  outline: none;
-}
-
-.search-container form > button {
-  grid-area: button;
-  width: 4rem;
-  font-size: 1rem;
-  margin: 0.3rem 0.3rem 0.3rem 0;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-left: solid 2px var(--accent-color);
-  border-radius: 0 0.3rem 0.3rem 0;
-  color: var(--accent-color);
-  background-color: var(--midground-color);
-  cursor: pointer;
-}
-
-.search-container form > button:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.home {
-  grid-area: home;
-  margin: auto 0;
-  text-align: center;
-}
-
-.account {
-  grid-area: account;
-  margin: 0.3rem 0 0.2rem 0.3rem;
-}
-
-.account,
-.navbar.logout .login,
-.navbar.logout .create-account {
-  display: block;
-  text-align: center;
-  padding: 0.5rem 0;
-}
-
-.account-username,
-.navbar.logout .login > a {
-  color: var(--brightfont-color);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.3rem;
-}
-
-.home > a {
-  font-family: "Bitter", serif;
-  font-weight: 600;
-  font-size: 1.6rem;
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-  text-decoration: none;
-  padding: 0.1rem 0.4rem;
-  border-radius: 0.3rem;
-}
-
-.navbar.logout .create-account > a {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.3rem;
-}
-
-.account-username {
-  position: relative;
-}
-
-.account:hover .account-username,
-.account:focus .account-username {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.navbar.logout .login > a:hover {
-  background-color: var(--midground-color);
-}
-
-.home > a:hover,
-.navbar.logout .create-account > a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent2-color);
-}
-
-.account:hover .account-content {
-  display: block;
-}
-
-.account-content {
-  display: none;
-  position: absolute;
-  margin-top: 0.7rem;
-  border: var(--borderdark-color) 1px solid;
-  border-radius: 0.3rem;
-  width: 8.8rem;
-  z-index: 1;
-}
-
-.account-content a {
-  display: block;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  text-align: left;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-}
-
-.account-content a:hover {
-  text-decoration: underline;
-}
-
-.account-content .logout {
-  border-radius: 0 0 0.3rem 0.3rem;
-}
-
-.account-content .create,
-.account-content .settings {
-  border-radius: 0.3rem 0.3rem 0 0;
-}
-
-/* Dark Theme Selector */
-.color-mode-container {
-  position: relative;
-  display: grid;
-  grid-template: "icon switch" / auto auto;
-  margin: 0.1rem;
-  padding: 0.6rem;
-  background-color: var(--midground-color);
-}
-
-.color-mode-container .fa-lightbulb {
-  grid-area: icon;
-  font-size: 1.5rem;
-  text-align: left;
-}
-
-.color-mode-container .far.fa-lightbulb {
-  color: var(--accent-color);
-}
-
-.color-mode-container .fas.fa-lightbulb {
-  color: #ffad01;
-  display: none;
-}
-
-.color-mode-switch {
-  grid-area: switch;
-  text-align: right;
-}
-
-.switch {
-  position: relative;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  width: 3rem;
-  height: 1.4rem;
-}
-
-#slider {
-  visibility: hidden;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #777;
-  transition: 0.3s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 1.4rem;
-  width: 1.4rem;
-  top: 50%;
-  bottom: 50%;
-  left: 0;
-  margin: auto 0;
-  transition: 0.3s;
-  background-color: #444;
-}
-
-input:checked + .slider {
-  background-color: #ffad01;
-}
-
-input:checked + .slider:before {
-  transform: translateX(1.6rem);
-  background-color: #777;
-}
-
-.slider.round {
-  border-radius: 25px;
-  background-color: var(--accent-color);
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-.account-content hr {
-  border: var(--accent-color) 1px solid;
-}
-
-.account-content .logout:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.navbar.logout .login {
-  grid-area: login;
-  margin: 0.3rem;
-}
-
-.navbar.logout .create-account {
-  grid-area: create;
-  margin: 0.3rem;
-  margin-right: 0;
-}
-
-.content {
-  grid-area: content;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 0.25fr 0.75fr;
-  grid-template-rows: auto auto;
-  grid-template-areas: "sidebar main";
-  column-gap: 1rem;
-  background-color: var(--background-color);
-  margin: 0 0 1rem;
-  padding: 0;
-}
-
-.content img {
-  max-width: 300px;
-  object-fit: cover;
-}
-
-/* Sidebar */
-.sidebar-container {
-  grid-area: sidebar;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: min-content min-content;
-  grid-template-areas:
-    "tags"
-    "account";
-  background-color: var(--background-color);
-}
-
-.sidebar-section-container {
-  background-color: var(--midground-color);
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.sidebar-section-container.account,
-.sidebar-section-container.tags {
-  grid-area: tags;
-}
-
-.sidebar-section-wrapper.account {
-  margin: 0;
-  padding: 0;
-  grid-area: account;
-}
-
-.sidebar-section-title {
-  text-align: left;
-  font-size: 1.5rem;
-  color: var(--brightfont-color);
-  padding: 0 0 0.5rem 0.5rem;
-}
-
-.sidebar-section-list {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.sidebar-section-list a {
-  display: inline-block;
-  color: var(--brightfont-color);
-  font-size: 1rem;
-  text-decoration: none;
-  border-radius: 0.3rem;
-}
-
-.sidebar-section-list.tags a {
-  background-color: var(--foreground-color);
-  text-align: center;
-  margin: 0.2rem 0.1rem;
-  padding: 0.4rem 0.8rem;
-}
-
-.sidebar-section-list.tags a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.sidebar-section-list.account a {
-  width: 97%;
-  text-align: left;
-  font-weight: 500;
-  margin: 0.1rem;
-  padding: 0.4rem;
-}
-
-.sidebar-section-list.account a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.sidebar-link-container {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.8rem auto;
-  grid-template-rows: auto;
-  grid-template-areas: "icon title";
-}
-
-.sidebar-link-container i {
-  grid-area: icon;
-  position: absolute;
-  top: 50%;
-  font-size: 1.1rem;
-  margin: 0 0.2rem;
-  transform: translateY(-50%);
-}
-
-.sidebar-link-container .sidebar-link-title {
-  grid-area: title;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0 0.2rem;
-}
-
-/* Index Main */
-.main-container {
-  grid-area: main;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "section"
-    "section"
-    "section";
-  background-color: var(--background-color);
-}
-
-/* Index Posts */
-.section-container {
-  grid-area: section;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  background-color: var(--background-color);
-  border-radius: 0.3rem;
-}
-
-/* Post Entry */
-.posts-header {
-  display: grid;
-  grid-template-columns: auto 13.5rem;
-  grid-template-areas: "title title";
-}
-
-.posts-title {
-  grid-area: title;
-  color: var(--brightfont-color);
-  background-color: var(--background-color);
-}
-
-.posts-title h1 > span {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 60%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.posts-sorting {
-  display: none;
-  grid-area: sorting;
-  text-align: right;
-  background-color: var(--background-color);
-}
-
-.posts-sorting a {
-  display: inline-block;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  text-align: center;
-  margin: 0.1rem;
-  padding: 0.2rem 0.5rem;
-  text-decoration: none;
-  border-radius: 0.3rem;
-}
-
-.posts-sorting a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.no-content {
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  margin-top: 0.5rem;
-  padding: 1.5rem;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.post-entry-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto auto auto;
-  grid-template-areas:
-    "image image image image"
-    "title title title edit"
-    "author author author author"
-    "tags tags tags tags"
-    "interaction interaction interaction interaction";
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  margin-top: 0.5rem;
-  padding: 1.5rem;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.post-entry-image {
-  grid-area: image;
-}
-
-.post-entry-image img {
-  border-radius: 0.3rem 0.3rem 0 0;
-  min-width: calc(100% + 3rem);
-  height: auto;
-  margin: -1.5rem -1.5rem 1rem;
-  object-fit: cover;
-  object-position: 0 0;
-}
-
-.post-entry-title {
-  grid-area: title;
-  font-family: "Bitter", serif;
-  font-size: 2.4rem;
-  font-weight: 600;
-  padding-bottom: 0.5rem;
-}
-
-.post-entry-title a {
-  color: var(--brightfont-color);
-  text-decoration: none;
-}
-
-.post-entry-title a:hover {
-  text-decoration: underline;
-}
-
-.post-entry-edit {
-  grid-area: edit;
-  text-align: right;
-}
-
-.post-entry-edit a {
-  display: inline-block;
-  color: var(--accent-color);
-  background-color: var(--midground-color);
-  vertical-align: middle;
-  padding: 0.4rem 0.45rem 0.3rem 0.6rem;
-  text-decoration: none;
-  border-radius: 0.3rem;
-}
-
-.post-entry-edit a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.post-entry-author {
-  grid-area: author;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding-bottom: 0.5rem;
-}
-
-.post-entry-author span {
-  font-size: 1rem;
-  font-weight: 400;
-  margin-left: 0.5rem;
-}
-
-.post-entry-tags {
-  grid-area: tags;
-  padding: 0.5rem 0;
-}
-
-.post-entry-tags a {
-  display: inline-block;
-  color: var(--dullfont-color);
-  background-color: var(--foreground-color);
-  text-align: center;
-  margin-bottom: 0.3rem;
-  padding: 0.25rem 0.5rem;
-  text-decoration: none;
-  border-radius: 0.3rem;
-}
-
-.post-entry-tags a:hover {
-  color: var(--accent-color);
-  background-color: var(--midground-color);
-}
-
-.post-entry-interactions {
-  grid-area: interaction;
-}
-
-.post-entry-interactions a {
-  display: inline-block;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  text-align: center;
-  margin-bottom: 0.3rem;
-  padding: 0.25rem 0.5rem;
-  text-decoration: none;
-  border-radius: 0.3rem;
-}
-
-.post-entry-interactions a:hover {
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-}
-
-.post-entry-interactions a .fa-comment-alt {
-  color: var(--accent-color);
-}
-
-.post-entry-interactions a .fas.fa-comment-alt {
-  display: none;
-}
-
-.post-entry-interactions a:hover .far.fa-comment-alt {
-  display: none;
-}
-
-.post-entry-interactions a:hover .fas.fa-comment-alt {
-  display: inline-block;
-}
-
-/* Post Detail */
-.post-detail-container {
-  grid-area: content;
-  min-height: 100vh;
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-  margin: 0 0 1rem;
-  padding: 2rem 0;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.theme-light .post-detail-container {
-  background-color: var(--foreground-color);
-}
-
-.post-detail-container > hr {
-  margin: 4rem 3rem;
-  border: var(--accent-color) 1px solid;
-}
-
-.post-detail-header {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas:
-    "image"
-    "title"
-    "author"
-    "tags";
-  margin: 1rem 3rem 2rem;
-  position: relative;
-}
-
-.post-entry-image.detail {
-  grid-area: image;
-  border-radius: 0.3rem 0.3rem 0 0;
-  min-width: calc(100% + 6rem);
-  max-width: 100%;
-  height: auto;
-  margin: -3rem -3rem 1rem;
-  object-fit: cover;
-  object-position: 0 0;
-}
-
-.post-entry-title.detail {
-  font-size: 3rem;
-}
-
-.post-entry-edit.detail a {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 1.5rem;
-  padding: 0.4rem 0.45rem 0.3rem 0.7rem;
-}
-
-.post-entry-author.detail {
-  font-size: 1.2rem;
-}
-
-.post-entry-author.detail span {
-  font-size: 1.1rem;
-}
-
-.post-entry-tags.detail a {
-  color: var(--accent-color);
-  background-color: var(--midground-color);
-}
-
-.post-entry-tags.detail a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.post-detail-content {
-  font-size: 1.2rem;
-  margin: 0 3rem 3rem;
-  height: auto;
-  width: auto;
-}
-
-.post-detail-content > * {
-  margin: 2rem 0;
-}
-
-.post-detail-content h1,
-.post-detail-content h2,
-.post-detail-content h3,
-.post-detail-content h4,
-.post-detail-content h5,
-.post-detail-content h6 {
-  font-family: "Bitter", serif;
-}
-
-.post-detail-content img {
-  display: block;
-  max-width: 100%;
-  margin: 2rem auto;
-  object-fit: cover;
-  border-radius: 0.3rem;
-}
-
-.post-detail-content blockquote {
-  color: var(--dullfont-color);
-  margin: 0;
-  padding-left: 1.5rem;
-  border-left: 0.5rem solid var(--dullfont-color);
-}
-
-.post-detail-content ul,
-.post-detail-content ol {
-  margin: 1rem 0;
-  padding-left: 1.5rem;
-}
-
-.post-detail-content li {
-  margin-bottom: 1rem;
-}
-
-.post-detail-content a {
-  text-decoration: none;
-  color: var(--accent-color);
-}
-
-.post-detail-content a:hover {
-  text-decoration: underline;
-}
-
-.post-detail-content > hr {
-  border-color: var(--dullfont-color);
-}
-
-/* Create Post */
-.post-form-container {
-  grid-area: content;
-  min-height: 100vh;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  margin: 0 0 1rem;
-  padding: 2rem 0;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.post-form-container > h2 {
-  font-size: 3rem;
-  padding: 0 1.2rem 1rem 1rem;
-}
-
-.post-form-container form {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto auto auto auto;
-  grid-template-areas:
-    "image"
-    "title"
-    "description"
-    "tags"
-    "helptext"
-    "content"
-    "status"
-    "submit";
-  padding: 1rem;
-}
-
-.post-form-container > form > * {
-  width: 87vw;
-  max-width: 87vw;
-}
-
-.post-form-container #id_image {
-  grid-area: image;
-  margin-bottom: 2rem;
-}
-
-.post-form-container #id_title {
-  grid-area: title;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  padding: 1rem 1.2rem;
-  border: none;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-}
-
-.post-form-container #id_title:focus,
-.post-form-container #id_description:focus,
-.post-form-container #id_tags:focus,
-.markdownx textarea:focus,
-.post-form-container #id_status:focus {
-  outline: none;
-}
-
-.post-form-container #id_description {
-  grid-area: description;
-  margin-bottom: 2rem;
-}
-
-.post-form-container #id_tags {
-  grid-area: tags;
-}
-
-.post-form-container #id_image,
-.post-form-container #id_description,
-.post-form-container #id_tags {
-  font-size: 1rem;
-  padding: 1rem 1.2rem;
-  border: none;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-}
-
-.post-form-container .helptext {
-  grid-area: helptext;
-  margin: 0.4rem 0 0.5rem 1.2rem;
-  color: var(--dullfont-color);
-}
-
-/* Markdownx */
-.post-form-container #id_content {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.markdownx {
-  grid-area: content;
-}
-
-.markdownx textarea {
-  font-size: 1rem;
-  margin: 1rem 0.5vw 1rem 0;
-  padding: 1.3rem 1.3rem;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-  resize: vertical;
-}
-
-.markdownx-preview {
-  margin: 1rem 0 1rem 0.5vw;
-  padding: 1.3rem 1.5rem;
-  border-radius: 0.3rem;
-  background-color: var(--midground-color);
-  border: var(--accent-color) solid 2px;
-}
-
-.theme-light .markdownx-preview {
-  background-color: var(--foreground-color);
-}
-
-.markdownx-preview img {
-  display: block;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  object-fit: cover;
-  border-radius: 0.3rem;
-}
-
-.post-form-container #id_status {
-  grid-area: status;
-  width: 7rem;
-  margin: 1rem auto 0.5rem;
-  padding: 0.6rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-}
-
-.post-form-container input[type="submit"] {
-  grid-area: submit;
-  width: 5rem;
-  margin: 1rem auto 0.5rem;
-  padding: 0.5rem 0.8rem;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.post-form-container input[type="submit"]:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent2-color);
-  cursor: pointer;
-}
-
-.post-form-container br {
-  display: none;
-}
-
-/* Comments */
-.post-detail-comments {
-  margin: 0 3rem 3rem;
-}
-
-.post-detail-comments h2 {
-  font-size: 2.5rem;
-}
-
-.post-comment-comment {
-  margin: 0 0 1rem;
-}
-
-.post-comment-comment a {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.6rem 1.5rem 0.5rem;
-  color: var(--brightfont-color);
-  background-color: var(--accent-color);
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-  position: relative;
-}
-
-.post-comment-comment a > i {
-  position: absolute;
-  top: 50%;
-  right: 1.5rem;
-  transform: translateY(-50%);
-}
-
-.post-comment-comment a:hover {
-  background-color: var(--accent2-color);
-}
-
-.post-comment-comment form {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "helptext helptext helptext"
-    "content content content"
-    ". . submit";
-}
-
-.post-comment-comment .markdownx-preview {
-  display: none;
-}
-
-.post-comment-comment .helptext {
-  grid-area: helptext;
-  margin: 0.4rem 0 0.5rem 1.2rem;
-  color: var(--dullfont-color);
-}
-
-.post-comment-comment #id_body {
-  width: 100%;
-  height: 6rem;
-  margin-bottom: 0.5rem;
-  overflow-x: auto;
-  background-color: var(--foreground-color);
-}
-
-.theme-light .post-comment-comment #id_body {
-  background-color: var(--background-color);
-}
-
-.post-comment-comment input[type="submit"] {
-  grid-area: submit;
-  width: 5rem;
-  margin-left: auto;
-  padding: 0.3rem 0.8rem;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.post-comment-comment input[type="submit"]:hover {
-  color: #fff;
-  background-color: var(--accent2-color);
-  cursor: pointer;
-}
-
-.post-comments-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "author time"
-    "body body";
-  margin-top: 1rem;
-  border-radius: 0.3rem;
-}
-
-.post-comments-author {
-  grid-area: author;
-  background-color: var(--background-color);
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 0.6rem 1rem 0.5rem;
-  border-top-left-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  border-right: none;
-  border-bottom: none;
-}
-
-.post-comments-time {
-  grid-area: time;
-  color: var(--dullfont-color);
-  background-color: var(--background-color);
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: right;
-  padding: 0.6rem 1rem 0.5rem;
-  border-top-right-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  border-left: none;
-  border-bottom: none;
-}
-
-.post-comments-body {
-  grid-area: body;
-  padding: 0.5rem 1.5rem 0.6rem;
-  border-radius: 0 0 0.3rem 0.3rem;
-  border: 1px solid var(--borderlight-color);
-  border-top: none;
-}
-
-.post-comments-else {
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-/* Settings */
-.content.settings {
-  grid-area: content;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: "main";
-  column-gap: 1rem;
-  margin: 0 0 1rem;
-  padding: 0;
-}
-
-.settings-container {
-  background-color: var(--foreground-color);
-  padding: 1rem;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.settings-list {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "one"
-    "two"
-    "three";
-  grid-gap: 1rem;
-  border-radius: 0.3rem;
-}
-
-.settings-email {
-  grid-area: one;
-}
-
-.settings-password {
-  grid-area: two;
-}
-
-.settings-social {
-  grid-area: three;
-}
-
-.settings-login {
-  grid-area: one;
-}
-
-.settings-create {
-  grid-area: two;
-}
-
-.settings-list a {
-  display: block;
-  color: var(--brightfont-color);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.3rem;
-}
-
-.settings-list a:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.settings-link-container {
-  display: grid;
-  grid-template-columns: 2.5rem auto 2.5rem;
-  grid-template-rows: auto;
-  grid-template-areas: "icon title chevron";
-  position: relative;
-}
-
-.settings-link-container i {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-}
-
-.settings-link-container .icon {
-  grid-area: icon;
-  margin: 0 0.5rem;
-}
-
-.settings-link-container .settings-link-title {
-  grid-area: title;
-  font-size: 1.6rem;
-  margin: 0 1rem;
-}
-
-.settings-link-container .fas.fa-chevron-right {
-  grid-area: chevron;
-  margin: 0 0.75rem;
-}
-
-/* Login */
-.account-header {
-  color: var(--brightfont-color);
-  background-color: var(--background-color);
-  margin-bottom: 0.5rem;
-}
-
-.account-form-container {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "providers"
-    "options"
-    "form";
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  padding: 1.5rem 1.5rem 0.75rem;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderdark-color);
-}
-
-.account-form-providers {
-  grid-area: providers;
-  margin: 0 2.5rem;
-}
-
-.socialaccount_providers {
-  list-style: none;
-}
-
-.socialaccount_providers li {
-  margin: 0.5rem;
-  padding: 1rem;
-  font-size: 2rem;
-  text-align: center;
-}
-
-.socialaccount_provider {
-  color: var(--brightfont-color);
-  background-color: var(--midground-color);
-  text-align: center;
-  margin: 0 auto;
-  padding: 0.1rem 0.5rem 0.4rem;
-  text-decoration: none;
-  border-radius: 0.3rem;
-  border: 1px solid var(--borderlight-color);
-}
-
-.socialaccount_provider::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  padding-right: 0.8rem;
-  vertical-align: middle;
-}
-
-.socialaccount_provider.github::before {
-  font-family: "Font Awesome 5 Brands";
-  content: "\f09b";
-  font-weight: 900;
-}
-
-.socialaccount_provider.google::before {
-  font-family: "Font Awesome 5 Brands";
-  content: "\f1a0";
-  font-weight: 900;
-}
-
-.socialaccount_provider.twitter::before {
-  font-family: "Font Awesome 5 Brands";
-  content: "\f099";
-  font-weight: 900;
-}
-
-.socialaccount_provider:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.account-form-options {
-  grid-area: options;
-}
-
-.account-form-options h4 {
-  text-align: center;
-  margin: 1.5rem 1.5rem 0;
-}
-
-.account-form-options .keyline {
-  color: var(--dullfont-color);
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  grid-gap: 1rem;
-  align-items: center;
-  margin: 1.5rem 1.5rem 0;
-}
-
-.account-form-options .keyline::before,
-.account-form-options .keyline::after {
-  content: "";
-  height: 2px;
-  background: var(--background-color);
-}
-
-.account-form-entry {
-  grid-area: form;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "entry"
-    "hr"
-    "other";
-  grid-gap: 0.5rem;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  padding: 1.5rem 1.5rem 0.75rem;
-}
-
-.account-form-entry.reset {
-  grid-area: form;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas:
-    "note"
-    "entry"
-    "hr"
-    "other";
-  grid-gap: 0.5rem;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  padding: 1.5rem 1.5rem 0.75rem;
-}
-
-.account-form-note {
-  grid-area: note;
-}
-
-.account-form-entry.email {
-  grid-area: form;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "entry"
-    "hr"
-    "other";
-  grid-gap: 0.5rem;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  padding: 0.75rem 1.5rem 0.75rem;
-}
-
-.form-entry {
-  grid-area: entry;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas:
-    "name"
-    "password1"
-    "submit"
-    "error";
-  grid-gap: 1rem;
-  padding: 1rem;
-}
-
-.form-entry.register {
-  grid-area: entry;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto auto auto;
-  grid-template-areas:
-    "email"
-    "name"
-    "password1"
-    "password2"
-    "submit"
-    "error";
-  grid-gap: 1rem;
-  margin: 0;
-  padding: 1rem;
-}
-
-.form-entry.set {
-  grid-area: entry;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas:
-    "password1"
-    "password2"
-    "submit"
-    "error";
-  grid-gap: 1rem;
-  margin: 0;
-  padding: 1rem;
-}
-
-.form-entry.change {
-  grid-area: entry;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto auto;
-  grid-template-areas:
-    "old_password"
-    "password1"
-    "password2"
-    "submit"
-    "error";
-  grid-gap: 1rem;
-  margin: 0;
-  padding: 1rem;
-}
-
-.form-entry.reset,
-.form-entry.email {
-  grid-area: entry;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "email"
-    "submit"
-    "error";
-  grid-gap: 1rem;
-  margin: 0;
-  padding: 1rem 0;
-}
-
-.form-entry label {
-  display: none;
-}
-
-.form-entry.email #id_email,
-.form-entry.reset #id_email,
-.form-entry.register #id_email {
-  grid-area: email;
-  color: var(--brightfont-color);
-}
-
-.form-entry.register #id_username,
-.form-entry #id_login {
-  grid-area: name;
-  color: var(--brightfont-color);
-}
-
-.form-entry.change #id_oldpassword {
-  grid-area: old_password;
-  color: var(--brightfont-color);
-}
-
-.form-entry.change #id_password1,
-.form-entry.set #id_password1,
-.form-entry.register #id_password1,
-.form-entry #id_password {
-  grid-area: password1;
-  color: var(--brightfont-color);
-}
-
-.form-entry.change #id_password2,
-.form-entry.set #id_password2,
-.form-entry.register #id_password2 {
-  grid-area: password2;
-  color: var(--brightfont-color);
-}
-
-.form-entry.email #id_email,
-.form-entry.reset #id_email,
-.form-entry.register #id_email,
-.form-entry.register #id_username,
-.form-entry #id_login,
-.form-entry.change #id_oldpassword,
-.form-entry.change #id_password1,
-.form-entry.change #id_password2,
-.form-entry.set #id_password1,
-.form-entry.set #id_password2,
-.form-entry.register #id_password1,
-.form-entry.register #id_password2,
-.form-entry #id_password {
-  width: 100%;
-  font-size: 1rem;
-  padding: 1rem 1.2rem;
-  border-radius: 0.3rem;
-  border: var(--borderdark-color);
-  background-color: var(--midground-color);
-  color: var(--brightfont-color);
-}
-
-.form-entry.email #id_email:focus,
-.form-entry.reset #id_email:focus,
-.form-entry.register #id_email:focus,
-.form-entry.register #id_username:focus,
-.form-entry #id_login:focus,
-.form-entry.change #id_oldpassword:focus,
-.form-entry.change #id_password1:focus,
-.form-entry.change #id_password2:focus,
-.form-entry.set #id_password1:focus,
-.form-entry.set #id_password2:focus,
-.form-entry.register #id_password1:focus,
-.form-entry.register #id_password2:focus,
-.form-entry #id_password:focus {
-  color: var(--brightfont-color);
-  outline: none;
-}
-
-.form-entry-submit {
-  grid-area: submit;
-  width: 6rem;
-  margin: 0 auto;
-  padding: 0.3rem;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.form-entry-submit.register,
-.form-entry-submit.set {
-  grid-area: submit;
-  width: 9rem;
-  padding: 0.3rem;
-}
-
-.form-entry-submit.reset,
-.form-entry-submit.change {
-  grid-area: submit;
-  width: 10rem;
-  padding: 0.3rem;
-}
-
-.form-entry-submit:hover {
-  color: var(--accentfont-color);
-  background-color: var(--accent2-color);
-  cursor: pointer;
-}
-
-.form-entry .errorlist {
-  grid-area: error;
-  color: var(--red-base-color);
-}
-
-.account-form-entry hr {
-  grid-area: hr;
-  border: var(--borderlight-color) 1px solid;
-}
-
-.form-other {
-  grid-area: other;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto;
-  grid-template-areas: "option1 option2";
-}
-
-.form-other.reset,
-.form-other.set {
-  grid-area: other;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas: "option";
-}
-
-.one {
-  grid-area: option1;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-
-.one.register {
-  grid-area: option2;
-}
-
-.one.reset,
-.one.set {
-  grid-area: option;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-
-.one a {
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.3rem;
-}
-
-.one a:hover {
-  background-color: var(--accent2-color);
-}
-
-.two {
-  grid-area: option2;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-
-.two.register {
-  grid-area: option1;
-}
-
-.two a {
-  color: var(--brightfont-color);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.3rem;
-}
-
-.two a:hover {
-  text-decoration: underline;
-}
-
-/* Email */
-.account-form-container.email {
-  grid-template-areas:
-    "addresses"
-    "hr"
-    "add";
-}
-
-.account-form-container hr {
-  margin: 1.5rem;
-  border: var(--borderlight-color) 1px solid;
-}
-
-.account-form-connections,
-.account-form-addresses {
-  grid-area: addresses;
-  margin: 0 1rem;
-}
-
-.account-form-container h4 {
-  font-size: 1.5rem;
-  margin: 1.5rem 1.5rem 0;
-}
-
-.connections-form-entry,
-.email-form-entry {
-  grid-area: form;
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  margin: 0.5rem 1.5rem 0.75rem;
-  padding: 0;
-  border-radius: 0.3rem;
-}
-
-.blockLabels {
-  border: none;
-}
-
-.ctrlHolder {
-  margin: 1rem 0;
-}
-
-.ctrlHolder label {
-  display: grid;
-  grid-template-columns: min-content min-content min-content min-content;
-  grid-template-areas: "radio email verified primary";
-  grid-gap: 0.8rem;
-  font-size: 1.3rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.ctrlHolder.connections label {
-  display: grid;
-  grid-template-columns: min-content 8rem auto;
-  grid-template-areas: "radio connection username";
-  grid-gap: 0.8rem;
-  font-size: 1.3rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.ctrlHolder input,
-.ctrlHolder .checkmark {
-  grid-area: radio;
-}
-
-.ctrlHolder #text {
-  grid-area: email;
-}
-
-.ctrlHolder.connections .socialaccount_provider {
-  grid-area: connection;
-}
-
-.ctrlHolder .socialaccount_provider:hover {
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-}
-
-.ctrlHolder.connections #text {
-  grid-area: username;
-}
-
-.verified,
-.unverified {
-  grid-area: verified;
-}
-
-.primary {
-  grid-area: primary;
-}
-
-.ctrlHolder label input {
-  opacity: 0;
-  height: 0;
-  width: 0;
-  cursor: pointer;
-}
-
-.ctrlHolder .checkmark {
-  display: block;
-  grid-area: radio;
-  margin: auto 0;
-  height: 1.3rem;
-  width: 1.3rem;
-  border-radius: 50%;
-  border: 0.2rem solid var(--accent-color);
-}
-
-.ctrlHolder:hover input ~ .checkmark {
-  background-color: #6a5acd50;
-}
-
-.ctrlHolder input:checked ~ .checkmark {
-  background: radial-gradient(var(--accent-color) 30%, rgba(0, 0, 0, 0) 41%);
-}
-
-.ctrlHolder label .verified {
-  font-size: 0.9rem;
-  color: var(--green-base-color);
-  margin: auto 0;
-}
-
-.ctrlHolder label .primary {
-  font-size: 0.9rem;
-  color: var(--blue-base-color);
-  margin: auto 0;
-}
-
-.ctrlHolder label .unverified {
-  font-size: 0.9rem;
-  color: var(--red-base-color);
-  margin: auto 0;
-}
-
-.buttonHolder {
-  display: grid;
-  grid-template-columns: max-content max-content max-content;
-  grid-template-rows: auto;
-  grid-gap: 0.5rem;
-  margin: 1rem auto;
-}
-
-.buttonHolder.connections {
-  display: block;
-  text-align: center;
-}
-
-.buttonHolder button {
-  margin: 0 auto;
-  padding: 0.3rem 0.8rem;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.buttonHolder button:hover {
-  background-color: var(--accent2-color);
-  cursor: pointer;
-}
-
-.account-form-add {
-  margin: 0 1rem;
-}
-
-.account-form-add .socialaccount_providers {
-  margin: 0.5rem 1.5rem;
-}
+  grid-template-areas: "header header header" ". content ." "footer footer footer";
+  /* Post Detail */
+  /* Create Post */
+  /* Footer */ }
+  .container .navbar {
+    height: MIN(6vw, 45px);
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto MIN(5vw, 66.67px) MIN(85vw, 1133.33px) auto;
+    grid-template-areas: ". home search .";
+    background-color: #3c3836;
+    margin-bottom: MIN(2.133vw, 16px);
+    border-bottom: MIN(0.133vw, 1px) solid #282828; }
+    .container .navbar .home {
+      grid-area: home;
+      height: MIN(5vw, 37.5px);
+      width: MIN(5vw, 37.5px);
+      margin: auto 0;
+      padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px) 0;
+      background-color: #458588; }
+      .container .navbar .home a {
+        font-family: "Gelasio", "Vollkorn", serif;
+        font-weight: 600;
+        font-size: MIN(3.4vw, 25.5px);
+        color: #fbf1c7;
+        text-decoration: none; }
+      .container .navbar .home:hover {
+        background-color: #83a598; }
+    .container .navbar .search-container {
+      grid-area: search;
+      margin: auto 0; }
+      .container .navbar .search-container form {
+        display: grid;
+        grid-template-columns: auto min-content;
+        grid-template-rows: auto;
+        grid-template-areas: "input button"; }
+        .container .navbar .search-container form input[type="text"] {
+          grid-area: input;
+          height: MIN(5vw, 37.5px);
+          font-family: "Open Sans", sans-serif;
+          font-size: MIN(2.13vw, 16px);
+          padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px);
+          border: none;
+          color: #fbf1c7;
+          background-color: #282828; }
+          .container .navbar .search-container form input[type="text"]:focus {
+            color: #fbf1c7;
+            outline: none; }
+        .container .navbar .search-container form button {
+          grid-area: button;
+          height: MIN(5vw, 37.5px);
+          width: MIN(8.5vw, 64px);
+          font-size: MIN(3vw, 22.5px);
+          padding: auto MIN(2.13vw, 16px);
+          border: none;
+          border-left: solid 2px #458588;
+          color: #458588;
+          background-color: #282828;
+          cursor: pointer; }
+          .container .navbar .search-container form button:hover {
+            color: #fbf1c7;
+            background-color: #458588; }
+    .container .navbar .account {
+      grid-area: account;
+      display: block;
+      margin: auto 0;
+      padding: MIN(1vw, 7.5px) 0;
+      text-align: center; }
+      .container .navbar .account:hover {
+        background-color: #458588; }
+        .container .navbar .account:hover .account-username {
+          color: #fbf1c7; }
+        .container .navbar .account:hover .account-content {
+          display: block; }
+      .container .navbar .account:focus {
+        background-color: #458588; }
+        .container .navbar .account:focus .account-username {
+          color: #fbf1c7; }
+      .container .navbar .account .account-username {
+        position: relative;
+        color: #fbf1c7;
+        text-decoration: none; }
+      .container .navbar .account .account-content {
+        display: none;
+        position: absolute;
+        margin-top: MIN(1.5vw, 11.25px);
+        width: MIN(18.8vw, 141px);
+        z-index: 1; }
+        .container .navbar .account .account-content a {
+          display: block;
+          padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px);
+          font-size: MIN(2.13vw, 16px);
+          font-weight: 500;
+          text-decoration: none;
+          text-align: left;
+          color: #fbf1c7;
+          background-color: #3c3836; }
+          .container .navbar .account .account-content a:hover {
+            text-decoration: underline; }
+        .container .navbar .account .account-content hr {
+          border: #458588 1px solid; }
+        .container .navbar .account .account-content .logout:hover {
+          color: #fbf1c7;
+          background-color: #458588;
+          text-decoration: none;
+          cursor: pointer; }
+    .container .navbar.logout {
+      grid-template-columns: 5vw MIN(6.4vw, 48px) auto MIN(12.8vw, 96px) MIN(21.33vw, 160px) 5vw;
+      grid-template-areas: ". home search login create ."; }
+      .container .navbar.logout .login {
+        grid-area: login;
+        display: block;
+        text-align: center;
+        margin: MIN(0.64vw, 4.8px);
+        padding: MIN(1vw, 7.5px) 0; }
+        .container .navbar.logout .login a {
+          color: #fbf1c7;
+          text-decoration: none;
+          padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px); }
+          .container .navbar.logout .login a:hover {
+            background-color: #282828; }
+      .container .navbar.logout .create-account {
+        grid-area: create;
+        display: block;
+        text-align: center;
+        margin: MIN(0.64vw, 4.8px) 0 MIN(0.64vw, 4.8px) MIN(0.64vw, 4.8px);
+        padding: MIN(1vw, 7.5px) 0; }
+        .container .navbar.logout .create-account a {
+          color: #fbf1c7;
+          background-color: #458588;
+          text-decoration: none;
+          padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px); }
+          .container .navbar.logout .create-account a:hover {
+            color: #fbf1c7;
+            background-color: #83a598; }
+  .container .content {
+    grid-area: content;
+    min-height: 100vh;
+    width: MIN(90vw, 1200px);
+    display: grid;
+    grid-template-columns: MIN(22.5vw, 300px) MIN(67.5vw, 900px);
+    grid-template-rows: auto auto;
+    grid-template-areas: "sidebar main";
+    background-color: #1d2021;
+    margin: 0 0 MIN(2.13vw, 16px);
+    padding: 0;
+    /* Settings */ }
+    .container .content img {
+      max-width: 300px;
+      object-fit: cover; }
+    .container .content .sidebar-container {
+      grid-area: sidebar;
+      margin-right: MIN(1vw, 13.33px);
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: min-content min-content;
+      grid-template-areas: "tags" "account";
+      background-color: #1d2021; }
+      .container .content .sidebar-container .sidebar-section-container {
+        margin-bottom: MIN(1vw, 13.33px);
+        padding: MIN(1vw, 7.5px);
+        background-color: #282828; }
+        .container .content .sidebar-container .sidebar-section-container.tags {
+          grid-area: tags; }
+          .container .content .sidebar-container .sidebar-section-container.tags .sidebar-section-title {
+            text-align: left;
+            font-size: MIN(3.2vw, 24px);
+            color: #fbf1c7;
+            padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px); }
+          .container .content .sidebar-container .sidebar-section-container.tags .sidebar-section-list {
+            margin: 0;
+            padding: 0;
+            width: 100%; }
+            .container .content .sidebar-container .sidebar-section-container.tags .sidebar-section-list a {
+              display: inline-block;
+              background-color: #3c3836;
+              color: #fbf1c7;
+              font-size: MIN(1.8vw, 13.5px);
+              font-family: "JetBrains Mono", monospace;
+              text-align: center;
+              text-decoration: none;
+              margin: MIN(0.427vw, 3.2px) MIN(0.233vw, 1.6px);
+              padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px); }
+              .container .content .sidebar-container .sidebar-section-container.tags .sidebar-section-list a:hover {
+                color: #fbf1c7;
+                background-color: #458588; }
+        .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-title {
+          text-align: left;
+          font-size: MIN(3.2vw, 24px);
+          color: #fbf1c7;
+          padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px); }
+        .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list {
+          margin: 0;
+          padding: 0;
+          width: 100%; }
+          .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a {
+            display: inline-block;
+            width: 97%;
+            color: #fbf1c7;
+            font-size: MIN(2.13vw, 16px);
+            font-weight: 500;
+            text-align: left;
+            text-decoration: none;
+            margin: MIN(0.233vw, 1.6px);
+            padding: MIN(0.8vw, 6.4px); }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a:hover {
+              color: #fbf1c7;
+              background-color: #458588; }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a .sidebar-link-container {
+              position: relative;
+              display: grid;
+              grid-template-columns: MIN(3.8vw, 28.5px) auto;
+              grid-template-rows: auto;
+              grid-template-areas: "icon title"; }
+              .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a .sidebar-link-container i {
+                grid-area: icon;
+                position: absolute;
+                top: 50%;
+                font-size: MIN(2.4vw, 18px);
+                margin: 0 MIN(0.427vw, 3.2px);
+                transform: translateY(-50%); }
+              .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a .sidebar-link-container .sidebar-link-title {
+                grid-area: title;
+                font-size: MIN(2.4vw, 18px);
+                font-weight: 500;
+                margin: 0 MIN(0.427vw, 3.2px); }
+          .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container {
+            position: relative;
+            display: grid;
+            grid-template: "icon switch" / auto auto;
+            margin: MIN(0.233vw, 1.6px);
+            padding: MIN(0.427vw, 3.2px);
+            background-color: #282828; }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .fa-lightbulb {
+              grid-area: icon;
+              font-size: MIN(3.2vw, 24px);
+              text-align: left; }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .far.fa-lightbulb {
+              color: #458588; }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .fas.fa-lightbulb {
+              color: #d79921;
+              display: none; }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch {
+              grid-area: switch;
+              text-align: right; }
+              .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                width: MIN(6.4vw, 48px);
+                height: MIN(3vw, 22.5px); }
+                .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch #slider {
+                  visibility: hidden; }
+                .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch input:checked + .slider {
+                  background-color: #d79921; }
+                  .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch input:checked + .slider:before {
+                    transform: translateX(MIN(3.4vw, 25.5px));
+                    background-color: #777; }
+                .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider {
+                  position: absolute;
+                  cursor: pointer;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  background-color: #777;
+                  transition: 0.3s; }
+                  .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: MIN(3vw, 22.5px);
+                    width: MIN(3vw, 22.5px);
+                    top: 50%;
+                    bottom: 50%;
+                    left: 0;
+                    margin: auto 0;
+                    transition: 0.3s;
+                    background-color: #444; }
+                  .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider.round {
+                    border-radius: 25px;
+                    background-color: #458588; }
+                    .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider.round:before {
+                      border-radius: 50%; }
+      .container .content .sidebar-container .sidebar-section-wrapper.account {
+        margin: 0;
+        padding: 0;
+        grid-area: account; }
+        .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-title {
+          text-align: left;
+          font-size: MIN(3.2vw, 24px);
+          color: #fbf1c7;
+          padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px); }
+        .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list {
+          margin: 0;
+          padding: 0;
+          width: 100%; }
+          .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list a {
+            display: inline-block;
+            width: 97%;
+            color: #fbf1c7;
+            font-size: MIN(2.13vw, 16px);
+            font-weight: 500;
+            text-align: left;
+            text-decoration: none;
+            margin: MIN(0.233vw, 1.6px);
+            padding: MIN(0.8vw, 6.4px); }
+            .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list a:hover {
+              color: #fbf1c7;
+              background-color: #458588; }
+            .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list a .sidebar-link-container {
+              position: relative;
+              display: grid;
+              grid-template-columns: MIN(3.8vw, 28.5px) auto;
+              grid-template-rows: auto;
+              grid-template-areas: "icon title"; }
+              .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list a .sidebar-link-container i {
+                grid-area: icon;
+                position: absolute;
+                top: 50%;
+                font-size: MIN(2.4vw, 18px);
+                margin: 0 MIN(0.427vw, 3.2px);
+                transform: translateY(-50%); }
+              .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list a .sidebar-link-container .sidebar-link-title {
+                grid-area: title;
+                font-size: MIN(2.4vw, 18px);
+                font-weight: 500;
+                margin: 0 MIN(0.427vw, 3.2px); }
+          .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container {
+            position: relative;
+            display: grid;
+            grid-template: "icon switch" / auto auto;
+            margin: MIN(0.233vw, 1.6px);
+            padding: MIN(0.427vw, 3.2px);
+            background-color: #282828; }
+            .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .fa-lightbulb {
+              grid-area: icon;
+              font-size: MIN(3.2vw, 24px);
+              text-align: left; }
+            .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .far.fa-lightbulb {
+              color: #458588; }
+            .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .fas.fa-lightbulb {
+              color: #d79921;
+              display: none; }
+            .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch {
+              grid-area: switch;
+              text-align: right; }
+              .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                width: MIN(6.4vw, 48px);
+                height: MIN(3vw, 22.5px); }
+                .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch #slider {
+                  visibility: hidden; }
+                .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch input:checked + .slider {
+                  background-color: #d79921; }
+                  .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch input:checked + .slider:before {
+                    transform: translateX(MIN(3.4vw, 25.5px));
+                    background-color: #777; }
+                .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider {
+                  position: absolute;
+                  cursor: pointer;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  background-color: #777;
+                  transition: 0.3s; }
+                  .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: MIN(3vw, 22.5px);
+                    width: MIN(3vw, 22.5px);
+                    top: 50%;
+                    bottom: 50%;
+                    left: 0;
+                    margin: auto 0;
+                    transition: 0.3s;
+                    background-color: #444; }
+                  .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider.round {
+                    border-radius: 25px;
+                    background-color: #458588; }
+                    .container .content .sidebar-container .sidebar-section-wrapper.account .sidebar-section-container.account .sidebar-section-list .color-mode-container .color-mode-switch .switch .slider.round:before {
+                      border-radius: 50%; }
+    .container .content .main-container {
+      grid-area: main;
+      margin-left: MIN(1vw, 13.33px);
+      background-color: #1d2021; }
+      .container .content .main-container .section-container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "header" "posts";
+        background-color: #1d2021; }
+        .container .content .main-container .section-container .posts-header {
+          grid-area: header;
+          display: grid;
+          grid-template-columns: auto MIN(28.8vw, 216px);
+          grid-template-areas: "title sorting"; }
+          .container .content .main-container .section-container .posts-header .posts-title {
+            grid-area: title;
+            color: #fbf1c7;
+            background-color: #1d2021; }
+            .container .content .main-container .section-container .posts-header .posts-title h1 span {
+              display: inline-block;
+              vertical-align: middle;
+              max-width: 60%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-align: left;
+              white-space: nowrap; }
+          .container .content .main-container .section-container .posts-header .posts-sorting {
+            grid-area: sorting;
+            text-align: right;
+            background-color: #1d2021; }
+            .container .content .main-container .section-container .posts-header .posts-sorting a {
+              display: inline-block;
+              color: #fbf1c7;
+              background-color: #3c3836;
+              text-align: center;
+              margin: MIN(0.233vw, 1.6px);
+              padding: MIN(0.427vw, 3.2px) MIN(1vw, 7.5px);
+              text-decoration: none; }
+              .container .content .main-container .section-container .posts-header .posts-sorting a:hover {
+                color: #fbf1c7;
+                background-color: #458588; }
+        .container .content .main-container .section-container .posts-list {
+          grid-area: posts; }
+          .container .content .main-container .section-container .posts-list .post-entry-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto auto auto auto auto;
+            grid-template-areas: "image image image image" "title title title edit" "author author author author" "tags tags tags tags" "interaction interaction interaction interaction";
+            color: #fbf1c7;
+            background-color: #3c3836;
+            margin-top: MIN(1vw, 7.5px);
+            padding: MIN(3.2vw, 24px); }
+            .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-image {
+              grid-area: image; }
+              .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-image img {
+                min-width: calc(100% + MIN(6.4vw, 48px));
+                height: auto;
+                margin: MIN(-3.2vw, -24px) MIN(-3.2vw, -24px) MIN(2.13vw, 16px);
+                object-fit: cover;
+                object-position: 0 0; }
+            .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-title {
+              grid-area: title;
+              font-family: "Gelasio", "Vollkorn", serif;
+              font-size: MIN(5.12vw, 38.4px);
+              font-weight: 600;
+              padding-bottom: MIN(1vw, 7.5px); }
+              .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-title a {
+                color: #fbf1c7;
+                text-decoration: none; }
+                .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-title a:hover {
+                  text-decoration: underline; }
+            .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-edit {
+              grid-area: edit;
+              text-align: right; }
+              .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-edit a {
+                display: inline-block;
+                color: #458588;
+                background-color: #282828;
+                vertical-align: middle;
+                padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(0.427vw, 3.2px);
+                text-decoration: none; }
+                .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-edit a:hover {
+                  color: #fbf1c7;
+                  background-color: #458588; }
+            .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-author {
+              grid-area: author;
+              font-size: MIN(2.4vw, 18px);
+              font-weight: 600;
+              padding-bottom: MIN(1vw, 7.5px); }
+              .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-author span {
+                font-size: MIN(2.13vw, 16px);
+                font-weight: 400;
+                margin-left: MIN(1vw, 7.5px); }
+            .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-tags {
+              grid-area: tags;
+              padding: MIN(1vw, 7.5px) 0; }
+              .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-tags a {
+                display: inline-block;
+                font-family: "JetBrains Mono", monospace;
+                font-size: MIN(1.8vw, 13.5px);
+                color: #bdae93;
+                background-color: #3c3836;
+                text-align: center;
+                margin-bottom: MIN(0.64vw, 4.8px);
+                padding: 0.25rem MIN(1vw, 7.5px);
+                text-decoration: none; }
+                .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-tags a:hover {
+                  color: #458588;
+                  background-color: #282828; }
+            .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions {
+              grid-area: interaction; }
+              .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions a {
+                display: inline-block;
+                color: #fbf1c7;
+                background-color: #3c3836;
+                text-align: center;
+                margin-bottom: MIN(0.64vw, 4.8px);
+                padding: 0.25rem MIN(1vw, 7.5px);
+                text-decoration: none; }
+                .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions a .fa-comment-alt {
+                  color: #458588; }
+                .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions a .fas {
+                  display: none; }
+                .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions a:hover {
+                  color: #fbf1c7;
+                  background-color: #282828; }
+                  .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions a:hover .fas {
+                    display: inline-block; }
+                  .container .content .main-container .section-container .posts-list .post-entry-container .post-entry-interactions a:hover .far {
+                    display: none; }
+          .container .content .main-container .section-container .posts-list .no-content {
+            color: #fbf1c7;
+            background-color: #3c3836;
+            margin-top: MIN(1vw, 7.5px);
+            padding: MIN(3.2vw, 24px); }
+        .container .content .main-container .section-container .account-header {
+          color: #fbf1c7;
+          background-color: #1d2021;
+          margin-bottom: MIN(1vw, 7.5px); }
+        .container .content .main-container .section-container .account-form-container {
+          display: grid;
+          grid-template-columns: auto;
+          grid-template-rows: auto auto auto;
+          grid-template-areas: "providers" "options" "form";
+          color: #fbf1c7;
+          background-color: #3c3836;
+          padding: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0.75rem; }
+          .container .content .main-container .section-container .account-form-container h4 {
+            font-size: MIN(3.2vw, 24px);
+            margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0; }
+          .container .content .main-container .section-container .account-form-container .account-form-providers {
+            grid-area: providers;
+            margin: 0 MIN(5.33vw, 40px); }
+            .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers {
+              list-style: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li {
+                margin: MIN(1vw, 7.5px);
+                padding: MIN(2.13vw, 16px);
+                font-size: MIN(4.27vw, 32px);
+                text-align: center; }
+                .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li .socialaccount_provider {
+                  color: #fbf1c7;
+                  background-color: #282828;
+                  text-align: center;
+                  margin: 0 auto;
+                  padding: MIN(0.233vw, 1.6px) MIN(1vw, 7.5px) MIN(0.8vw, 6.4px);
+                  text-decoration: none; }
+                  .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li .socialaccount_provider:hover {
+                    color: #fbf1c7;
+                    background-color: #458588; }
+                  .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li .socialaccount_provider::before {
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+                    padding-right: MIN(1.7vw, 12.75px);
+                    vertical-align: middle; }
+                  .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li .socialaccount_provider.github::before {
+                    font-family: "Font Awesome 5 Brands";
+                    content: "\f09b";
+                    font-weight: 900; }
+                  .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li .socialaccount_provider.google::before {
+                    font-family: "Font Awesome 5 Brands";
+                    content: "\f1a0";
+                    font-weight: 900; }
+                  .container .content .main-container .section-container .account-form-container .account-form-providers .socialaccount_providers li .socialaccount_provider.twitter::before {
+                    font-family: "Font Awesome 5 Brands";
+                    content: "\f099";
+                    font-weight: 900; }
+          .container .content .main-container .section-container .account-form-container .account-form-options {
+            grid-area: options; }
+            .container .content .main-container .section-container .account-form-container .account-form-options h4 {
+              text-align: center;
+              margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0; }
+            .container .content .main-container .section-container .account-form-container .account-form-options .keyline {
+              color: #bdae93;
+              font-size: MIN(2.13vw, 16px);
+              font-weight: 400;
+              text-align: center;
+              display: grid;
+              grid-template-columns: 1fr auto 1fr;
+              grid-gap: MIN(2.13vw, 16px);
+              align-items: center;
+              margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0; }
+              .container .content .main-container .section-container .account-form-container .account-form-options .keyline::before {
+                content: "";
+                height: 2px;
+                background: #1d2021; }
+              .container .content .main-container .section-container .account-form-container .account-form-options .keyline::after {
+                content: "";
+                height: 2px;
+                background: #1d2021; }
+          .container .content .main-container .section-container .account-form-container .account-form-entry {
+            grid-area: form;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
+            grid-template-areas: "entry" "hr" "other";
+            grid-gap: MIN(1vw, 7.5px);
+            color: #fbf1c7;
+            background-color: #3c3836;
+            padding: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0.75rem; }
+            .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry {
+              grid-area: entry;
+              display: grid;
+              grid-template-columns: auto;
+              grid-template-rows: auto auto auto auto;
+              grid-template-areas: "name" "password1" "submit" "error";
+              grid-gap: MIN(2.13vw, 16px);
+              padding: MIN(2.13vw, 16px); }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry label {
+                display: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry p #id_login {
+                grid-area: name;
+                width: 100%;
+                font-size: MIN(2.13vw, 16px);
+                padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                background-color: #282828;
+                color: #fbf1c7;
+                border: #282828; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry p #id_login:focus {
+                  color: #fbf1c7;
+                  outline: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry p #id_password {
+                grid-area: password1;
+                width: 100%;
+                font-size: MIN(2.13vw, 16px);
+                padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                background-color: #282828;
+                color: #fbf1c7;
+                border: #282828; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry p #id_password:focus {
+                  color: #fbf1c7;
+                  outline: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .errorlist {
+                grid-area: error;
+                color: #cc241d; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .form-entry-submit {
+                grid-area: submit;
+                width: MIN(12.8vw, 96px);
+                margin: 0 auto;
+                padding: MIN(0.64vw, 4.8px);
+                font-size: MIN(2.13vw, 16px);
+                color: #fbf1c7;
+                background-color: #458588; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .form-entry-submit:hover {
+                  color: #fbf1c7;
+                  background-color: #83a598;
+                  cursor: pointer; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .form-entry-submit .register {
+                  grid-area: submit;
+                  width: MIN(19.2vw, 144px);
+                  padding: MIN(0.64vw, 4.8px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .form-entry-submit .set {
+                  grid-area: submit;
+                  width: MIN(19.2vw, 144px);
+                  padding: MIN(0.64vw, 4.8px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .form-entry-submit .change {
+                  grid-area: submit;
+                  width: MIN(21.33vw, 160px);
+                  padding: MIN(0.64vw, 4.8px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry .form-entry-submit .reset {
+                  grid-area: submit;
+                  width: MIN(21.33vw, 160px);
+                  padding: MIN(0.64vw, 4.8px); }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register {
+                grid-area: entry;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto auto auto auto;
+                grid-template-areas: "email" "name" "password1" "password2" "submit" "error";
+                grid-gap: MIN(2.13vw, 16px);
+                margin: 0;
+                padding: MIN(2.13vw, 16px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_email {
+                  grid-area: email;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_email:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_username {
+                  grid-area: name;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_username:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_password1 {
+                  grid-area: password1;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_password1:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_password2 {
+                  grid-area: password2;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.register #id_password2:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.set {
+                grid-area: entry;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto auto;
+                grid-template-areas: "password1" "password2" "submit" "error";
+                grid-gap: MIN(2.13vw, 16px);
+                margin: 0;
+                padding: MIN(2.13vw, 16px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.set #id_password1 {
+                  grid-area: password1;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.set #id_password1:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.set #id_password2 {
+                  grid-area: password2;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.set #id_password2:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change {
+                grid-area: entry;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto auto auto;
+                grid-template-areas: "old_password" "password1" "password2" "submit" "error";
+                grid-gap: MIN(2.13vw, 16px);
+                margin: 0;
+                padding: MIN(2.13vw, 16px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change #id_oldpassword {
+                  grid-area: old_password;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change #id_oldpassword:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change #id_password1 {
+                  grid-area: password1;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  border: #282828;
+                  background-color: #282828;
+                  color: #fbf1c7; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change #id_password1:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change #id_password2 {
+                  grid-area: password2;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.change #id_password2:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.reset {
+                grid-area: entry;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto;
+                grid-template-areas: "email" "submit" "error";
+                grid-gap: MIN(2.13vw, 16px);
+                margin: 0;
+                padding: MIN(2.13vw, 16px) 0; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.reset #id_email {
+                  grid-area: email;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.reset #id_email:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.email {
+                grid-area: entry;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto;
+                grid-template-areas: "email" "submit" "error";
+                grid-gap: MIN(2.13vw, 16px);
+                margin: 0;
+                padding: MIN(2.13vw, 16px) 0; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.email #id_email {
+                  grid-area: email;
+                  width: 100%;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  background-color: #282828;
+                  color: #fbf1c7;
+                  border: #282828; }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-entry.email #id_email:focus {
+                    color: #fbf1c7;
+                    outline: none; }
+            .container .content .main-container .section-container .account-form-container .account-form-entry.reset {
+              grid-area: form;
+              display: grid;
+              grid-template-columns: auto;
+              grid-template-rows: auto auto auto auto;
+              grid-template-areas: "note" "entry" "hr" "other";
+              grid-gap: MIN(1vw, 7.5px);
+              color: #fbf1c7;
+              background-color: #3c3836;
+              padding: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0.75rem; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry.reset .account-form-note {
+                grid-area: note; }
+            .container .content .main-container .section-container .account-form-container .account-form-entry.email {
+              grid-area: form;
+              display: grid;
+              grid-template-columns: auto;
+              grid-template-rows: auto auto auto;
+              grid-template-areas: "entry" "hr" "other";
+              grid-gap: MIN(1vw, 7.5px);
+              color: #fbf1c7;
+              background-color: #3c3836;
+              padding: 0.75rem MIN(3.2vw, 24px) 0.75rem; }
+            .container .content .main-container .section-container .account-form-container .account-form-entry hr {
+              grid-area: hr; }
+            .container .content .main-container .section-container .account-form-container .account-form-entry .form-other {
+              grid-area: other;
+              display: grid;
+              grid-template-columns: auto auto;
+              grid-template-rows: auto;
+              grid-template-areas: "option1 option2"; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .one {
+                grid-area: option1;
+                margin: 0 auto;
+                padding: MIN(2.13vw, 16px) 0; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .one a {
+                  color: #fbf1c7;
+                  background-color: #458588;
+                  text-decoration: none;
+                  padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px); }
+                  .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .one a:hover {
+                    background-color: #83a598; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .one.register {
+                  grid-area: option2; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .one.reset {
+                  grid-area: option;
+                  margin: 0 auto;
+                  padding: MIN(2.13vw, 16px) 0; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .one.set {
+                  grid-area: option;
+                  margin: 0 auto;
+                  padding: MIN(2.13vw, 16px) 0; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .two {
+                grid-area: option2;
+                margin: 0 auto;
+                padding: MIN(2.13vw, 16px) 0; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .two a {
+                  color: #fbf1c7;
+                  text-decoration: none;
+                  padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px); }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .two:hover {
+                  text-decoration: underline; }
+                .container .content .main-container .section-container .account-form-container .account-form-entry .form-other .two.register {
+                  grid-area: option1; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-other.reset {
+                grid-area: other;
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                grid-template-areas: "option"; }
+              .container .content .main-container .section-container .account-form-container .account-form-entry .form-other.set {
+                grid-area: other;
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                grid-template-areas: "option"; }
+          .container .content .main-container .section-container .account-form-container.email {
+            grid-template-areas: "addresses" "hr" "add"; }
+            .container .content .main-container .section-container .account-form-container.email .account-form-addresses {
+              grid-area: addresses;
+              margin: 0 MIN(2.13vw, 16px); }
+              .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry {
+                grid-area: form;
+                color: #fbf1c7;
+                background-color: #3c3836;
+                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) 0.75rem;
+                padding: 0; }
+                .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels {
+                  border: none; }
+                  .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder {
+                    margin: MIN(2.13vw, 16px) 0; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder:hover input ~ .checkmark {
+                      background-color: #6a5acd50; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder label {
+                      display: grid;
+                      grid-template-columns: min-content min-content min-content min-content;
+                      grid-template-areas: "radio email verified primary";
+                      grid-gap: MIN(1.7vw, 12.75px);
+                      font-size: MIN(2.8vw, 21px);
+                      cursor: pointer;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder label input {
+                        opacity: 0;
+                        height: 0;
+                        width: 0;
+                        cursor: pointer; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder label .verified {
+                        grid-area: verified;
+                        font-size: MIN(2vw, 15px);
+                        color: #98971a;
+                        margin: auto 0; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder label .primary {
+                        grid-area: primary;
+                        font-size: MIN(2vw, 15px);
+                        color: #458588;
+                        margin: auto 0; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder label .unverified {
+                        grid-area: verified;
+                        font-size: MIN(2vw, 15px);
+                        color: #cc241d;
+                        margin: auto 0; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder input {
+                      grid-area: radio; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder input:checked ~ .checkmark {
+                        background: radial-gradient(#458588 30%, rgba(0, 0, 0, 0) 41%); }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder .checkmark {
+                      grid-area: radio;
+                      display: block;
+                      grid-area: radio;
+                      margin: auto 0;
+                      height: MIN(2.8vw, 21px);
+                      width: MIN(2.8vw, 21px);
+                      border-radius: 50%;
+                      border: MIN(0.427vw, 3.2px) solid #458588; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder #text {
+                      grid-area: email; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder .socialaccount_provider:hover {
+                      color: #fbf1c7;
+                      background-color: #3c3836; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder.connections label {
+                      display: grid;
+                      grid-template-columns: min-content MIN(17vw, 127.5px) auto;
+                      grid-template-areas: "radio connection username";
+                      grid-gap: MIN(1.7vw, 12.75px);
+                      font-size: MIN(2.8vw, 21px);
+                      cursor: pointer;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder.connections .socialaccount_provider {
+                      grid-area: connection; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .ctrlHolder.connections #text {
+                      grid-area: username; }
+                  .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .buttonHolder {
+                    display: grid;
+                    grid-template-columns: max-content max-content max-content;
+                    grid-template-rows: auto;
+                    grid-gap: MIN(1vw, 7.5px);
+                    margin: MIN(2.13vw, 16px) auto; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .buttonHolder button {
+                      margin: 0 auto;
+                      padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
+                      font-size: MIN(2.13vw, 16px);
+                      color: #fbf1c7;
+                      background-color: #458588; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .buttonHolder button:hover {
+                        background-color: #83a598;
+                        cursor: pointer; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-addresses .email-form-entry form .blockLabels .buttonHolder.connections {
+                      display: block;
+                      text-align: center; }
+            .container .content .main-container .section-container .account-form-container.email .account-form-connections {
+              grid-area: addresses;
+              margin: 0 MIN(2.13vw, 16px); }
+              .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry {
+                grid-area: form;
+                color: #fbf1c7;
+                background-color: #3c3836;
+                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) 0.75rem;
+                padding: 0; }
+                .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels {
+                  border: none; }
+                  .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder {
+                    margin: MIN(2.13vw, 16px) 0; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder:hover input ~ .checkmark {
+                      background-color: #6a5acd50; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder label {
+                      display: grid;
+                      grid-template-columns: min-content min-content min-content min-content;
+                      grid-template-areas: "radio email verified primary";
+                      grid-gap: MIN(1.7vw, 12.75px);
+                      font-size: MIN(2.8vw, 21px);
+                      cursor: pointer;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder label input {
+                        opacity: 0;
+                        height: 0;
+                        width: 0;
+                        cursor: pointer; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder label .verified {
+                        grid-area: verified;
+                        font-size: MIN(2vw, 15px);
+                        color: #98971a;
+                        margin: auto 0; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder label .primary {
+                        grid-area: primary;
+                        font-size: MIN(2vw, 15px);
+                        color: #458588;
+                        margin: auto 0; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder label .unverified {
+                        grid-area: verified;
+                        font-size: MIN(2vw, 15px);
+                        color: #cc241d;
+                        margin: auto 0; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder input {
+                      grid-area: radio; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder input:checked ~ .checkmark {
+                        background: radial-gradient(#458588 30%, rgba(0, 0, 0, 0) 41%); }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder .checkmark {
+                      grid-area: radio;
+                      display: block;
+                      grid-area: radio;
+                      margin: auto 0;
+                      height: MIN(2.8vw, 21px);
+                      width: MIN(2.8vw, 21px);
+                      border-radius: 50%;
+                      border: MIN(0.427vw, 3.2px) solid #458588; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder #text {
+                      grid-area: email; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder .socialaccount_provider:hover {
+                      color: #fbf1c7;
+                      background-color: #3c3836; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder.connections label {
+                      display: grid;
+                      grid-template-columns: min-content MIN(17vw, 127.5px) auto;
+                      grid-template-areas: "radio connection username";
+                      grid-gap: MIN(1.7vw, 12.75px);
+                      font-size: MIN(2.8vw, 21px);
+                      cursor: pointer;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder.connections .socialaccount_provider {
+                      grid-area: connection; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .ctrlHolder.connections #text {
+                      grid-area: username; }
+                  .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .buttonHolder {
+                    display: grid;
+                    grid-template-columns: max-content max-content max-content;
+                    grid-template-rows: auto;
+                    grid-gap: MIN(1vw, 7.5px);
+                    margin: MIN(2.13vw, 16px) auto; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .buttonHolder button {
+                      margin: 0 auto;
+                      padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
+                      font-size: MIN(2.13vw, 16px);
+                      color: #fbf1c7;
+                      background-color: #458588; }
+                      .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .buttonHolder button:hover {
+                        background-color: #83a598;
+                        cursor: pointer; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-connections .connections-form-entry form .blockLabels .buttonHolder.connections {
+                      display: block;
+                      text-align: center; }
+            .container .content .main-container .section-container .account-form-container.email .account-form-add {
+              margin: 0 MIN(2.13vw, 16px); }
+              .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers {
+                list-style: none;
+                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px); }
+                .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li {
+                  margin: MIN(1vw, 7.5px);
+                  padding: MIN(2.13vw, 16px);
+                  font-size: MIN(4.27vw, 32px);
+                  text-align: center; }
+                  .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li .socialaccount_provider {
+                    color: #fbf1c7;
+                    background-color: #282828;
+                    text-align: center;
+                    margin: 0 auto;
+                    padding: MIN(0.233vw, 1.6px) MIN(1vw, 7.5px) MIN(0.8vw, 6.4px);
+                    text-decoration: none; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li .socialaccount_provider:hover {
+                      color: #fbf1c7;
+                      background-color: #458588; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li .socialaccount_provider::before {
+                      display: inline-block;
+                      font-style: normal;
+                      font-variant: normal;
+                      text-rendering: auto;
+                      -webkit-font-smoothing: antialiased;
+                      padding-right: MIN(1.7vw, 12.75px);
+                      vertical-align: middle; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li .socialaccount_provider.github::before {
+                      font-family: "Font Awesome 5 Brands";
+                      content: "\f09b";
+                      font-weight: 900; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li .socialaccount_provider.google::before {
+                      font-family: "Font Awesome 5 Brands";
+                      content: "\f1a0";
+                      font-weight: 900; }
+                    .container .content .main-container .section-container .account-form-container.email .account-form-add .socialaccount_providers li .socialaccount_provider.twitter::before {
+                      font-family: "Font Awesome 5 Brands";
+                      content: "\f099";
+                      font-weight: 900; }
+    .container .content.settings {
+      grid-area: content;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "main";
+      column-gap: MIN(2.13vw, 16px);
+      margin: 0 0 MIN(2.13vw, 16px);
+      padding: 0; }
+      .container .content.settings .main-container .section-container .settings-container {
+        background-color: #3c3836;
+        padding: MIN(2.13vw, 16px); }
+        .container .content.settings .main-container .section-container .settings-container .settings-list {
+          display: grid;
+          grid-template-columns: auto;
+          grid-template-rows: auto auto auto;
+          grid-template-areas: "one" "two" "three";
+          grid-gap: MIN(2.13vw, 16px); }
+          .container .content.settings .main-container .section-container .settings-container .settings-list a {
+            display: block;
+            color: #fbf1c7;
+            text-decoration: none;
+            padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px); }
+            .container .content.settings .main-container .section-container .settings-container .settings-list a:hover {
+              color: #fbf1c7;
+              background-color: #458588; }
+            .container .content.settings .main-container .section-container .settings-container .settings-list a .settings-link-container {
+              display: grid;
+              grid-template-columns: MIN(5.33vw, 40px) auto MIN(5.33vw, 40px);
+              grid-template-rows: auto;
+              grid-template-areas: "icon title chevron";
+              position: relative; }
+              .container .content.settings .main-container .section-container .settings-container .settings-list a .settings-link-container i {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: MIN(3.2vw, 24px); }
+              .container .content.settings .main-container .section-container .settings-container .settings-list a .settings-link-container .icon {
+                grid-area: icon;
+                margin: 0 MIN(1vw, 7.5px); }
+              .container .content.settings .main-container .section-container .settings-container .settings-list a .settings-link-container .settings-link-title {
+                grid-area: title;
+                font-size: MIN(3.4vw, 25.5px);
+                margin: 0 MIN(2.13vw, 16px); }
+              .container .content.settings .main-container .section-container .settings-container .settings-list a .settings-link-container .fas.fa-chevron-right {
+                grid-area: chevron;
+                margin: 0 0.75rem; }
+          .container .content.settings .main-container .section-container .settings-container .settings-list .settings-email {
+            grid-area: one; }
+          .container .content.settings .main-container .section-container .settings-container .settings-list .settings-password {
+            grid-area: two; }
+          .container .content.settings .main-container .section-container .settings-container .settings-list .settings-social {
+            grid-area: three; }
+          .container .content.settings .main-container .section-container .settings-container .settings-list .settings-login {
+            grid-area: one; }
+          .container .content.settings .main-container .section-container .settings-container .settings-list .settings-create {
+            grid-area: two; }
+  .container .post-detail-container {
+    grid-area: content;
+    min-height: 100vh;
+    color: #fbf1c7;
+    background-color: #282828;
+    margin: 0 0 MIN(2.13vw, 16px);
+    padding: MIN(4.27vw, 32px) 0;
+    /* Comments */ }
+    .container .post-detail-container .post-detail-header {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto auto auto;
+      grid-template-areas: "image" "title" "author" "tags";
+      margin: MIN(2.13vw, 16px) MIN(6.4vw, 48px) MIN(4.27vw, 32px);
+      position: relative; }
+      .container .post-detail-container .post-detail-header .post-entry-image {
+        grid-area: image;
+        min-width: calc(100% + MIN(12.8vw, 96px));
+        max-width: 100%;
+        height: auto;
+        margin: -3rem -3rem MIN(2.13vw, 16px);
+        object-fit: cover;
+        object-position: 0 0; }
+      .container .post-detail-container .post-detail-header .post-entry-title {
+        grid-area: title;
+        font-family: "Gelasio", "Vollkorn", serif;
+        font-size: MIN(6.4vw, 48px);
+        font-weight: 600;
+        padding-bottom: MIN(1vw, 7.5px); }
+        .container .post-detail-container .post-detail-header .post-entry-title a {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: MIN(3.2vw, 24px);
+          padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
+          color: #fbf1c7;
+          text-decoration: none; }
+      .container .post-detail-container .post-detail-header .post-entry-edit a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        font-size: MIN(3.2vw, 24px);
+        text-decoration: none;
+        padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
+        color: #458588;
+        background-color: #282828;
+        vertical-align: middle; }
+        .container .post-detail-container .post-detail-header .post-entry-edit a:hover {
+          color: #fbf1c7;
+          background-color: #458588; }
+      .container .post-detail-container .post-detail-header .post-entry-author {
+        grid-area: author;
+        font-size: MIN(2.5vw, 18.75px);
+        font-weight: 600;
+        padding-bottom: MIN(1vw, 7.5px); }
+        .container .post-detail-container .post-detail-header .post-entry-author span {
+          font-size: MIN(2.4vw, 18px);
+          font-weight: 400;
+          margin-left: MIN(1vw, 7.5px); }
+      .container .post-detail-container .post-detail-header .post-entry-tags {
+        grid-area: tags;
+        padding: MIN(1vw, 7.5px) 0; }
+        .container .post-detail-container .post-detail-header .post-entry-tags a {
+          display: inline-block;
+          font-family: "JetBrains Mono", monospace;
+          color: #458588;
+          background-color: #282828;
+          text-align: center;
+          margin-bottom: MIN(0.64vw, 4.8px);
+          padding: 0.25rem MIN(1vw, 7.5px);
+          text-decoration: none; }
+          .container .post-detail-container .post-detail-header .post-entry-tags a:hover {
+            color: #fbf1c7;
+            background-color: #458588; }
+    .container .post-detail-container .post-detail-content {
+      font-family: "Gelasio", "Vollkorn", serif;
+      font-size: MIN(2.5vw, 18.75px);
+      margin: MIN(0.64vw, 4.8px) MIN(6.4vw, 48px);
+      height: auto;
+      width: auto; }
+      .container .post-detail-container .post-detail-content * {
+        margin: MIN(4.27vw, 32px) 0; }
+      .container .post-detail-container .post-detail-content h1 {
+        margin: MIN(7vw, 52.5px) 0 MIN(3vw, 22.5px);
+        font-family: "Gelasio", "Vollkorn", serif;
+        font-size: MIN(4vw, 30px);
+        font-weight: 600; }
+      .container .post-detail-container .post-detail-content h2 {
+        margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+        font-family: "Gelasio", "Vollkorn", serif;
+        font-weight: 500; }
+      .container .post-detail-container .post-detail-content h3 {
+        margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+        font-family: "Gelasio", "Vollkorn", serif; }
+      .container .post-detail-container .post-detail-content h4 {
+        margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+        font-family: "Gelasio", "Vollkorn", serif; }
+      .container .post-detail-container .post-detail-content h5 {
+        margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+        font-family: "Gelasio", "Vollkorn", serif; }
+      .container .post-detail-container .post-detail-content h6 {
+        margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+        font-family: "Gelasio", "Vollkorn", serif; }
+      .container .post-detail-container .post-detail-content p code {
+        margin: MIN(4vw, 30px) 0;
+        padding: MIN(0.3vw, 2.25px) MIN(0.5vw, 3.75px);
+        font-family: "JetBrains Mono", monospace;
+        font-size: MIN(2vw, 16px);
+        color: #fbf1c7;
+        background-color: #1d2021;
+        overflow-x: auto; }
+      .container .post-detail-container .post-detail-content img {
+        display: block;
+        max-width: 100%;
+        margin: MIN(4.27vw, 32px) auto;
+        object-fit: cover; }
+      .container .post-detail-container .post-detail-content ul {
+        margin: MIN(2.13vw, 16px) 0 MIN(2.13vw, 16px) MIN(3.2vw, 24px);
+        padding-left: MIN(3.2vw, 24px); }
+        .container .post-detail-container .post-detail-content ul li {
+          margin-bottom: MIN(2.13vw, 16px); }
+      .container .post-detail-container .post-detail-content ol {
+        margin: MIN(2.13vw, 16px) 0 MIN(2.13vw, 16px) MIN(3.2vw, 24px);
+        padding-left: MIN(3.2vw, 24px); }
+        .container .post-detail-container .post-detail-content ol li {
+          margin-bottom: MIN(2.13vw, 16px); }
+      .container .post-detail-container .post-detail-content a {
+        text-decoration: none;
+        color: #458588; }
+        .container .post-detail-container .post-detail-content a:hover {
+          text-decoration: underline; }
+      .container .post-detail-container .post-detail-content blockquote {
+        color: #bdae93;
+        margin-bottom: MIN(2vw, 15px);
+        padding-left: MIN(3.2vw, 24px);
+        border-left: MIN(1.3vw, 9.75px) solid #bdae93; }
+      .container .post-detail-container .post-detail-content hr {
+        height: MIN(0.4vw, 3px);
+        margin: MIN(8vw, 60px) 20%;
+        background-color: #bdae93;
+        border: 0; }
+      .container .post-detail-container .post-detail-content .codehilite {
+        margin: MIN(4vw, 30px) 0;
+        padding: 0 MIN(1.8vw, 13.5px);
+        font-family: "JetBrains Mono", monospace;
+        font-size: MIN(2.25vw, 16.875px);
+        color: #fbf1c7;
+        background-color: #1d2021;
+        overflow-x: auto;
+        /* Comment */
+        /* Error */
+        /* Keyword */
+        /* Literal */
+        /* Name */
+        /* Operator */
+        /* Punctuation */
+        /* Comment.Hashbang */
+        /* Comment.Multiline */
+        /* Comment.Preproc */
+        /* Comment.PreprocFile */
+        /* Comment.Single */
+        /* Comment.Special */
+        /* Generic.Deleted */
+        /* Generic.Emph */
+        /* Generic.Inserted */
+        /* Generic.Strong */
+        /* Generic.Subheading */
+        /* Keyword.Constant */
+        /* Keyword.Declaration */
+        /* Keyword.Namespace */
+        /* Keyword.Pseudo */
+        /* Keyword.Reserved */
+        /* Keyword.Type */
+        /* Literal.Date */
+        /* Literal.Number */
+        /* Literal.String */
+        /* Name.Attribute */
+        /* Name.Builtin */
+        /* Name.Class */
+        /* Name.Constant */
+        /* Name.Decorator */
+        /* Name.Entity */
+        /* Name.Exception */
+        /* Name.Function */
+        /* Name.Label */
+        /* Name.Namespace */
+        /* Name.Other */
+        /* Name.Property */
+        /* Name.Tag */
+        /* Name.Variable */
+        /* Operator.Word */
+        /* Text.Whitespace */
+        /* Literal.Number.Bin */
+        /* Literal.Number.Float */
+        /* Literal.Number.Hex */
+        /* Literal.Number.Integer */
+        /* Literal.Number.Oct */
+        /* Literal.String.Affix */
+        /* Literal.String.Backtick */
+        /* Literal.String.Char */
+        /* Literal.String.Delimiter */
+        /* Literal.String.Doc */
+        /* Literal.String.Double */
+        /* Literal.String.Escape */
+        /* Literal.String.Heredoc */
+        /* Literal.String.Interpol */
+        /* Literal.String.Other */
+        /* Literal.String.Regex */
+        /* Literal.String.Single */
+        /* Literal.String.Symbol */
+        /* Name.Builtin.Pseudo */
+        /* Name.Function.Magic */
+        /* Name.Variable.Class */
+        /* Name.Variable.Global */
+        /* Name.Variable.Instance */
+        /* Name.Variable.Magic */
+        /* Literal.Number.Integer.Long */ }
+        .container .post-detail-container .post-detail-content .codehilite .hll {
+          background-color: #49483e; }
+        .container .post-detail-container .post-detail-content .codehilite .c {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .err {
+          color: #960050;
+          background-color: #1e0010; }
+        .container .post-detail-container .post-detail-content .codehilite .k {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .l {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .n {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .o {
+          color: #f92672; }
+        .container .post-detail-container .post-detail-content .codehilite .p {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .ch {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .cm {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .cp {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .cpf {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .c1 {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .cs {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .gd {
+          color: #f92672; }
+        .container .post-detail-container .post-detail-content .codehilite .ge {
+          font-style: italic; }
+        .container .post-detail-container .post-detail-content .codehilite .gi {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .gs {
+          font-weight: bold; }
+        .container .post-detail-container .post-detail-content .codehilite .gu {
+          color: #75715e; }
+        .container .post-detail-container .post-detail-content .codehilite .kc {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .kd {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .kn {
+          color: #f92672; }
+        .container .post-detail-container .post-detail-content .codehilite .kp {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .kr {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .kt {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .ld {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .m {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .s {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .na {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .nb {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .nc {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .no {
+          color: #66d9ef; }
+        .container .post-detail-container .post-detail-content .codehilite .nd {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .ni {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .ne {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .nf {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .nl {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .nn {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .nx {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .py {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .nt {
+          color: #f92672; }
+        .container .post-detail-container .post-detail-content .codehilite .nv {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .ow {
+          color: #f92672; }
+        .container .post-detail-container .post-detail-content .codehilite .w {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .mb {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .mf {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .mh {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .mi {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .mo {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .sa {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .sb {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .codehilite .sc {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .dl {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .sd {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .s2 {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .se {
+          color: #ae81ff; }
+        .container .post-detail-container .post-detail-content .codehilite .sh {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .si {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .sx {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .sr {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .s1 {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .ss {
+          color: #e6db74; }
+        .container .post-detail-container .post-detail-content .codehilite .bp {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .fm {
+          color: #a6e22e; }
+        .container .post-detail-container .post-detail-content .codehilite .vc {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .vg {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .vi {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .vm {
+          color: #f8f8f2; }
+        .container .post-detail-container .post-detail-content .codehilite .il {
+          color: #ae81ff; }
+    .container .post-detail-container .post-detail-comments {
+      margin: MIN(0.64vw, 4.8px) MIN(6.4vw, 48px); }
+      .container .post-detail-container .post-detail-comments h2 {
+        font-size: MIN(5.33vw, 40px); }
+      .container .post-detail-container .post-detail-comments .post-comment-comment {
+        margin: 0 0 MIN(2.13vw, 16px); }
+        .container .post-detail-container .post-detail-comments .post-comment-comment a {
+          display: block;
+          font-size: MIN(2.4vw, 18px);
+          font-weight: 600;
+          text-decoration: none;
+          padding: MIN(0.427vw, 3.2px) MIN(3.2vw, 24px) MIN(1vw, 7.5px);
+          color: #fbf1c7;
+          background-color: #458588;
+          position: relative; }
+          .container .post-detail-container .post-detail-comments .post-comment-comment a:hover {
+            background-color: #83a598; }
+          .container .post-detail-container .post-detail-comments .post-comment-comment a i {
+            position: absolute;
+            top: 50%;
+            right: MIN(3.2vw, 24px);
+            transform: translateY(-50%); }
+        .container .post-detail-container .post-detail-comments .post-comment-comment form {
+          display: grid;
+          grid-template-columns: auto auto auto;
+          grid-template-rows: auto auto auto;
+          grid-template-areas: "helptext helptext helptext" "content content content" ". . submit"; }
+        .container .post-detail-container .post-detail-comments .post-comment-comment .markdownx-preview {
+          display: none; }
+        .container .post-detail-container .post-detail-comments .post-comment-comment .helptext {
+          grid-area: helptext;
+          margin: MIN(0.8vw, 6.4px) 0 MIN(1vw, 7.5px) MIN(2.5vw, 18.75px);
+          color: #bdae93; }
+        .container .post-detail-container .post-detail-comments .post-comment-comment #id_body {
+          width: 100%;
+          height: MIN(12.8vw, 96px);
+          margin-bottom: MIN(1vw, 7.5px);
+          overflow-x: auto;
+          background-color: #3c3836; }
+        .container .post-detail-container .post-detail-comments .post-comment-comment input[type="submit"] {
+          grid-area: submit;
+          width: MIN(10.67vw, 80px);
+          margin-left: auto;
+          padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
+          font-size: MIN(2.13vw, 16px);
+          color: #fbf1c7;
+          background-color: #458588; }
+          .container .post-detail-container .post-detail-comments .post-comment-comment input[type="submit"]:hover {
+            color: #fff;
+            background-color: #83a598;
+            cursor: pointer; }
+      .container .post-detail-container .post-detail-comments .post-comments .post-comments-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "author time" "body body";
+        margin-top: MIN(2.13vw, 16px); }
+        .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-author {
+          grid-area: author;
+          background-color: #1d2021;
+          font-size: MIN(2.4vw, 18px);
+          font-weight: 600;
+          padding: MIN(0.427vw, 3.2px) MIN(2.13vw, 16px) MIN(1vw, 7.5px);
+          border-right: none;
+          border-bottom: none; }
+        .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-time {
+          grid-area: time;
+          color: #bdae93;
+          background-color: #1d2021;
+          font-size: MIN(2.13vw, 16px);
+          font-weight: 400;
+          text-align: right;
+          padding: MIN(0.427vw, 3.2px) MIN(2.13vw, 16px) MIN(1vw, 7.5px);
+          border-left: none;
+          border-bottom: none; }
+        .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-body {
+          grid-area: body;
+          padding: MIN(1vw, 7.5px) MIN(3.2vw, 24px) MIN(0.427vw, 3.2px);
+          border-top: none; }
+        .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-else {
+          text-align: center;
+          font-size: MIN(3.2vw, 24px); }
+  .container .post-form-container {
+    grid-area: content;
+    min-height: 100vh;
+    color: #fbf1c7;
+    background-color: #3c3836;
+    margin: 0 0 MIN(2.13vw, 16px);
+    padding: MIN(4.27vw, 32px) 0;
+    /* Markdownx */ }
+    .container .post-form-container h2 {
+      font-size: MIN(6.4vw, 48px);
+      padding: 0 MIN(2.5vw, 18.75px) MIN(2.13vw, 16px) MIN(2.13vw, 16px); }
+      .container .post-form-container h2 form {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto auto auto;
+        grid-template-areas: "image" "title" "description" "tags" "helptext" "content" "status" "submit";
+        padding: MIN(2.13vw, 16px); }
+        .container .post-form-container h2 form * {
+          width: 87vw;
+          max-width: 87vw; }
+    .container .post-form-container #id_image {
+      grid-area: image;
+      margin-bottom: MIN(4.27vw, 32px);
+      font-size: MIN(2.13vw, 16px);
+      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+      border: none;
+      border: 1px solid #282828;
+      color: #fbf1c7;
+      background-color: #282828; }
+    .container .post-form-container #id_title {
+      grid-area: title;
+      font-size: MIN(4.27vw, 32px);
+      margin-bottom: MIN(4.27vw, 32px);
+      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+      border: none;
+      border: 1px solid #282828;
+      color: #fbf1c7;
+      background-color: #282828; }
+      .container .post-form-container #id_title:focus {
+        outline: none; }
+    .container .post-form-container #id_description {
+      grid-area: description;
+      margin-bottom: MIN(4.27vw, 32px);
+      font-size: MIN(2.13vw, 16px);
+      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+      border: none;
+      border: 1px solid #282828;
+      color: #fbf1c7;
+      background-color: #282828; }
+      .container .post-form-container #id_description:focus {
+        outline: none; }
+    .container .post-form-container #id_tags {
+      grid-area: tags;
+      font-family: "JetBrains Mono", monospace;
+      font-size: MIN(2.13vw, 16px);
+      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+      border: none;
+      border: 1px solid #282828;
+      color: #fbf1c7;
+      background-color: #282828; }
+      .container .post-form-container #id_tags:focus {
+        outline: none; }
+    .container .post-form-container br {
+      display: none; }
+    .container .post-form-container .helptext {
+      grid-area: helptext;
+      margin: MIN(0.8vw, 6.4px) 0 MIN(1vw, 7.5px) MIN(2.5vw, 18.75px);
+      color: #bdae93; }
+    .container .post-form-container .markdownx {
+      grid-area: content; }
+      .container .post-form-container .markdownx textarea {
+        width: 100%;
+        font-size: MIN(2.13vw, 16px);
+        margin: MIN(2.13vw, 16px) 0.5vw MIN(2.13vw, 16px) 0;
+        padding: MIN(2.8vw, 21px) MIN(2.8vw, 21px);
+        color: #fbf1c7;
+        background-color: #282828;
+        resize: vertical;
+        overflow-x: auto; }
+        .container .post-form-container .markdownx textarea:focus {
+          outline: none; }
+      .container .post-form-container .markdownx .markdownx-preview {
+        margin: MIN(2.13vw, 16px) 0 MIN(2.13vw, 16px) 0.5vw;
+        padding: MIN(2.8vw, 21px) MIN(3.2vw, 24px);
+        background-color: #282828; }
+        .container .post-form-container .markdownx .markdownx-preview img {
+          display: block;
+          width: 70%;
+          margin-left: auto;
+          margin-right: auto;
+          object-fit: cover; }
+    .container .post-form-container #id_status {
+      grid-area: status;
+      width: MIN(15vw, 112.5px);
+      margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
+      padding: MIN(0.427vw, 3.2px);
+      font-size: MIN(2.13vw, 16px);
+      border: none;
+      border: 1px solid #282828;
+      color: #fbf1c7;
+      background-color: #282828; }
+      .container .post-form-container #id_status:focus {
+        outline: none; }
+    .container .post-form-container input[type="submit"] {
+      grid-area: submit;
+      width: MIN(10.67vw, 80px);
+      margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
+      padding: MIN(1vw, 7.5px) MIN(1.7vw, 12.75px);
+      font-size: MIN(2.13vw, 16px);
+      color: #fbf1c7;
+      background-color: #458588; }
+      .container .post-form-container input[type="submit"]:hover {
+        color: #fbf1c7;
+        background-color: #83a598;
+        cursor: pointer; }
+  .container .footer {
+    grid-area: footer; }
+    .container .footer .footer-content {
+      display: grid;
+      grid-template-columns: auto MIN(62.25vw, 830px) MIN(27.75vw, 370px) auto;
+      grid-template-rows: auto MIN(8.5vw, 64px);
+      grid-template-areas: ". contact feeds ." ". legal legal .";
+      background-color: #1d2021;
+      text-align: center;
+      padding: MIN(3.2vw, 24px) 0 0; }
+      .container .footer .footer-content .footer-contact {
+        grid-area: contact;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-template-areas: "website twitter linkedin github gitlab";
+        font-size: MIN(5.12vw, 38.4px);
+        text-align: center;
+        margin: auto;
+        color: #bdae93; }
+        .container .footer .footer-content .footer-contact div {
+          margin: 0 MIN(2.13vw, 16px); }
+          .container .footer .footer-content .footer-contact div a .fab {
+            color: #bdae93; }
+        .container .footer .footer-content .footer-contact .website {
+          grid-area: website; }
+          .container .footer .footer-content .footer-contact .website a {
+            color: #bdae93;
+            font-family: "Playfair Display";
+            font-weight: 500;
+            text-decoration: none; }
+            .container .footer .footer-content .footer-contact .website a:hover {
+              color: #fbf1c7; }
+              .container .footer .footer-content .footer-contact .website a:hover span {
+                color: #b71c1c; }
+        .container .footer .footer-content .footer-contact .twitter {
+          grid-area: twitter; }
+          .container .footer .footer-content .footer-contact .twitter a:hover .fa-twitter {
+            color: #1da1f2; }
+        .container .footer .footer-content .footer-contact .linkedin {
+          grid-area: linkedin; }
+          .container .footer .footer-content .footer-contact .linkedin a:hover .fa-linkedin {
+            color: #2867b2; }
+        .container .footer .footer-content .footer-contact .github {
+          grid-area: github; }
+          .container .footer .footer-content .footer-contact .github a:hover .fa-github {
+            color: #fbf1c7; }
+        .container .footer .footer-content .footer-contact .gitlab {
+          grid-area: gitlab; }
+          .container .footer .footer-content .footer-contact .gitlab a:hover .fa-gitlab {
+            color: #fc6d26; }
+      .container .footer .footer-content .footer-feeds {
+        grid-area: feeds;
+        margin: auto auto;
+        text-align: right; }
+        .container .footer .footer-content .footer-feeds div {
+          padding-bottom: MIN(0.64vw, 4.8px); }
+          .container .footer .footer-content .footer-feeds div a {
+            color: #bdae93;
+            font-size: MIN(2.5vw, 18.75px); }
+            .container .footer .footer-content .footer-feeds div a:hover {
+              color: #fbf1c7;
+              text-decoration: none; }
+            .container .footer .footer-content .footer-feeds div a .fas {
+              text-decoration: none;
+              margin-right: MIN(0.8vw, 6.4px);
+              padding: MIN(0.64vw, 4.8px) 0; }
+              .container .footer .footer-content .footer-feeds div a .fas .fa-rss-square {
+                font-size: MIN(3.4vw, 25.5px);
+                color: #ee802f; }
+              .container .footer .footer-content .footer-feeds div a .fas .fa-atom {
+                font-size: MIN(3.4vw, 25.5px);
+                color: #458588; }
+              .container .footer .footer-content .footer-feeds div a .fas .fa-sitemap {
+                font-size: MIN(2.5vw, 18.75px); }
+      .container .footer .footer-content .footer-legal {
+        grid-area: legal;
+        padding: MIN(2.8vw, 21px) 0;
+        margin: 0; }
+        .container .footer .footer-content .footer-legal p {
+          font-size: MIN(2.5vw, 18.75px);
+          color: #bdae93; }
 
 /* Logout */
 .logout-modal {
@@ -1840,297 +1922,253 @@ input:checked + .slider:before {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: #00000090;
-}
+  background-color: #00000090; }
+  .logout-modal .logout-content {
+    color: #fbf1c7;
+    background-color: #3c3836;
+    margin: 15% auto;
+    padding: MIN(3.2vw, 24px);
+    width: MIN(53.33vw, 400px); }
+    .logout-modal .logout-content .logout-close {
+      color: #bdae93;
+      float: right;
+      font-size: MIN(4.27vw, 32px);
+      font-weight: bold; }
+      .logout-modal .logout-content .logout-close:hover {
+        color: #458588;
+        text-decoration: none;
+        cursor: pointer; }
+      .logout-modal .logout-content .logout-close:focus {
+        color: #458588;
+        text-decoration: none;
+        cursor: pointer; }
+    .logout-modal .logout-content .logout-form form .logout-form-submit {
+      width: MIN(12.8vw, 96px);
+      margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
+      padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
+      font-size: MIN(2.13vw, 16px);
+      color: #fbf1c7;
+      background-color: #458588; }
+      .logout-modal .logout-content .logout-form form .logout-form-submit:hover {
+        background-color: #83a598;
+        cursor: pointer; }
 
-.logout-content {
-  color: var(--brightfont-color);
-  background-color: var(--foreground-color);
-  margin: 15% auto;
-  padding: 1.5rem;
-  border-radius: 0.3rem;
-  border: var(--borderdark-color) 1px solid;
-  width: 25rem;
-}
-
-.logout-close {
-  color: var(--dullfont-color);
-  float: right;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.logout-close:hover,
-.logout-close:focus {
-  color: var(--accent-color);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.logout-form-submit {
-  width: 6rem;
-  margin: 1rem auto 0.5rem;
-  padding: 0.3rem 0.8rem;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  color: var(--accentfont-color);
-  background-color: var(--accent-color);
-}
-
-.logout-form-submit:hover {
-  background-color: var(--accent2-color);
-  cursor: pointer;
-}
-
-/* Footer */
-.footer {
-  grid-area: footer;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: 15vw auto auto 15vw;
-  grid-template-rows: auto 4rem;
-  grid-template-areas:
-    ". contact feeds ."
-    ". legal legal .";
-  background-color: var(--footer-color);
-  text-align: center;
-  padding: 1.5rem 0 0;
-  border-top: solid 1px var(--accent-color);
-}
-
-.footer-contact {
-  grid-area: contact;
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  grid-template-areas: "website twitter linkedin github gitlab";
-  max-width: 25rem;
-  min-width: 15rem;
-  font-size: 2.4rem;
-  text-align: center;
-  margin: auto;
-  color: var(--dullfont-color);
-}
-
-.footer-contact div {
-  margin: 0 1rem;
-}
-
-.footer-contact .website {
-  grid-area: website;
-}
-
-.footer-contact .website a {
-  color: var(--dullfont-color);
-  font-family: "Playfair Display", serif;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.footer-contact .website a:hover {
-  color: var(--brightfont-color);
-}
-
-.footer-contact .website a:hover span {
-  color: #b71c1c;
-}
-
-.footer-contact .twitter {
-  grid-area: twitter;
-}
-
-.footer-contact a .fab {
-  color: var(--dullfont-color);
-}
-
-.footer-contact a:hover .fa-twitter {
-  color: #1da1f2;
-}
-
-.footer-contact .linkedin {
-  grid-area: linkedin;
-}
-
-.footer-contact a:hover .fa-linkedin {
-  color: #2867b2;
-}
-
-.footer-contact .github {
-  grid-area: github;
-}
-
-.footer-contact a:hover .fa-github {
-  color: var(--brightfont-color);
-}
-
-.footer-contact .gitlab {
-  grid-area: gitlab;
-}
-
-.footer-contact a:hover .fa-gitlab {
-  color: #fc6d26;
-}
-
-.footer-feeds {
-  grid-area: feeds;
-  margin: auto 0;
-  text-align: right;
-}
-
-.footer-feeds div {
-  padding-bottom: 0.3rem;
-}
-
-.footer-feeds a {
-  color: var(--dullfont-color);
-  font-size: 1.2rem;
-}
-
-.footer-feeds a:hover {
-  color: var(--brightfont-color);
-  text-decoration: none;
-}
-
-.footer-feeds .fas {
-  text-decoration: none;
-  margin-right: 0.4rem;
-  padding: 0.3rem 0;
-}
-
-.footer-feeds .fa-rss-square {
-  font-size: 1.6rem;
-  color: #ee802f;
-}
-
-.footer-feeds .fa-atom {
-  font-size: 1.6rem;
-  color: var(--accent-color);
-}
-
-.footer-feeds .fa-sitemap {
-  font-size: 1.2rem;
-}
-
-.footer-legal {
-  grid-area: legal;
-  padding: 1.3rem 0;
-  margin: 0;
-}
-
-.footer-legal p {
-  font-size: 1.2rem;
-  color: var(--dullfont-color);
-}
-
+/*
 @media only screen and (max-width: 42rem) {
-  .navbar.small {
-    grid-template-columns: 10vw min-content auto 9rem 10vw;
-    grid-template-rows: auto min-content;
-    grid-template-areas:
-      "search search search search search"
-      ". home . account .";
-  }
+  .container {
 
-  .navbar.logout.small {
-    grid-template-columns: 5vw auto 2vw auto auto 5vw;
-    grid-template-rows: auto min-content;
-    grid-template-areas:
-      "search search search search search search"
-      ". home . login create .";
-  }
+    .navbar {
 
-  .search-container form > input[type="text"] {
-    margin-bottom: 0;
-  }
+      &.small {
+        grid-template-columns: 10vw min-content auto MIN(19.2vw, 144px) 10vw;
+        grid-template-rows: auto min-content;
+        grid-template-areas:
+          "search search search search search"
+          ". home . account .";
 
-  .search-container form > button {
-    margin-bottom: 0;
-  }
+        .search-container {
 
-  .account-content {
-    margin-top: 0.5rem;
-  }
+          form {
 
-  .section-container {
-    margin: 0;
-  }
+            input[type="text"] {
+              margin-bottom: 0;
+            }
 
-  .sidebar-section-container.tags {
-    margin: 0 0.25rem 0 0;
-  }
+            button {
+              margin-bottom: 0;
+            }
+          }
+        }
 
-  .sidebar-section-container.account {
-    margin: 0 0.25rem 0 0;
-  }
+        .account {
 
-  .account-form-container,
-  .account-form-container hr,
-  .account-form-add,
-  .email-form-entry,
-  .account-form-entry {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
+          .account-content {
+            margin-top: MIN(1vw, 7.5px);
+          }
+        }
 
-  .account-form-addresses h4 {
-    margin: 1.5rem 0 0;
-  }
+        &.logout {
+          grid-template-columns: 5vw auto 2vw auto auto 5vw;
+          grid-template-rows: auto min-content;
+          grid-template-areas:
+            "search search search search search search"
+            ". home . login create .";
+        }
+      }
+    }
 
-  .ctrlHolder.small > label {
-    font-size: 4vw;
-    text-align: right;
-    grid-template-columns: min-content min-content auto auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "radio . email"
-      ". verified primary";
-    grid-gap: 0.3rem;
-  }
+    .content {
 
-  .buttonHolder.small {
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    grid-gap: 0.5rem;
-    margin: 1.8rem auto 0;
-  }
+      .sidebar-container {
 
-  .buttonHolder.small button {
-    margin: 0.3rem auto 0.3rem 0;
+        .sidebar-section-container {
+
+          &.tags {
+            margin: 0 0.25rem 0 0;
+          }
+
+          &.account {
+            margin: 0 0.25rem 0 0;
+          }
+        }
+
+        .sidebar-section-wrapper {
+
+          .sidebar-section-container {
+
+            &.account {
+              margin: 0 0.25rem 0 0;
+            }
+          }
+        }
+      }
+
+      .main-container {
+
+        .section-container {
+          margin: 0;
+
+          .account-form-container {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+
+            &.email {
+
+              .account-form-addresses {
+
+                h4 {
+                  margin: MIN(3.2vw, 24px) 0 0;
+                }
+
+                .email-form-entry {
+                  padding-left: 0;
+                  padding-right: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+
+                  form {
+
+                    .blockLabels {
+
+                      .ctrlHolder {
+
+                        &.small {
+
+                          label {
+                            font-size: 4vw;
+                            text-align: right;
+                            grid-template-columns: min-content min-content auto auto;
+                            grid-template-rows: auto auto;
+                            grid-template-areas:
+                              "radio . email"
+                              ". verified primary";
+                            grid-gap: MIN(0.64vw, 4.8px);
+                          }
+                        }
+                      }
+
+                      .buttonHolder {
+                        &.small {
+                          grid-template-columns: auto;
+                          grid-template-rows: auto auto auto;
+                          grid-gap: MIN(1vw, 7.5px);
+                          margin: MIN(3.8vw, 28.5px) auto 0;
+
+                          button {
+                            margin: MIN(0.64vw, 4.8px) auto MIN(0.64vw, 4.8px) 0;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            hr {
+              padding-left: 0;
+              padding-right: 0;
+              margin-left: 0;
+              margin-right: 0;
+            }
+
+            .account-form-add {
+              padding-left: 0;
+              padding-right: 0;
+              margin-left: 0;
+              margin-right: 0;
+
+              .account-form-entry {
+                padding-left: 0;
+                padding-right: 0;
+                margin-left: 0;
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .logout-content {
     width: 90vw;
   }
 
-  .settings-link-container i {
-    font-size: 1rem;
+  .settings-link-container {
+
+    i {
+      font-size: MIN(2.13vw, 16px);
+    }
+
+    .settings-link-title {
+      font-size: MIN(2.4vw, 18px);
+    }
   }
 
-  .settings-link-container .settings-link-title {
-    font-size: 1.1rem;
+  .post-entry-image {
+
+    &.detail {
+      min-width: calc(100% + MIN(4.27vw, 32px));
+      max-width: 100%;
+      margin: -3rem -1rem MIN(2.13vw, 16px) -1rem;
+      object-position: 50% 0;
+    }
   }
 
-  .post-entry-image.detail {
-    min-width: calc(100% + 2rem);
-    max-width: 100%;
-    margin: -3rem -1rem 1rem -1rem;
-    object-position: 50% 0;
+  .post-detail-header {
+    margin-left: MIN(2.13vw, 16px);
+    margin-right: MIN(2.13vw, 16px);
   }
 
-  .post-detail-header,
-  .post-detail-content,
+  .post-detail-content {
+    margin-left: MIN(2.13vw, 16px);
+    margin-right: MIN(2.13vw, 16px);
+  }
+
   .post-detail-comments {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: MIN(2.13vw, 16px);
+    margin-right: MIN(2.13vw, 16px);
   }
 
-  .post-form-container form > input,
-  .post-form-container form > div,
-  .post-form-container form > span {
-    max-width: calc(100% - 2.5rem);
+  .post-form-container {
+    
+    form {
+      
+      input {
+        max-width: calc(100% - MIN(5.33vw, 40px));
+      }
+
+      div {
+        max-width: calc(100% - MIN(5.33vw, 40px));
+      }
+
+      span {
+        max-width: calc(100% - MIN(5.33vw, 40px));
+      }
+    }
   }
 
   .post-comments-else {
@@ -2140,7 +2178,7 @@ input:checked + .slider:before {
 
 @media only screen and (max-width: 60rem) {
   .container {
-    grid-template-columns: calc(100vw - 0.8rem);
+    grid-template-columns: calc(100vw - MIN(1.7vw, 12.75px));
     grid-template-areas:
       "header"
       "content"
@@ -2148,11 +2186,11 @@ input:checked + .slider:before {
   }
 
   .navbar {
-    grid-template-columns: 0 9rem auto 9rem 0.5rem;
+    grid-template-columns: MIN(2vw, 15px) auto MIN(19.2vw, 144px) MIN(1vw, 7.5px);
   }
 
   .navbar.logout {
-    grid-template-columns: 0 9rem auto 6rem 10rem 0.5rem;
+    grid-template-columns: MIN(2vw, 15px) auto MIN(12.8vw, 96px) MIN(21.33vw, 160px) MIN(1vw, 7.5px);
   }
 
   .content {
@@ -2167,24 +2205,24 @@ input:checked + .slider:before {
     grid-template-columns: auto auto;
     grid-template-rows: min-content;
     grid-template-areas: "tags account";
-    margin: 0 0.5rem;
+    margin: 0 MIN(1vw, 7.5px);
   }
 
   .sidebar-section-list {
     text-align: left;
-    padding: 0 0.5rem;
+    padding: 0 MIN(1vw, 7.5px);
   }
 
   .sidebar-section-list.account a {
     width: auto;
     text-align: left;
     font-weight: 500;
-    margin: 0.1rem;
-    padding: 0.4rem;
+    margin: MIN(0.233vw, 1.6px);
+    padding: MIN(0.8vw, 6.4px);
   }
 
   .color-mode-container {
-    grid-template: "icon switch" / 2.5rem min-content;
+    grid-template: "icon switch" / MIN(5.33vw, 40px) min-content;
   }
 
   .post-form-container > form > * {
@@ -2193,18 +2231,18 @@ input:checked + .slider:before {
   }
 
   .markdownx textarea {
-    margin: 1rem 0;
+    margin: MIN(2.13vw, 16px) 0;
   }
 
   .markdownx-preview {
-    margin: 1rem 0;
+    margin: MIN(2.13vw, 16px) 0;
     overflow-x: auto;
   }
 
   .footer-content {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto auto 4rem;
+    grid-template-rows: auto auto MIN(8.5vw, 64px);
     grid-template-areas:
       "contact"
       "feeds"
@@ -2212,12 +2250,12 @@ input:checked + .slider:before {
   }
 
   .footer-contact {
-    font-size: 1.5rem;
+    font-size: MIN(3.2vw, 24px);
   }
 
   .footer-feeds {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: MIN(2.13vw, 16px);
   }
 }
 
@@ -2227,11 +2265,11 @@ input:checked + .slider:before {
   }
 
   .navbar {
-    grid-template-columns: auto 9rem auto 9rem auto;
+    grid-template-columns: auto MIN(19.2vw, 144px) auto MIN(19.2vw, 144px) auto;
   }
 
   .navbar.logout {
-    grid-template-columns: auto 9rem auto 6rem 10rem auto;
+    grid-template-columns: auto MIN(19.2vw, 144px) auto MIN(12.8vw, 96px) MIN(21.33vw, 160px) auto;
   }
 
   .post-form-container > form > * {
@@ -2240,11 +2278,11 @@ input:checked + .slider:before {
   }
 
   .markdownx textarea {
-    margin: 1rem 0;
+    margin: MIN(2.13vw, 16px) 0;
   }
 
   .markdownx-preview {
-    margin: 1rem 0;
+    margin: MIN(2.13vw, 16px) 0;
     overflow-x: auto;
   }
 
@@ -2253,3 +2291,6 @@ input:checked + .slider:before {
     grid-template-columns: auto auto auto auto;
   }
 }
+*/
+
+/*# sourceMappingURL=style.css.map */

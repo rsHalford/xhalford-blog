@@ -38,7 +38,7 @@
     <div class="post-entry-tags detail">
       {% for tag in post.tags.all %}
       <a class="post-entry-tag detail" href="{% url 'tag_index' tag.slug %}">
-        #{{ tag.slug }}&nbsp;
+        #{{ tag.slug }}
       </a>
       {% endfor %}
     </div>
