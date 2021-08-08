@@ -1,11 +1,8 @@
 {% load i18n %}
 <div class="logout-modal" id="logoutModal">
   <div class="logout-content">
-    <span class="logout-close">&times;</span>
-    <div class="logout-header">
-      <h1>{% trans "Confirm sign out" %}</h1>
-    </div>
-    
+    <h1>{% trans "Confirm sign out" %}</h1>
+    <div class="logout-close">&times;</div>
     <div class="logout-form">
       <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}

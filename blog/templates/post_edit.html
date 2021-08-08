@@ -1,13 +1,27 @@
 {% extends 'base.html' %}
 <head>{% block title %}Edit {{ post.title }}{% endblock %}</head>
 {% block content %}
-<div class="post-form-container">
-  <h2>Edit post</h2>
-  <form role="form" method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" name"Save Changes">
-  </form>
+<div class="content column">
+  {% block sidebar %}
+  {% endblock sidebar %}
+  <div class="main-container">
+    <div class="main-section-container">
+      <div class="main-header">
+        <div class="main-title">
+          <h1>Edit post</h1>
+        </div>
+      </div>
+      <div class="main-list">
+        <div class="list-entry-container create">
+          <form role="form" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" name"Save Changes">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {{ form.media }}
 {% endblock content %}

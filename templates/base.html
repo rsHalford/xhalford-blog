@@ -92,21 +92,15 @@
           if (localStorage.getItem('theme') === 'theme-dark') {
               setTheme('theme-dark');
               document.getElementById('slider').checked = false;
+              document.getElementById("light-off").style.display = "inline-block";
+              document.getElementById("light-on").style.display = "none";
           } else {
               setTheme('theme-light');
               document.getElementById('slider').checked = true;
+              document.getElementById("light-off").style.display = "none";
+              document.getElementById("light-on").style.display = "inline-block";
           }
       })();
-
-
-        // Dropdown Menu (click toggle)
-//      function dropdownFunction() {
-//        if(document.getElementById(window.event.target.id+"dropdownContent").style.display=="block"){
-//          document.getElementById(window.event.target.id+"dropdownContent").style.display="none";
-//        } else {
-//          document.getElementById(window.event.target.id+"dropdownContent").style.display="block";
-//        }
-//      };
 
         // Scroll Progress Indicator
 //      window.onscroll = function() {scrollIndicator()};

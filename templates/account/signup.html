@@ -6,34 +6,27 @@
 {% block title %}{% trans "Create account" %}{% endblock %}
 
 {% block content %}
-<div class="content settings">
+<div class="content column">
   {% block sidebar %}
   {% endblock sidebar %}
   <div class="main-container">
-    <div class="section-container">
-      <div class="account-header">
-        <h1>{% trans "Create account" %}</h1>
+    <div class="main-section-container">
+      <div class="main-header">
+        <div class="main-title">
+          <h1>{% trans "Create account" %}</h1>
+        </div>
       </div>
-      <div class="account-form-container">
-        {% get_providers as socialaccount_providers %}
-        <div class="account-form-providers">
+      <div class="main-list">
+        <div class="list-entry-container providers">
+          {% get_providers as socialaccount_providers %}
           <ul class="socialaccount_providers">
             {% include "socialaccount/snippets/provider_list.html" with process="login" %}
           </ul>
+          {% include "socialaccount/snippets/login_extra.html" %}
         </div>
-        
-        {% include "socialaccount/snippets/login_extra.html" %}
-        
-        <div class="account-form-options">
-          <h4>Sign in with a provider</h4>
-            <h5 class="keyline">
-              <span>OR</span>
-            </h5>
-          <h4>Create an account with your email</h4>
-        </div>
-          
-        <div class="account-form-entry">
-          <form class="form-entry register" id="signup_form" method="post" action="{% url 'account_signup' %}">
+
+        <div class="list-entry-container form">
+          <form class="form-entry" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
             {{ form.as_p }}
             {% if redirect_field_value %}
@@ -41,17 +34,14 @@
             {% endif %}
             <button class="form-entry-submit register" type="submit">{% trans "Create account" %}</button>
           </form>
-    
-          <hr>
-    
-          <div class="form-other">
-            <div class="two register">
-              <p>{% blocktrans %}Already have an account?{% endblocktrans %}</p>
-            </div>
-            <div class="one register">
-              <a href="{% url 'account_login' %}">Sign in</a>
+        </div>
 
-            </div>
+        <div class="list-entry-container navigate">
+          <div class="two">
+            <p>{% blocktrans %}Already have an account?{% endblocktrans %}</p>
+          </div>
+          <div class="one">
+            <a href="{% url 'account_login' %}">Sign in</a>
           </div>
         </div>
       </div>

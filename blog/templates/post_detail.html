@@ -46,7 +46,7 @@
   <div class="post-detail-content">
     {{ post.formatted_markdown | safe }}
   </div>
-  <hr/>
+  <div class="spacer"></div>
   <div class="post-detail-comments" id="discussion">
     <h2>Comments</h2>
     <div class="post-comment-comment">
@@ -57,7 +57,7 @@
         <input type="submit" name="Add comment">
       </form>
     {% else %}
-    <a href="{% url 'account_login' %}?next={{ request.path }}">Sign in to comment <i class="fas fa-sign-in-alt"></i></a>
+    <a href="{% url 'account_login' %}?next={{ request.path }}">Sign in to comment</a>
     {% endif %}
     </div>
     <div class="post-comments">

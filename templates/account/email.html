@@ -12,16 +12,17 @@
     </div>
   {% endblock sidebar %}
   <div class="main-container">
-    <div class="section-container">
-      <div class="account-header">
-        <h1>{% trans "Email addresses" %}</h1>
+    <div class="main-section-container">
+      <div class="main-header">
+        <div class="main-title">
+          <h1>{% trans "Email addresses" %}</h1>
+        </div>
       </div>
 
-      <div class="account-form-container email">
-        <div class="account-form-addresses">
+      <div class="main-list">
+        <div class="list-entry-container email">
           {% if user.emailaddress_set.all %}
-          <h4>{% trans 'Current email addresses' %}</h4>
-          
+          <h2>{% trans 'Current email addresses' %}</h2>
           <div class="email-form-entry">
             <form action="{% url 'account_email' %}" class="email_list" method="post">
               {% csrf_token %}
@@ -59,30 +60,21 @@
               </fieldset>
             </form>
           </div>
-            
           {% else %}
           <p><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
-          
           {% endif %}
-
         </div>
-            
-        <hr>
-      
-        <div class="account-form-add">
-        {% if can_add_email %}
-          <h4>{% trans "Add email address" %}</h4>
-      
-          <div class="account-form-entry email">
-            <form method="post" action="{% url 'account_email' %}" class="form-entry email">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="form-entry-submit" name="action_add" type="submit">{% trans "Add email" %}</button>
-            </form>
-          </div>
-        {% endif %}
+              
+        <div class="list-entry-container form">
+          {% if can_add_email %}
+          <h2>{% trans "Add email address" %}</h2>
+          <form method="post" action="{% url 'account_email' %}" class="form-entry">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="form-entry-submit" name="action_add" type="submit">{% trans "Add email" %}</button>
+          </form>
+          {% endif %}
         </div>
-  
       </div>
     </div>
   </div>

@@ -4,16 +4,14 @@
 <div class="content">
   {% block sidebar %}
     <div class="sidebar-container">
+      {% include 'sidebar_account.html' %}
       {% include 'sidebar_tags.html' %}
-      <div class="sidebar-section-wrapper account">
-        {% include 'sidebar_account.html' %}
-      </div>
     </div>
   {% endblock sidebar %}
   <div class="main-container">
-    <div class="section-container">
-      <header class="posts-header">
-        <div class="posts-title">
+    <div class="main-section-container">
+      <header class="main-header index">
+        <div class="main-title">
           <h1>Posts</h1>
         </div>
         <!--
@@ -25,12 +23,9 @@
         -->
       </header>
       <!-- Blog Entries Column -->
-      <div class="posts-list">
+      <div class="main-list">
         {% for post in post_list %}
-        <div class="post-entry-container">
-          {% if post.image %}
-          <a class="post-entry-image" href="{{ post.get_absolute_url }}"><img src="{{ post.image }}" /></a>
-          {% endif %}
+        <div class="list-entry-container post">
           <h2 class="post-entry-title">
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
           </h2>

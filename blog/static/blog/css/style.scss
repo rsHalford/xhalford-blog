@@ -1,5 +1,3 @@
-// Theme
-
 // Gruvbox
 $bg: #282828;
 $fg: #ebdbb2;
@@ -28,7 +26,7 @@ $bg2: #504945;
 $bg3: #665c54;
 $bg4: #7c6f64;
 $gray: #928374;
-$fg4: a89984;
+$fg4: #a89984;
 $fg3: #bdae93;
 $fg2: #d5c4a1;
 $fg1: $fg;
@@ -38,11 +36,11 @@ $fg0: #fbf1c7;
 $background: $bg0_h;
 $midground: $bg0;
 $foreground: $bg1;
-$accent: $dark_blue;
-$accent2: $bright_blue;
+$accent_dark: $dark_red;
+$accent_bright: $bright_red;
 $accentfont: $fg0;
 $brightfont: $fg0;
-$dullfont: $fg3;
+$dullfont: $fg2;
 $footer: $background;
 $borderlight: $bg0;
 $borderdark: $bg0;
@@ -96,6 +94,16 @@ body {
 
 a {
   cursor: pointer;
+
+  &:link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 hr {
@@ -105,46 +113,21 @@ hr {
   border: 0;
 }
 
-input[type="button"] {
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  &:active {
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  &:focus {
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-}
-
-input[type="submit"] {
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  &:active {
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  &:focus {
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-}
-
 button {
+  font-family: $sans;
+  font-size: MIN(2.4vw, 18px);
+  font-weight: 600;
+  padding: MIN(0.8vw, 6.4px);
+  color: $accentfont;
+  background-color: $accent_dark;
   border: none;
   outline: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: $accent_bright;
+    cursor: pointer;
+  }
 
   &:active {
     border: none;
@@ -156,6 +139,42 @@ button {
     border: none;
     outline: none;
     cursor: pointer;
+  }
+}
+
+input {
+
+  &[type="submit"] {
+    font-family: $sans;
+    font-size: MIN(2.4vw, 18px);
+    font-weight: 600;
+    padding: MIN(0.8vw, 6.4px);
+    color: $accentfont;
+    background-color: $accent_dark;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $accent_bright;
+      cursor: pointer;
+    }
+
+    &:active {
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  &::placeholder {
+    color: $fg3;
   }
 }
 
@@ -169,39 +188,43 @@ button {
     "footer footer footer";
 
   .navbar {
-    height: MIN(6vw, 45px);
     grid-area: header;
     display: grid;
-    grid-template-columns: auto MIN(5vw, 66.67px) MIN(85vw, 1133.33px) auto;
+    grid-template-columns: auto MIN(6vw, 80px) MIN(84vw, 1120px) auto;
     grid-template-areas: ". home search .";
-    background-color: $foreground;
-    margin-bottom: MIN(2.133vw, 16px);
-    border-bottom: MIN(0.133vw, 1px) solid $borderdark;
+    background-color: $background;
+    padding-top: MIN(2.133vw, 16px);
+    margin-bottom: MIN(1vw, 13.33px);
 
-    .home {
-      grid-area: home;
-      height: MIN(5vw, 37.5px);
-      width: MIN(5vw, 37.5px);
-      margin: auto 0;
-      padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px) 0;
-      background-color: $accent;
-
-      a {
-        font-family: $header;
-        font-weight: 600;
-        font-size: MIN(3.4vw, 25.5px);
-        color: $accentfont;
-        text-decoration: none;
-      }
+    a {
+      display: block;
+      height: MIN(6vw, 45px);
+      line-height: MIN(6vw, 45px);
+      text-align: center;
+      text-decoration: none;
+      color: $fg1;
 
       &:hover {
-        background-color: $accent2;
+        color: $fg0;
+      }
+
+      &.home {
+        grid-area: home;
+        width: MIN(6vw, 45px);
+        font-family: $header;
+        font-weight: 600;
+        font-size: MIN(4.3vw, 32.25px);
+        padding-top: MIN(0.2vw, 1.5px);
+        background-color: $accent_dark;
+
+        &:hover {
+          background-color: $accent_bright;
+        }
       }
     }
 
     .search-container {
       grid-area: search;
-      margin: auto 0;
 
       form {
         display: grid;
@@ -211,13 +234,12 @@ button {
 
         input[type="text"] {
           grid-area: input;
-          height: MIN(5vw, 37.5px);
           font-family: $sans;
           font-size: MIN(2.13vw, 16px);
           padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px);
           border: none;
           color: $brightfont;
-          background-color: $midground;
+          background-color: $foreground;
 
           &:focus {
             color: $brightfont;
@@ -227,134 +249,24 @@ button {
 
         button {
           grid-area: button;
-          height: MIN(5vw, 37.5px);
+          height: MIN(6vw, 45px);
           width: MIN(8.5vw, 64px);
           font-size: MIN(3vw, 22.5px);
           padding: auto MIN(2.13vw, 16px);
           border: none;
-          border-left: solid 2px $accent;
-          color: $accent;
+          border-left: solid 2px $accent_dark;
+          color: $accent_dark;
           background-color: $midground;
           cursor: pointer;
 
-          &:hover {
-            color: $accentfont;
-            background-color: $accent;
+          i {
+            vertical-align: middle;
+            font-size: MIN(3.8vw, 28.5px);
           }
-        }
-      }
-    }
-
-    .account {
-      grid-area: account;
-      display: block;
-      margin: auto 0;
-      padding: MIN(1vw, 7.5px) 0;
-      text-align: center;
-
-      &:hover {
-        background-color: $accent;
-
-        .account-username {
-          color: $accentfont;
-        }
-
-        .account-content {
-          display: block;
-        }
-      }
-
-      &:focus {
-        background-color: $accent;
-
-        .account-username {
-          color: $accentfont;
-        }
-      }
-
-      .account-username {
-        position: relative;
-        color: $brightfont;
-        text-decoration: none;
-      }
-
-      .account-content {
-        display: none;
-        position: absolute;
-        margin-top: MIN(1.5vw, 11.25px);
-        //border: $borderdark 1px solid;
-        width: MIN(18.8vw, 141px);
-        z-index: 1;
-
-        a {
-          display: block;
-          padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px);
-          font-size: MIN(2.13vw, 16px);
-          font-weight: 500;
-          text-decoration: none;
-          text-align: left;
-          color: $brightfont;
-          background-color: $foreground;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        hr {
-          border: $accent 1px solid;
-        }
-
-        .logout {
 
           &:hover {
             color: $accentfont;
-            background-color: $accent;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-
-    &.logout {
-      grid-template-columns: 5vw MIN(6.4vw, 48px) auto MIN(12.8vw, 96px) MIN(21.33vw, 160px) 5vw;
-      grid-template-areas: ". home search login create .";
-
-      .login {
-        grid-area: login;
-        display: block;
-        text-align: center;
-        margin: MIN(0.64vw, 4.8px);
-        padding: MIN(1vw, 7.5px) 0;
-
-        a {
-          color: $brightfont;
-          text-decoration: none;
-          padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
-
-          &:hover {
-            background-color: $midground;
-          }
-        }
-      }
-
-      .create-account {
-        grid-area: create;
-        display: block;
-        text-align: center;
-        margin: MIN(0.64vw, 4.8px) 0 MIN(0.64vw, 4.8px) MIN(0.64vw, 4.8px);
-        padding: MIN(1vw, 7.5px) 0;
-
-        a {
-          color: $accentfont;
-          background-color: $accent;
-          text-decoration: none;
-          padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
-
-          &:hover {
-            color: $accentfont;
-            background-color: $accent2;
+            background-color: $accent_dark;
           }
         }
       }
@@ -367,11 +279,21 @@ button {
     width: MIN(90vw, 1200px);
     display: grid;
     grid-template-columns: MIN(22.5vw, 300px) MIN(67.5vw, 900px);
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     grid-template-areas: "sidebar main";
     background-color: $background;
     margin: 0 0 MIN(2.13vw, 16px);
     padding: 0;
+
+    &.column {
+      grid-template-columns: MIN(90vw, 1200px);
+      grid-template-rows: auto;
+      grid-template-areas: "main";
+
+      .main-container {
+        margin-left: 0;
+      }
+    }
 
     img {
       max-width: 300px;
@@ -385,36 +307,142 @@ button {
       grid-template-columns: auto;
       grid-template-rows: min-content min-content;
       grid-template-areas:
-        "tags"
-        "account";
+        "account"
+        "tags";
       background-color: $background;
 
       .sidebar-section-container {
-        margin-bottom: MIN(1vw, 13.33px);
+        margin: MIN(1vw, 13.33px) 0;
         padding: MIN(1vw, 7.5px);
         background-color: $midground;
-        //border: 1px solid $borderdark;
+
+        .sidebar-section-title {
+          text-align: left;
+          font-size: MIN(3.2vw, 24px);
+          color: $brightfont;
+          padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px);
+        }
+
+        &.account {
+          grid-area: account;
+
+          .sidebar-section-list {
+
+            hr {
+              height: MIN(0.267vw, 2px);
+              margin: MIN(0.427vw, 3.2px) MIN(0.233vw, 1.6px);
+              background-color: $dullfont;
+              border: 0;
+            }
+
+            a {
+              display: block;
+              color: $brightfont;
+              font-size: MIN(2.4vw, 18px);
+              font-weight: 600;
+              text-align: left;
+              text-decoration: none;
+              margin: MIN(0.427vw, 3.2px) MIN(0.233vw, 1.6px);
+              padding: MIN(0.8vw, 6.4px);
+
+              &:hover {
+                color: $accentfont;
+                background-color: $accent_dark;
+              }
+
+              &.login {
+                background-color: $foreground;
+
+                &:hover {
+                  background-color: $accent_dark;
+
+                  &+ .sidebar-account.signup {
+                    background-color: $foreground;
+                  }
+                }
+              }
+
+              &.signup {
+                font-size: MIN(2.267vw, 17px);
+                background-color: $accent_dark;
+
+                &:hover {
+                  background-color: $accent_bright;
+                }
+              }
+            }
+
+            .logout-modal {
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100vh;
+              width: 100vw;
+              backdrop-filter: blur(8px);
+              z-index: 1;
+
+              .logout-content {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto;
+                grid-template-areas:
+                  "title close"
+                  "form form";
+                padding: MIN(3.2vw, 24px);
+                color: $brightfont;
+                background-color: $foreground;
+                border: $borderdark 1px solid;
+
+                h1 {
+                  grid-area: title;
+                  margin: 0 MIN(1vw, 13.33px) MIN(1vw, 13.33px) 0;
+                }
+
+                .logout-close {
+                  grid-area: close;
+                  margin: 0 0 MIN(1vw, 13.33px) MIN(1vw, 13.33px);
+                  color: $dullfont;
+                  font-size: MIN(4.27vw, 32px);
+                  font-weight: bold;
+
+                  &:hover {
+                    color: $accent_dark;
+                    text-decoration: none;
+                    cursor: pointer;
+                  }
+
+                  &:focus {
+                    color: $accent_dark;
+                    text-decoration: none;
+                    cursor: pointer;
+                  }
+                }
+
+                .logout-form {
+                  grid-area: form;
+                  margin: 0 auto;
+                  margin: MIN(1vw, 13.33px) auto 0;
+                }
+              }
+            }
+          }
+        }
 
         &.tags {
           grid-area: tags;
 
-          .sidebar-section-title {
-            text-align: left;
-            font-size: MIN(3.2vw, 24px);
-            color: $brightfont;
-            padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px);
-          }
-
           .sidebar-section-list {
-            margin: 0;
-            padding: 0;
-            width: 100%;
 
             a {
               display: inline-block;
               background-color: $foreground;
               color: $brightfont;
-              font-size: MIN(1.8vw, 13.5px);
+              font-size: MIN(2vw, 15px);
               font-family: $code;
               text-align: center;
               text-decoration: none;
@@ -423,67 +451,17 @@ button {
 
               &:hover {
                 color: $accentfont;
-                background-color: $accent;
+                background-color: $accent_dark;
               }
             }
           }
         }
 
-        &.account {
-
-          .sidebar-section-title {
-            text-align: left;
-            font-size: MIN(3.2vw, 24px);
-            color: $brightfont;
-            padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px);
-          }
+        /*
+        &.theme {
+          grid-area: theme;
 
           .sidebar-section-list {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-
-
-            a {
-              display: inline-block;
-              width: 97%;
-              color: $brightfont;
-              font-size: MIN(2.13vw, 16px);
-              font-weight: 500;
-              text-align: left;
-              text-decoration: none;
-              margin: MIN(0.233vw, 1.6px);
-              padding: MIN(0.8vw, 6.4px);
-
-              &:hover {
-                color: $accentfont;
-                background-color: $accent;
-              }
-
-              .sidebar-link-container {
-                position: relative;
-                display: grid;
-                grid-template-columns: MIN(3.8vw, 28.5px) auto;
-                grid-template-rows: auto;
-                grid-template-areas: "icon title";
-
-                i {
-                  grid-area: icon;
-                  position: absolute;
-                  top: 50%;
-                  font-size: MIN(2.4vw, 18px);
-                  margin: 0 MIN(0.427vw, 3.2px);
-                  transform: translateY(-50%);
-                }
-
-                .sidebar-link-title {
-                  grid-area: title;
-                  font-size: MIN(2.4vw, 18px);
-                  font-weight: 500;
-                  margin: 0 MIN(0.427vw, 3.2px);
-                }
-              }
-            }
 
             .color-mode-container {
               position: relative;
@@ -500,7 +478,7 @@ button {
               }
 
               .far.fa-lightbulb {
-                color: $accent;
+                color: $accent_dark;
               }
 
               .fas.fa-lightbulb {
@@ -517,7 +495,7 @@ button {
                   top: 0;
                   left: 0;
                   display: inline-block;
-                  width: MIN(6.4vw, 48px);
+                  width: MIN(6vw, 45px);
                   height: MIN(3vw, 22.5px);
 
                   #slider {
@@ -527,9 +505,13 @@ button {
                   input:checked + .slider {
                     background-color: $yellow;
 
+                    &:hover {
+                      background-color: $bright_yellow;
+                    }
+
                     &:before {
-                      transform: translateX(MIN(3.4vw, 25.5px));
-                      background-color: #777;
+                      transform: translateX(MIN(3.067vw, 23px));
+                      background-color: $bg2;
                     }
                   }
 
@@ -540,8 +522,8 @@ button {
                     right: 0;
                     bottom: 0;
                     left: 0;
-                    background-color: #777;
-                    transition: 0.3s;
+                    background-color: $bg2;
+                    transition: 0.1s;
 
                     &:before {
                       position: absolute;
@@ -552,16 +534,15 @@ button {
                       bottom: 50%;
                       left: 0;
                       margin: auto 0;
-                      transition: 0.3s;
-                      background-color: #444;
+                      transition: 0.1s;
+                      background-color: $bg2;
                     }
 
-                    &.round {
-                      border-radius: 25px;
-                      background-color: $accent;
+                    &.toggle {
+                      background-color: $accent_dark;
 
-                      &:before {
-                        border-radius: 50%;
+                      &:hover {
+                        background-color: $accent_bright;
                       }
                     }
                   }
@@ -570,157 +551,7 @@ button {
             }
           }
         }
-      }
-
-      .sidebar-section-wrapper.account {
-        margin: 0;
-        padding: 0;
-        grid-area: account;
-
-        .sidebar-section-container {
-
-          &.account {
-
-            .sidebar-section-title {
-              text-align: left;
-              font-size: MIN(3.2vw, 24px);
-              color: $brightfont;
-              padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px);
-            }
-
-            .sidebar-section-list {
-              margin: 0;
-              padding: 0;
-              width: 100%;
-
-
-              a {
-                display: inline-block;
-                width: 97%;
-                color: $brightfont;
-                font-size: MIN(2.13vw, 16px);
-                font-weight: 500;
-                text-align: left;
-                text-decoration: none;
-                margin: MIN(0.233vw, 1.6px);
-                padding: MIN(0.8vw, 6.4px);
-
-                &:hover {
-                  color: $accentfont;
-                  background-color: $accent;
-                }
-
-                .sidebar-link-container {
-                  position: relative;
-                  display: grid;
-                  grid-template-columns: MIN(3.8vw, 28.5px) auto;
-                  grid-template-rows: auto;
-                  grid-template-areas: "icon title";
-
-                  i {
-                    grid-area: icon;
-                    position: absolute;
-                    top: 50%;
-                    font-size: MIN(2.4vw, 18px);
-                    margin: 0 MIN(0.427vw, 3.2px);
-                    transform: translateY(-50%);
-                  }
-
-                  .sidebar-link-title {
-                    grid-area: title;
-                    font-size: MIN(2.4vw, 18px);
-                    font-weight: 500;
-                    margin: 0 MIN(0.427vw, 3.2px);
-                  }
-                }
-              }
-
-              .color-mode-container {
-                position: relative;
-                display: grid;
-                grid-template: "icon switch" / auto auto;
-                margin: MIN(0.233vw, 1.6px);
-                padding: MIN(0.427vw, 3.2px);
-                background-color: $midground;
-
-                .fa-lightbulb {
-                  grid-area: icon;
-                  font-size: MIN(3.2vw, 24px);
-                  text-align: left;
-                }
-
-                .far.fa-lightbulb {
-                  color: $accent;
-                }
-
-                .fas.fa-lightbulb {
-                  color: $yellow;
-                  display: none;
-                }
-
-                .color-mode-switch {
-                  grid-area: switch;
-                  text-align: right;
-
-                  .switch {
-                    position: relative;
-                    top: 0;
-                    left: 0;
-                    display: inline-block;
-                    width: MIN(6.4vw, 48px);
-                    height: MIN(3vw, 22.5px);
-
-                    #slider {
-                      visibility: hidden;
-                    }
-
-                    input:checked + .slider {
-                      background-color: $yellow;
-
-                      &:before {
-                        transform: translateX(MIN(3.4vw, 25.5px));
-                        background-color: #777;
-                      }
-                    }
-
-                    .slider {
-                      position: absolute;
-                      cursor: pointer;
-                      top: 0;
-                      right: 0;
-                      bottom: 0;
-                      left: 0;
-                      background-color: #777;
-                      transition: 0.3s;
-
-                      &:before {
-                        position: absolute;
-                        content: "";
-                        height: MIN(3vw, 22.5px);
-                        width: MIN(3vw, 22.5px);
-                        top: 50%;
-                        bottom: 50%;
-                        left: 0;
-                        margin: auto 0;
-                        transition: 0.3s;
-                        background-color: #444;
-                      }
-
-                      &.round {
-                        border-radius: 25px;
-                        background-color: $accent;
-
-                        &:before {
-                          border-radius: 50%;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        */
       }
     }
 
@@ -729,23 +560,51 @@ button {
       margin-left: MIN(1vw, 13.33px);
       background-color: $background;
 
-      .section-container {
+      .main-section-container {
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: auto auto;
         grid-template-areas:
           "header"
-          "posts";
+          "list";
         background-color: $background;
+        margin: MIN(1vw, 13.33px) 0;
 
-        .posts-header {
+        .main-header {
           grid-area: header;
-          display: grid;
-          grid-template-columns: auto MIN(28.8vw, 216px);
-          grid-template-areas: "title sorting";
 
-          .posts-title {
-            grid-area: title;
+          &.index {
+            display: grid;
+            grid-template-columns: auto MIN(28.8vw, 216px);
+            grid-template-areas: "title sorting";
+
+            .main-title {
+              grid-area: title;
+            }
+
+            .posts-sorting {
+              grid-area: sorting;
+              text-align: right;
+              background-color: $background;
+
+              a {
+                display: inline-block;
+                color: $brightfont;
+                background-color: $foreground;
+                text-align: center;
+                margin: MIN(0.233vw, 1.6px);
+                padding: MIN(0.427vw, 3.2px) MIN(1vw, 7.5px);
+                text-decoration: none;
+
+                &:hover {
+                  color: $accentfont;
+                  background-color: $accent_dark;
+                }
+              }
+            }
+          }
+
+          .main-title {
             color: $brightfont;
             background-color: $background;
 
@@ -762,784 +621,169 @@ button {
               }
             }
           }
-
-          .posts-sorting {
-            grid-area: sorting;
-            text-align: right;
-            background-color: $background;
-
-            a {
-              display: inline-block;
-              color: $brightfont;
-              background-color: $foreground;
-              text-align: center;
-              margin: MIN(0.233vw, 1.6px);
-              padding: MIN(0.427vw, 3.2px) MIN(1vw, 7.5px);
-              text-decoration: none;
-
-              &:hover {
-                color: $accentfont;
-                background-color: $accent;
-              }
-            }
-          }
         }
 
-        .posts-list {
-          grid-area: posts;
+        .main-list {
+          grid-area: list;
 
-          .post-entry-container {
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            grid-template-rows: auto auto auto auto auto;
-            grid-template-areas:
-              "image image image image"
-              "title title title edit"
-              "author author author author"
-              "tags tags tags tags"
-              "interaction interaction interaction interaction";
+          .list-entry-container {
             color: $brightfont;
-            background-color: $foreground;
-            margin-top: MIN(1vw, 7.5px);
+            background-color: $midground;
+            margin: MIN(1vw, 7.5px) 0 MIN(2vw, 15px);
             padding: MIN(3.2vw, 24px);
-            //border: 1px solid $borderdark;
 
-            .post-entry-image {
-              grid-area: image;
-
-              img {
-                min-width: calc(100% + MIN(6.4vw, 48px));
-                height: auto;
-                margin: MIN(-3.2vw, -24px) MIN(-3.2vw, -24px) MIN(2.13vw, 16px);
-                object-fit: cover;
-                object-position: 0 0;
-              }
-            }
-
-            .post-entry-title {
-              grid-area: title;
+            h2 {
               font-family: $header;
               font-size: MIN(5.12vw, 38.4px);
               font-weight: 600;
               padding-bottom: MIN(1vw, 7.5px);
-
-              a {
-                color: $brightfont;
-                text-decoration: none;
-
-                &:hover {
-                  text-decoration: underline;
-                }
-              }
             }
 
-            .post-entry-edit {
-              grid-area: edit;
-              text-align: right;
+            &.post {
+              display: grid;
+              grid-template-columns: auto auto auto auto;
+              grid-template-rows: auto auto auto auto auto;
+              grid-template-areas:
+                "image image image image"
+                "title title title ."
+                "author author author author"
+                "tags tags tags tags"
+                "interaction interaction interaction interaction";
+              position: relative;
+              background-color: $foreground;
 
-              a {
-                display: inline-block;
-                color: $accent;
-                background-color: $midground;
-                vertical-align: middle;
-                padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(0.427vw, 3.2px);
-                text-decoration: none;
+              .post-entry-image {
+                grid-area: image;
 
-                &:hover {
-                  color: $accentfont;
-                  background-color: $accent;
+                img {
+                  min-width: calc(100% + MIN(6.4vw, 48px));
+                  height: auto;
+                  margin: MIN(-3.2vw, -24px) MIN(-3.2vw, -24px) MIN(2.13vw, 16px);
+                  object-fit: cover;
+                  object-position: 0 0;
                 }
               }
-            }
 
-            .post-entry-author {
-              grid-area: author;
-              font-size: MIN(2.4vw, 18px);
-              font-weight: 600;
-              padding-bottom: MIN(1vw, 7.5px);
+              .post-entry-title {
+                grid-area: title;
+                font-family: $header;
+                font-size: MIN(4.8vw, 36px);
+                font-weight: 600;
+                padding-bottom: MIN(1vw, 7.5px);
 
-              span {
-                font-size: MIN(2.13vw, 16px);
-                font-weight: 400;
-                margin-left: MIN(1vw, 7.5px);
-              }
-            }
-
-            .post-entry-tags {
-              grid-area: tags;
-              padding: MIN(1vw, 7.5px) 0;
-
-              a {
-                display: inline-block;
-                font-family: $code;
-                font-size: MIN(1.8vw, 13.5px);
-                color: $dullfont;
-                background-color: $foreground;
-                text-align: center;
-                margin-bottom: MIN(0.64vw, 4.8px);
-                padding: 0.25rem MIN(1vw, 7.5px);
-                text-decoration: none;
-
-                &:hover {
-                  color: $accent;
-                  background-color: $midground;
-                }
-              }
-            }
-
-            .post-entry-interactions {
-              grid-area: interaction;
-
-              a {
-                display: inline-block;
-                color: $brightfont;
-                background-color: $foreground;
-                text-align: center;
-                margin-bottom: MIN(0.64vw, 4.8px);
-                padding: 0.25rem MIN(1vw, 7.5px);
-                text-decoration: none;
-
-                .fa-comment-alt {
-                  color: $accent;
-                }
-
-                .fas {
-                  display: none;
-                }
-
-                &:hover {
+                a {
                   color: $brightfont;
-                  background-color: $midground;
-
-                  .fas {
-                    display: inline-block;
-                  }
-
-                  .far {
-                    display: none;
-                  }
-                }
-              }
-            }
-          }
-
-          .no-content {
-            color: $brightfont;
-            background-color: $foreground;
-            margin-top: MIN(1vw, 7.5px);
-            padding: MIN(3.2vw, 24px);
-            //border: 1px solid $borderdark;
-          }
-        }
-
-        .account-header {
-          color: $brightfont;
-          background-color: $background;
-          margin-bottom: MIN(1vw, 7.5px);
-        }
-
-        .account-form-container {
-          display: grid;
-          grid-template-columns: auto;
-          grid-template-rows: auto auto auto;
-          grid-template-areas:
-            "providers"
-            "options"
-            "form";
-          color: $brightfont;
-          background-color: $foreground;
-          padding: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0.75rem;
-          //border: 1px solid $borderdark;
-
-          //hr {
-          //  margin: MIN(3.2vw, 24px);
-          //  //border: $borderlight 1px solid;
-          //}
-
-          h4 {
-            font-size: MIN(3.2vw, 24px);
-            margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0;
-          }
-
-          .account-form-providers {
-            grid-area: providers;
-            margin: 0 MIN(5.33vw, 40px);
-
-            .socialaccount_providers {
-              list-style: none;
-
-              li {
-                margin: MIN(1vw, 7.5px);
-                padding: MIN(2.13vw, 16px);
-                font-size: MIN(4.27vw, 32px);
-                text-align: center;
-
-                .socialaccount_provider {
-                  color: $brightfont;
-                  background-color: $midground;
-                  text-align: center;
-                  margin: 0 auto;
-                  padding: MIN(0.233vw, 1.6px) MIN(1vw, 7.5px) MIN(0.8vw, 6.4px);
                   text-decoration: none;
-                  //border: 1px solid $borderlight;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+
+              .post-entry-edit {
+
+                a {
+                  position: absolute;
+                  top: MIN(3.2vw, 24px);
+                  right: MIN(3.2vw, 24px);
+                  display: inline-block;
+                  font-size: MIN(3.2vw, 24px);
+                  text-decoration: none;
+                  padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
+                  color: $accent_dark;
+                  background-color: $foreground;
+                  vertical-align: middle;
 
                   &:hover {
                     color: $accentfont;
-                    background-color: $accent;
+                    background-color: $accent_dark;
+                  }
+                }
+              }
+
+              .post-entry-author {
+                grid-area: author;
+                font-size: MIN(2.4vw, 18px);
+                font-weight: 600;
+                padding-bottom: MIN(1vw, 7.5px);
+
+                span {
+                  font-size: MIN(2.13vw, 16px);
+                  font-weight: 400;
+                  margin-left: MIN(1vw, 7.5px);
+                }
+              }
+
+              .post-entry-tags {
+                grid-area: tags;
+                padding: MIN(1vw, 7.5px) 0;
+
+                a {
+                  display: inline-block;
+                  font-family: $code;
+                  font-size: MIN(2vw, 15px);
+                  color: $dullfont;
+                  background-color: $foreground;
+                  text-align: center;
+                  margin-bottom: MIN(0.64vw, 4.8px);
+                  padding: 0.25rem MIN(1vw, 7.5px);
+                  text-decoration: none;
+
+                  &:hover {
+                    color: $accent_dark;
+                    background-color: $midground;
+                  }
+                }
+              }
+
+              .post-entry-interactions {
+                grid-area: interaction;
+
+                a {
+                  display: inline-block;
+                  color: $brightfont;
+                  background-color: $foreground;
+                  text-align: center;
+                  margin-bottom: MIN(0.64vw, 4.8px);
+                  padding: 0.25rem MIN(1vw, 7.5px);
+                  text-decoration: none;
+
+                  .fa-comment-alt {
+                    color: $accent_dark;
                   }
 
-                  &::before {
-                    display: inline-block;
-                    font-style: normal;
-                    font-variant: normal;
-                    text-rendering: auto;
-                    -webkit-font-smoothing: antialiased;
-                    padding-right: MIN(1.7vw, 12.75px);
-                    vertical-align: middle;
+                  .fas {
+                    display: none;
                   }
 
-                  &.github {
+                  &:hover {
+                    color: $brightfont;
+                    background-color: $midground;
 
-                    &::before {
-                      font-family: $icon;
-                      content: "\f09b";
-                      font-weight: 900;
+                    .fas {
+                      display: inline-block;
+                    }
+
+                    .far {
+                      display: none;
                     }
                   }
-
-                  &.google {
-                    &::before {
-                      font-family: $icon;
-                      content: "\f1a0";
-                      font-weight: 900;
-                    }
-                  }
-
-                  &.twitter {
-                    &::before {
-                      font-family: $icon;
-                      content: "\f099";
-                      font-weight: 900;
-                    }
-                  }
                 }
-              }
-            }
-          }
-
-          .account-form-options {
-            grid-area: options;
-
-            h4 {
-              text-align: center;
-              margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0;
-            }
-
-            .keyline {
-              color: $dullfont;
-              font-size: MIN(2.13vw, 16px);
-              font-weight: 400;
-              text-align: center;
-              display: grid;
-              grid-template-columns: 1fr auto 1fr;
-              grid-gap: MIN(2.13vw, 16px);
-              align-items: center;
-              margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0;
-
-              &::before {
-                content: "";
-                height: 2px;
-                background: $background;
-              }
-
-              &::after {
-                content: "";
-                height: 2px;
-                background: $background;
-              }
-            }
-          }
-
-          .account-form-entry {
-            grid-area: form;
-            display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: auto auto auto;
-            grid-template-areas:
-              "entry"
-              "hr"
-              "other";
-            grid-gap: MIN(1vw, 7.5px);
-            color: $brightfont;
-            background-color: $foreground;
-            padding: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0.75rem;
-
-            .form-entry {
-              grid-area: entry;
-              display: grid;
-              grid-template-columns: auto;
-              grid-template-rows: auto auto auto auto;
-              grid-template-areas:
-                "name"
-                "password1"
-                "submit"
-                "error";
-              grid-gap: MIN(2.13vw, 16px);
-              padding: MIN(2.13vw, 16px);
-
-              label {
-                display: none;
-              }
-
-              p {
-
-                #id_login {
-                  grid-area: name;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_password {
-                  grid-area: password1;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-              }
-
-              .errorlist {
-                grid-area: error;
-                color: $red;
-              }
-
-              .form-entry-submit {
-                grid-area: submit;
-                width: MIN(12.8vw, 96px);
-                margin: 0 auto;
-                padding: MIN(0.64vw, 4.8px);
-                font-size: MIN(2.13vw, 16px);
-                color: $accentfont;
-                background-color: $accent;
-
-                &:hover {
-                  color: $accentfont;
-                  background-color: $accent2;
-                  cursor: pointer;
-                }
-
-                .register {
-                  grid-area: submit;
-                  width: MIN(19.2vw, 144px);
-                  padding: MIN(0.64vw, 4.8px);
-                }
-
-                .set {
-                  grid-area: submit;
-                  width: MIN(19.2vw, 144px);
-                  padding: MIN(0.64vw, 4.8px);
-                }
-
-                .change {
-                  grid-area: submit;
-                  width: MIN(21.33vw, 160px);
-                  padding: MIN(0.64vw, 4.8px);
-                }
-
-                .reset {
-                  grid-area: submit;
-                  width: MIN(21.33vw, 160px);
-                  padding: MIN(0.64vw, 4.8px);
-                }
-              }
-
-              &.register {
-                grid-area: entry;
-                grid-template-columns: auto;
-                grid-template-rows: auto auto auto auto auto auto;
-                grid-template-areas:
-                  "email"
-                  "name"
-                  "password1"
-                  "password2"
-                  "submit"
-                  "error";
-                grid-gap: MIN(2.13vw, 16px);
-                margin: 0;
-                padding: MIN(2.13vw, 16px);
-
-                #id_email {
-                  grid-area: email;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_username {
-                  grid-area: name;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_password1 {
-                  grid-area: password1;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_password2 {
-                  grid-area: password2;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-              }
-
-              &.set {
-                grid-area: entry;
-                grid-template-columns: auto;
-                grid-template-rows: auto auto auto auto;
-                grid-template-areas:
-                  "password1"
-                  "password2"
-                  "submit"
-                  "error";
-                grid-gap: MIN(2.13vw, 16px);
-                margin: 0;
-                padding: MIN(2.13vw, 16px);
-
-                #id_password1 {
-                  grid-area: password1;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_password2 {
-                  grid-area: password2;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-              }
-
-              &.change {
-                grid-area: entry;
-                grid-template-columns: auto;
-                grid-template-rows: auto auto auto auto auto;
-                grid-template-areas:
-                  "old_password"
-                  "password1"
-                  "password2"
-                  "submit"
-                  "error";
-                grid-gap: MIN(2.13vw, 16px);
-                margin: 0;
-                padding: MIN(2.13vw, 16px);
-
-                #id_oldpassword {
-                  grid-area: old_password;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_password1 {
-                  grid-area: password1;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  border: $borderdark;
-                  background-color: $midground;
-                  color: $brightfont;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-
-                #id_password2 {
-                  grid-area: password2;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-              }
-
-              &.reset {
-                grid-area: entry;
-                grid-template-columns: auto;
-                grid-template-rows: auto auto auto;
-                grid-template-areas:
-                  "email"
-                  "submit"
-                  "error";
-                grid-gap: MIN(2.13vw, 16px);
-                margin: 0;
-                padding: MIN(2.13vw, 16px) 0;
-
-                #id_email {
-                  grid-area: email;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-              }
-
-              &.email {
-                grid-area: entry;
-                grid-template-columns: auto;
-                grid-template-rows: auto auto auto;
-                grid-template-areas:
-                  "email"
-                  "submit"
-                  "error";
-                grid-gap: MIN(2.13vw, 16px);
-                margin: 0;
-                padding: MIN(2.13vw, 16px) 0;
-
-                #id_email {
-                  grid-area: email;
-                  width: 100%;
-                  font-size: MIN(2.13vw, 16px);
-                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-                  background-color: $midground;
-                  color: $brightfont;
-                  border: $borderdark;
-
-                  &:focus {
-                    color: $brightfont;
-                    outline: none;
-                  }
-                }
-              }
-            }
-
-            &.reset {
-              grid-area: form;
-              display: grid;
-              grid-template-columns: auto;
-              grid-template-rows: auto auto auto auto;
-              grid-template-areas:
-                "note"
-                "entry"
-                "hr"
-                "other";
-              grid-gap: MIN(1vw, 7.5px);
-              color: $brightfont;
-              background-color: $foreground;
-              padding: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0.75rem;
-
-              .account-form-note {
-                grid-area: note;
               }
             }
 
             &.email {
-              grid-area: form;
-              display: grid;
-              grid-template-columns: auto;
-              grid-template-rows: auto auto auto;
-              grid-template-areas:
-                "entry"
-                "hr"
-                "other";
-              grid-gap: MIN(1vw, 7.5px);
-              color: $brightfont;
-              background-color: $foreground;
-              padding: 0.75rem MIN(3.2vw, 24px) 0.75rem;
-            }
 
-            hr {
-              grid-area: hr;
-              //border: $borderlight 1px solid;
-            }
-
-            .form-other {
-              grid-area: other;
-              display: grid;
-              grid-template-columns: auto auto;
-              grid-template-rows: auto;
-              grid-template-areas: "option1 option2";
-
-              .one {
-                grid-area: option1;
-                margin: 0 auto;
-                padding: MIN(2.13vw, 16px) 0;
-
-                a {
-                  color: $accentfont;
-                  background-color: $accent;
-                  text-decoration: none;
-                  padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
-
-                  &:hover {
-                    background-color: $accent2;
-                  }
-                }
-
-                &.register {
-                  grid-area: option2;
-                }
-
-                &.reset {
-                  grid-area: option;
-                  margin: 0 auto;
-                  padding: MIN(2.13vw, 16px) 0;
-                }
-
-                &.set {
-                  grid-area: option;
-                  margin: 0 auto;
-                  padding: MIN(2.13vw, 16px) 0;
-                }
+              h2 {
+                font-size: MIN(4vw, 30px);
               }
-
-              .two {
-                grid-area: option2;
-                margin: 0 auto;
-                padding: MIN(2.13vw, 16px) 0;
-
-                a {
-                  color: $brightfont;
-                  text-decoration: none;
-                  padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
-                }
-
-                &:hover {
-                  text-decoration: underline;
-                }
-
-                &.register {
-                  grid-area: option1;
-                }
-              }
-
-              &.reset {
-                grid-area: other;
-                display: grid;
-                grid-template-columns: auto;
-                grid-template-rows: auto;
-                grid-template-areas: "option";
-              }
-
-              &.set {
-                grid-area: other;
-                display: grid;
-                grid-template-columns: auto;
-                grid-template-rows: auto;
-                grid-template-areas: "option";
-              }
-            }
-          }
-
-          &.email {
-            grid-template-areas:
-              "addresses"
-              "hr"
-              "add";
-
-            .account-form-addresses {
-              grid-area: addresses;
-              margin: 0 MIN(2.13vw, 16px);
 
               .email-form-entry {
-                grid-area: form;
+                width: MIN(54.375vw, 725px);
+                margin: 0 auto;
                 color: $brightfont;
-                background-color: $foreground;
-                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) 0.75rem;
-                padding: 0;
+                background-color: $midground;
 
                 form {
 
@@ -1547,12 +791,12 @@ button {
                     border: none;
 
                     .ctrlHolder {
-                      margin: MIN(2.13vw, 16px) 0;
+                      margin: MIN(2.13vw, 16px) auto;
 
                       &:hover  {
 
                         input ~ .checkmark {
-                          background-color: #6a5acd50;
+                          background-color: $accent_dark;
                         }
                       }
 
@@ -1560,8 +804,6 @@ button {
                         display: grid;
                         grid-template-columns: min-content min-content min-content min-content;
                         grid-template-areas: "radio email verified primary";
-                        grid-gap: MIN(1.7vw, 12.75px);
-                        font-size: MIN(2.8vw, 21px);
                         cursor: pointer;
                         -webkit-user-select: none;
                         -moz-user-select: none;
@@ -1578,22 +820,28 @@ button {
                         .verified {
                           grid-area: verified;
                           font-size: MIN(2vw, 15px);
-                          color: $green;
-                          margin: auto 0;
+                          color: $brightfont;
+                          background-color: $green;
+                          margin: auto MIN(0.5vw, 3.75px) auto MIN(1vw, 7.5px);
+                          padding: MIN(0.2vw, 1.5px) MIN(0.8vw, 6px);
                         }
 
                         .primary {
                           grid-area: primary;
                           font-size: MIN(2vw, 15px);
-                          color: $blue;
-                          margin: auto 0;
+                          color: $brightfont;
+                          background-color: $blue;
+                          margin: auto MIN(0.5vw, 3.75px);
+                          padding: MIN(0.2vw, 1.5px) MIN(0.8vw, 6px);
                         }
 
                         .unverified {
                           grid-area: verified;
                           font-size: MIN(2vw, 15px);
-                          color: $red;
-                          margin: auto 0;
+                          color: $brightfont;
+                          background-color: $red;
+                          margin: auto MIN(0.5vw, 3.75px) auto MIN(1vw, 7.5px);
+                          padding: MIN(0.2vw, 1.5px) MIN(0.8vw, 6px);
                         }
                       }
 
@@ -1601,7 +849,7 @@ button {
                         grid-area: radio;
 
                         &:checked ~ .checkmark {
-                          background: radial-gradient($accent 30%, rgba(0, 0, 0, 0) 41%);
+                          background: radial-gradient($accent_dark 30%, rgba(0, 0, 0, 0) 41%);
                         }
                       }
 
@@ -1609,11 +857,11 @@ button {
                         grid-area: radio;
                         display: block;
                         grid-area: radio;
-                        margin: auto 0;
-                        height: MIN(2.8vw, 21px);
-                        width: MIN(2.8vw, 21px);
+                        margin: auto MIN(1vw, 7.5px) auto 0;
+                        height: MIN(2.133vw, 16px);
+                        width: MIN(2.133vw, 16px);
                         border-radius: 50%;
-                        border: MIN(0.427vw, 3.2px) solid $accent;
+                        border: MIN(0.3vw, 2.25px) solid $accent_dark;
                       }
 
                       #text {
@@ -1633,7 +881,6 @@ button {
                           display: grid;
                           grid-template-columns: min-content MIN(17vw, 127.5px) auto;
                           grid-template-areas: "radio connection username";
-                          grid-gap: MIN(1.7vw, 12.75px);
                           font-size: MIN(2.8vw, 21px);
                           cursor: pointer;
                           -webkit-user-select: none;
@@ -1653,21 +900,16 @@ button {
                     }
 
                     .buttonHolder {
-                      display: grid;
-                      grid-template-columns: max-content max-content max-content;
-                      grid-template-rows: auto;
-                      grid-gap: MIN(1vw, 7.5px);
                       margin: MIN(2.13vw, 16px) auto;
 
                       button {
-                        margin: 0 auto;
                         padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
                         font-size: MIN(2.13vw, 16px);
                         color: $accentfont;
-                        background-color: $accent;
+                        background-color: $accent_dark;
 
                         &:hover {
-                          background-color: $accent2;
+                          background-color: $accent_bright;
                           cursor: pointer;
                         }
                       }
@@ -1680,17 +922,11 @@ button {
                   }
                 }
               }
-            }
-
-            .account-form-connections {
-              grid-area: addresses;
-              margin: 0 MIN(2.13vw, 16px);
 
               .connections-form-entry {
-                grid-area: form;
                 color: $brightfont;
                 background-color: $foreground;
-                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) 0.75rem;
+                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) MIN(1.6vw, 12px);
                 padding: 0;
 
                 form {
@@ -1704,7 +940,7 @@ button {
                       &:hover  {
 
                         input ~ .checkmark {
-                          background-color: #6a5acd50;
+                          background-color: $accent_dark;
                         }
                       }
 
@@ -1753,7 +989,7 @@ button {
                         grid-area: radio;
 
                         &:checked ~ .checkmark {
-                          background: radial-gradient($accent 30%, rgba(0, 0, 0, 0) 41%);
+                          background: radial-gradient($accent_dark 30%, rgba(0, 0, 0, 0) 41%);
                         }
                       }
 
@@ -1765,7 +1001,7 @@ button {
                         height: MIN(2.8vw, 21px);
                         width: MIN(2.8vw, 21px);
                         border-radius: 50%;
-                        border: MIN(0.427vw, 3.2px) solid $accent;
+                        border: MIN(0.427vw, 3.2px) solid $accent_dark;
                       }
 
                       #text {
@@ -1816,10 +1052,10 @@ button {
                         padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
                         font-size: MIN(2.13vw, 16px);
                         color: $accentfont;
-                        background-color: $accent;
+                        background-color: $accent_dark;
 
                         &:hover {
-                          background-color: $accent2;
+                          background-color: $accent_bright;
                           cursor: pointer;
                         }
                       }
@@ -1834,35 +1070,101 @@ button {
               }
             }
 
-            .account-form-add {
-              margin: 0 MIN(2.13vw, 16px);
+            &.form {
+
+              h2 {
+                font-size: MIN(4vw, 30px);
+              }
+
+              .account-form-note {
+
+                p {
+                  margin-bottom: MIN(1.6vw, 12px);
+
+                  strong {
+                    color: $accent_dark;
+                  }
+
+                  span {
+                    text-decoration: underline;
+                  }
+                }
+              }
+
+              .form-entry {
+                grid-area: entry;
+                margin: MIN(1vw, 7.5px) auto MIN(2vw, 15px);
+                width: MIN(54.375vw, 725px);
+
+                ul {
+                  color: $red;
+                  margin: MIN(2.13vw, 16px) 0;
+                  padding-left: MIN(3.2vw, 24px);
+
+                  li {
+                    margin-bottom: MIN(2.13vw, 16px);
+                  }
+                }
+
+                label {
+                  display: none;
+                }
+
+                p {
+                  margin: MIN(1vw, 7.5px) 0;
+
+                  input {
+                    width: 100%;
+                    font-size: MIN(2.13vw, 16px);
+                    padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                    background-color: $foreground;
+                    color: $brightfont;
+                    border: $borderdark;
+
+                    &:focus {
+                      color: $brightfont;
+                      outline: none;
+                    }
+                  }
+                }
+
+                .form-entry-submit {
+                  grid-area: submit;
+                }
+              }
+            }
+
+            &.providers {
+
+              h2 {
+                font-size: MIN(4vw, 30px);
+              }
 
               .socialaccount_providers {
                 list-style: none;
-                margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px);
 
                 li {
-                  margin: MIN(1vw, 7.5px);
-                  padding: MIN(2.13vw, 16px);
+                  padding: MIN(1.6vw, 12px);
                   font-size: MIN(4.27vw, 32px);
                   text-align: center;
 
                   .socialaccount_provider {
                     color: $brightfont;
-                    background-color: $midground;
+                    background-color: $foreground;
                     text-align: center;
                     margin: 0 auto;
                     padding: MIN(0.233vw, 1.6px) MIN(1vw, 7.5px) MIN(0.8vw, 6.4px);
                     text-decoration: none;
-                    //border: 1px solid $borderlight;
 
                     &:hover {
                       color: $accentfont;
-                      background-color: $accent;
+                      background-color: $accent_dark;
                     }
 
                     &::before {
                       display: inline-block;
+                      font-family: $icon;
+                      font-weight: 900;
                       font-style: normal;
                       font-variant: normal;
                       text-rendering: auto;
@@ -1874,137 +1176,465 @@ button {
                     &.github {
 
                       &::before {
-                        font-family: $icon;
                         content: "\f09b";
-                        font-weight: 900;
                       }
                     }
 
                     &.google {
+
                       &::before {
-                        font-family: $icon;
                         content: "\f1a0";
-                        font-weight: 900;
                       }
                     }
 
                     &.twitter {
+                      
                       &::before {
-                        font-family: $icon;
                         content: "\f099";
-                        font-weight: 900;
                       }
                     }
+                  }
+                }
+              }
+            }
+
+            &.navigate {
+              grid-area: other;
+              display: grid;
+              grid-template-columns: auto auto;
+              grid-template-rows: auto;
+              background-color: $background;
+
+              &.column {
+                grid-template-columns: auto;
+              }
+
+              .one {
+                margin: 0 auto;
+
+                a {
+                  color: $accentfont;
+                  background-color: $accent_dark;
+                  text-decoration: none;
+                  padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
+
+                  &:hover {
+                    background-color: $accent_bright;
+                  }
+                }
+              }
+
+              .two {
+                margin: 0 auto;
+
+                a {
+                  color: $brightfont;
+                  text-decoration: underline;
+                  padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
+
+                  &:hover {
+                    color: $accent_dark;
+                  }
+                }
+              }
+            }
+
+            &.create {
+              padding: MIN(2.133vw, 16px);
+
+              form {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto auto auto auto auto;
+                grid-template-areas:
+                  "image"
+                  "title"
+                  "description"
+                  "tags"
+                  "helptext"
+                  "content"
+                  "status"
+                  "submit";
+
+                #id_image {
+                  grid-area: image;
+                  margin-bottom: MIN(4.27vw, 32px);
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  border: none;
+                  border: 1px solid $borderlight;
+                  color: $brightfont;
+                  background-color: $background;
+                }
+
+                #id_title {
+                  grid-area: title;
+                  font-size: MIN(4.27vw, 32px);
+                  margin-bottom: MIN(4.27vw, 32px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  border: none;
+                  border: 1px solid $borderlight;
+                  color: $brightfont;
+                  background-color: $background;
+
+                  &:focus {
+                    outline: none;
+                  }
+                }
+
+                #id_description {
+                  grid-area: description;
+                  margin-bottom: MIN(4.27vw, 32px);
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  border: none;
+                  border: 1px solid $borderlight;
+                  color: $brightfont;
+                  background-color: $background;
+
+                  &:focus {
+                    outline: none;
+                  }
+                }
+
+                #id_tags {
+                  grid-area: tags;
+                  font-family: $code;
+                  font-size: MIN(2.13vw, 16px);
+                  padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
+                  border: none;
+                  border: 1px solid $borderlight;
+                  color: $brightfont;
+                  background-color: $background;
+
+                  &:focus {
+                    outline: none;
+                  }
+                }
+
+                br {
+                  display: none;
+                }
+
+                .helptext {
+                  grid-area: helptext;
+                  margin: MIN(0.8vw, 6.4px) 0 MIN(4.27vw, 32px) MIN(2.5vw, 18.75px);
+                  color: $dullfont;
+                }
+
+                .markdownx {
+                  grid-area: content;
+
+                  #id_content {
+                    height: 20em;
+                    width: 100%;
+                    font-family: $code;
+                    font-size: MIN(2.133vw, 16px);
+                    margin-bottom: MIN(4.27vw, 32px);
+                    padding: MIN(2.8vw, 21px);
+                    color: $brightfont;
+                    background-color: $background;
+                    overflow-x: auto;
+                    border: none;
+                    outline: none;
+                    resize: vertical;
+                  }
+
+                  .markdownx-preview {
+                    height: auto;
+                    width: auto;
+                    font-family: $body;
+                    margin-bottom: MIN(4.27vw, 32px);
+                    background-color: $midground;
+
+                    * {
+                      margin: MIN(4.27vw, 32px) 0;
+                    }
+
+                    h1 {
+                      margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+                      font-family: $header;
+                    }
+
+                    h2 {
+                      margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+                      font-size: 1.5rem;
+                      font-family: $header;
+                    }
+
+                    h3 {
+                      margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+                      font-family: $header;
+                    }
+
+                    h4 {
+                      margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+                      font-family: $header;
+                    }
+
+                    h5 {
+                      margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+                      font-family: $header;
+                    }
+
+                    h6 {
+                      margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
+                      font-family: $header;
+                    }
+
+                    p {
+
+                      code {
+                        margin: MIN(4vw, 30px) 0;
+                        padding: MIN(0.3vw, 2.25px) MIN(0.5vw, 3.75px);
+                        font-family: $code;
+                        font-size: MIN(2vw, 16px);
+                        color: $brightfont;
+                        background-color: $background;
+                        overflow-x: auto;
+                      }
+                    }
+
+                    img {
+                      display: block;
+                      max-width: 100%;
+                      margin: MIN(4.27vw, 32px) auto;
+                      object-fit: cover;
+                    }
+
+                    ul {
+                      margin: MIN(2.13vw, 16px) 0 MIN(2.13vw, 16px) MIN(3.2vw, 24px);
+                      padding-left: MIN(3.2vw, 24px);
+
+                      li {
+                        margin-bottom: MIN(2.13vw, 16px);
+                      }
+                    }
+
+                    ol {
+                      margin: MIN(2.13vw, 16px) 0 MIN(2.13vw, 16px) MIN(3.2vw, 24px);
+                      padding-left: MIN(3.2vw, 24px);
+
+                      li {
+                        margin-bottom: MIN(2.13vw, 16px);
+                      }
+                    }
+
+                    a {
+                      text-decoration: none;
+                      color: $accent_dark;
+
+                      &:hover {
+                        text-decoration: underline;
+                      }
+                    }
+
+                    blockquote {
+                      color: $dullfont;
+                      margin-bottom: MIN(2vw, 15px);
+                      padding-left: MIN(3.2vw, 24px);
+                      border-left: MIN(1.3vw, 9.75px) solid $dullfont;
+                    }
+
+                    hr {
+                      height: MIN(0.4vw, 3px);
+                      margin: MIN(8vw, 60px) 20%;
+                      background-color: $dullfont;
+                      border: 0;
+                    }
+
+                    .codehilite {
+                      margin: MIN(4vw, 30px) 0;
+                      padding: 0 MIN(1.8vw, 13.5px);
+                      font-family: $code;
+                      font-size: MIN(2.25vw, 16.875px);
+                      color: $brightfont;
+                      background-color: $background;
+                      overflow-x: auto;
+
+                      .hll { background-color: $fg1 }
+
+                      .c { color: $gray; font-style: italic }
+
+                      .err { color: $bg0; background-color: $bright_red }
+
+                      .k { color: $bright_red }
+
+                      .ch { color: $gray; font-style: italic }
+
+                      .cm { color: $gray; font-style: italic }
+
+                      .c-PreProc { color: $bright_aqua; font-style: italic }
+
+                      .cp { color: $gray; font-style: italic }
+
+                      .cpf { color: $gray; font-style: italic }
+
+                      .c1 { color: $gray; font-style: italic }
+
+                      .cs { color: $fg1; font-weight: bold; font-style: italic }
+
+                      .gd { color: $bg0; background-color: $bright_red }
+
+                      .ge { font-style: italic }
+
+                      .gr { color: $bright_red }
+
+                      .gh { color: $fg1; font-weight: bold }
+
+                      .gi { color: $bg0; background-color: $bright_green }
+
+                      .go { color: $fg0 }
+
+                      .gp { color: $fg4 }
+
+                      .gs { font-weight: bold }
+
+                      .gu { color: $fg1; text-decoration: underline }
+
+                      .gt { color: $bright_red }
+
+                      .kc { color: $bright_red }
+
+                      .kd { color: $bright_red }
+
+                      .kn { color: $bright_aqua }
+
+                      .kp { color: $bright_red }
+
+                      .kr { color: $bright_red }
+
+                      .kt { color: $bright_red }
+
+                      .m { color: $bright_purple }
+
+                      .s { color: $bright_green }
+
+                      .n { color: $bright_purple }
+
+                      .na { color: $bright_yellow }
+
+                      .nb { color: $bright_green }
+
+                      .nc { color: $bright_aqua }
+
+                      .no { color: $bright_purple }
+
+                      .nd { color: $bright_red }
+
+                      .ne { color: $bright_red }
+
+                      .nf { color: $bright_green; font-weight: bold; }
+
+                      .nn { color: $fg }
+
+                      .nt { color: $bright_aqua }
+
+                      .nv { color: $bright_blue }
+
+                      .ow { color: $bright_red }
+
+                      .mb { color: $bright_purple }
+
+                      .mf { color: $bright_purple }
+
+                      .mh { color: $bright_purple }
+
+                      .mi { color: $bright_purple }
+
+                      .mo { color: $bright_purple }
+
+                      .p { color: $bright_orange }
+
+                      .sa { color: $bright_green }
+
+                      .sb { color: $bright_green }
+
+                      .sc { color: $bright_green }
+
+                      .dl { color: $bright_green }
+
+                      .sd { color: $bright_green }
+
+                      .s2 { color: $bright_green }
+
+                      .se { color: $bright_orange }
+
+                      .sh { color: $bright_green }
+
+                      .si { color: $bright_green }
+
+                      .sx { color: $bright_green }
+
+                      .sr { color: $bright_green }
+
+                      .s1 { color: $bright_green }
+
+                      .ss { color: $bright_green }
+
+                      .bp { color: $bright_orange }
+
+                      .fm { color: $bright_aqua }
+
+                      .vc { color: $bright_blue }
+
+                      .vg { color: $bright_blue }
+
+                      .vi { color: $bright_blue }
+
+                      .vm { color: $bright_blue }
+
+                      .il { color: $bright_purple }
+                    }
+                  }
+                }
+
+                #id_status {
+                  grid-area: status;
+                  width: MIN(15vw, 112.5px);
+                  margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
+                  padding: MIN(0.427vw, 3.2px);
+                  font-size: MIN(2.13vw, 16px);
+                  border: none;
+                  border: 1px solid $borderlight;
+                  color: $brightfont;
+                  background-color: $background;
+
+                  &:focus {
+                    outline: none;
+                  }
+                }
+
+                input[type="submit"] {
+                  grid-area: submit;
+                  width: MIN(10.67vw, 80px);
+                  margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
+                  padding: MIN(1vw, 7.5px) MIN(1.7vw, 12.75px);
+                  font-size: MIN(2.13vw, 16px);
+                  color: $accentfont;
+                  background-color: $accent_dark;
+
+                  &:hover {
+                    color: $accentfont;
+                    background-color: $accent_bright;
+                    cursor: pointer;
                   }
                 }
               }
             }
           }
-        }
-      }
-    }
 
-    /* Settings */
-    &.settings {
-      grid-area: content;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      grid-template-areas: "main";
-      column-gap: MIN(2.13vw, 16px);
-      margin: 0 0 MIN(2.13vw, 16px);
-      padding: 0;
-
-      .main-container {
-
-        .section-container {
-
-          .settings-container {
+          .no-content {
+            color: $brightfont;
             background-color: $foreground;
-            padding: MIN(2.13vw, 16px);
-            //border: 1px solid $borderdark;
-
-            .settings-list {
-              display: grid;
-              grid-template-columns: auto;
-              grid-template-rows: auto auto auto;
-              grid-template-areas:
-                "one"
-                "two"
-                "three";
-              grid-gap: MIN(2.13vw, 16px);
-
-              a {
-                display: block;
-                color: $brightfont;
-                text-decoration: none;
-                padding: MIN(0.8vw, 6.4px) MIN(1.7vw, 12.75px);
-
-                &:hover {
-                  color: $accentfont;
-                  background-color: $accent;
-                }
-
-                .settings-link-container {
-                  display: grid;
-                  grid-template-columns: MIN(5.33vw, 40px) auto MIN(5.33vw, 40px);
-                  grid-template-rows: auto;
-                  grid-template-areas: "icon title chevron";
-                  position: relative;
-
-                  i {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    font-size: MIN(3.2vw, 24px);
-                  }
-
-                  .icon {
-                    grid-area: icon;
-                    margin: 0 MIN(1vw, 7.5px);
-                  }
-
-                  .settings-link-title {
-                    grid-area: title;
-                    font-size: MIN(3.4vw, 25.5px);
-                    margin: 0 MIN(2.13vw, 16px);
-                  }
-
-                  .fas.fa-chevron-right {
-                    grid-area: chevron;
-                    margin: 0 0.75rem;
-                  }
-                }
-              }
-
-              .settings-email {
-                grid-area: one;
-              }
-
-              .settings-password {
-                grid-area: two;
-              }
-
-              .settings-social {
-                grid-area: three;
-              }
-
-              .settings-login {
-                grid-area: one;
-              }
-
-              .settings-create {
-                grid-area: two;
-              }
-            }
+            margin-top: MIN(1vw, 7.5px);
+            padding: MIN(3.2vw, 24px);
           }
         }
       }
     }
   }
 
-  /* Post Detail */
   .post-detail-container {
     grid-area: content;
     min-height: 100vh;
@@ -2012,12 +1642,6 @@ button {
     background-color: $midground;
     margin: 0 0 MIN(2.13vw, 16px);
     padding: MIN(4.27vw, 32px) 0;
-    //border: 1px solid $borderdark;
-
-    //hr {
-    //  margin: MIN(8.5vw, 64px) MIN(6.4vw, 48px);
-    //  //border: $accent 1px solid;
-    //}
 
     .post-detail-header {
       display: grid;
@@ -2069,13 +1693,13 @@ button {
           font-size: MIN(3.2vw, 24px);
           text-decoration: none;
           padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
-          color: $accent;
+          color: $accent_dark;
           background-color: $midground;
           vertical-align: middle;
 
           &:hover {
             color: $accentfont;
-            background-color: $accent;
+            background-color: $accent_dark;
           }
         }
       }
@@ -2100,7 +1724,7 @@ button {
         a {
           display: inline-block;
           font-family: $code;
-          color: $accent;
+          color: $accent_dark;
           background-color: $midground;
           text-align: center;
           margin-bottom: MIN(0.64vw, 4.8px);
@@ -2109,7 +1733,7 @@ button {
 
           &:hover {
             color: $accentfont;
-            background-color: $accent;
+            background-color: $accent_dark;
           }
         }
       }
@@ -2160,6 +1784,7 @@ button {
       }
 
       p {
+
         code {
           margin: MIN(4vw, 30px) 0;
           padding: MIN(0.3vw, 2.25px) MIN(0.5vw, 3.75px);
@@ -2198,7 +1823,7 @@ button {
 
       a {
         text-decoration: none;
-        color: $accent;
+        color: $accent_dark;
 
         &:hover {
           text-decoration: underline;
@@ -2228,361 +1853,198 @@ button {
         background-color: $background;
         overflow-x: auto;
 
-        .hll {
-          background-color: #49483e;
-        }
-
-        .c {
-          color: #75715e;
-        } /* Comment */
-
-        .err {
-          color: #960050;
-          background-color: #1e0010;
-        } /* Error */
-
-        .k {
-          color: #66d9ef;
-        } /* Keyword */
-
-        .l {
-          color: #ae81ff;
-        } /* Literal */
-
-        .n {
-          color: #f8f8f2;
-        } /* Name */
-
-        .o {
-          color: #f92672;
-        } /* Operator */
-
-        .p {
-          color: #f8f8f2;
-        } /* Punctuation */
-
-        .ch {
-          color: #75715e;
-        } /* Comment.Hashbang */
-
-        .cm {
-          color: #75715e;
-        } /* Comment.Multiline */
-
-        .cp {
-          color: #75715e;
-        } /* Comment.Preproc */
-
-        .cpf {
-          color: #75715e;
-        } /* Comment.PreprocFile */
-
-        .c1 {
-          color: #75715e;
-        } /* Comment.Single */
-
-        .cs {
-          color: #75715e;
-        } /* Comment.Special */
-
-        .gd {
-          color: #f92672;
-        } /* Generic.Deleted */
-
-        .ge {
-          font-style: italic;
-        } /* Generic.Emph */
-
-        .gi {
-          color: #a6e22e;
-        } /* Generic.Inserted */
-
-        .gs {
-          font-weight: bold;
-        } /* Generic.Strong */
-
-        .gu {
-          color: #75715e;
-        } /* Generic.Subheading */
-
-        .kc {
-          color: #66d9ef;
-        } /* Keyword.Constant */
-
-        .kd {
-          color: #66d9ef;
-        } /* Keyword.Declaration */
-
-        .kn {
-          color: #f92672;
-        } /* Keyword.Namespace */
-
-        .kp {
-          color: #66d9ef;
-        } /* Keyword.Pseudo */
-
-        .kr {
-          color: #66d9ef;
-        } /* Keyword.Reserved */
-
-        .kt {
-          color: #66d9ef;
-        } /* Keyword.Type */
-
-        .ld {
-          color: #e6db74;
-        } /* Literal.Date */
+        .hll { background-color: $fg1 }
 
-        .m {
-          color: #ae81ff;
-        } /* Literal.Number */
+        .c { color: $gray; font-style: italic }
 
-        .s {
-          color: #e6db74;
-        } /* Literal.String */
+        .err { color: $bg0; background-color: $bright_red }
+        
+        .k { color: $bright_red }
 
-        .na {
-          color: #a6e22e;
-        } /* Name.Attribute */
+        .ch { color: $gray; font-style: italic }
 
-        .nb {
-          color: #f8f8f2;
-        } /* Name.Builtin */
+        .cm { color: $gray; font-style: italic }
 
-        .nc {
-          color: #a6e22e;
-        } /* Name.Class */
+        .c-PreProc { color: $bright_aqua; font-style: italic }
 
-        .no {
-          color: #66d9ef;
-        } /* Name.Constant */
+        .cp { color: $gray; font-style: italic }
 
-        .nd {
-          color: #a6e22e;
-        } /* Name.Decorator */
+        .cpf { color: $gray; font-style: italic }
 
-        .ni {
-          color: #f8f8f2;
-        } /* Name.Entity */
+        .c1 { color: $gray; font-style: italic }
 
-        .ne {
-          color: #a6e22e;
-        } /* Name.Exception */
+        .cs { color: $fg1; font-weight: bold; font-style: italic }
 
-        .nf {
-          color: #a6e22e;
-        } /* Name.Function */
+        .gd { color: $bg0; background-color: $bright_red }
 
-        .nl {
-          color: #f8f8f2;
-        } /* Name.Label */
+        .ge { font-style: italic }
 
-        .nn {
-          color: #f8f8f2;
-        } /* Name.Namespace */
+        .gr { color: $bright_red }
 
-        .nx {
-          color: #a6e22e;
-        } /* Name.Other */
+        .gh { color: $fg1; font-weight: bold }
 
-        .py {
-          color: #f8f8f2;
-        } /* Name.Property */
+        .gi { color: $bg0; background-color: $bright_green }
 
-        .nt {
-          color: #f92672;
-        } /* Name.Tag */
+        .go { color: $fg0 }
 
-        .nv {
-          color: #f8f8f2;
-        } /* Name.Variable */
+        .gp { color: $fg4 }
 
-        .ow {
-          color: #f92672;
-        } /* Operator.Word */
+        .gs { font-weight: bold }
 
-        .w {
-          color: #f8f8f2;
-        } /* Text.Whitespace */
+        .gu { color: $fg1; text-decoration: underline }
 
-        .mb {
-          color: #ae81ff;
-        } /* Literal.Number.Bin */
+        .gt { color: $bright_red }
 
-        .mf {
-          color: #ae81ff;
-        } /* Literal.Number.Float */
+        .kc { color: $bright_red }
 
-        .mh {
-          color: #ae81ff;
-        } /* Literal.Number.Hex */
+        .kd { color: $bright_red }
 
-        .mi {
-          color: #ae81ff;
-        } /* Literal.Number.Integer */
+        .kn { color: $bright_aqua }
 
-        .mo {
-          color: #ae81ff;
-        } /* Literal.Number.Oct */
+        .kp { color: $bright_red }
 
-        .sa {
-          color: #e6db74;
-        } /* Literal.String.Affix */
+        .kr { color: $bright_red }
 
-        .sb {
-          color: #e6db74;
-        } /* Literal.String.Backtick */
+        .kt { color: $bright_red }
 
-        .codehilite .sc {
-          color: #e6db74;
-        } /* Literal.String.Char */
+        .m { color: $bright_purple }
 
-        .dl {
-          color: #e6db74;
-        } /* Literal.String.Delimiter */
+        .s { color: $bright_green }
 
-        .sd {
-          color: #e6db74;
-        } /* Literal.String.Doc */
+        .n { color: $bright_purple }
 
-        .s2 {
-          color: #e6db74;
-        } /* Literal.String.Double */
+        .na { color: $bright_yellow }
 
-        .se {
-          color: #ae81ff;
-        } /* Literal.String.Escape */
+        .nb { color: $bright_green }
 
-        .sh {
-          color: #e6db74;
-        } /* Literal.String.Heredoc */
+        .nc { color: $bright_aqua }
 
-        .si {
-          color: #e6db74;
-        } /* Literal.String.Interpol */
+        .no { color: $bright_purple }
 
-        .sx {
-          color: #e6db74;
-        } /* Literal.String.Other */
+        .nd { color: $bright_red }
 
-        .sr {
-          color: #e6db74;
-        } /* Literal.String.Regex */
+        .ne { color: $bright_red }
 
-        .s1 {
-          color: #e6db74;
-        } /* Literal.String.Single */
+        .nf { color: $bright_green; font-weight: bold; }
 
-        .ss {
-          color: #e6db74;
-        } /* Literal.String.Symbol */
+        .nn { color: $fg }
 
-        .bp {
-          color: #f8f8f2;
-        } /* Name.Builtin.Pseudo */
+        .nt { color: $bright_aqua }
 
-        .fm {
-          color: #a6e22e;
-        } /* Name.Function.Magic */
+        .nv { color: $bright_blue }
 
-        .vc {
-          color: #f8f8f2;
-        } /* Name.Variable.Class */
+        .ow { color: $bright_red }
 
-        .vg {
-          color: #f8f8f2;
-        } /* Name.Variable.Global */
+        .mb { color: $bright_purple }
 
-        .vi {
-          color: #f8f8f2;
-        } /* Name.Variable.Instance */
+        .mf { color: $bright_purple }
 
-        .vm {
-          color: #f8f8f2;
-        } /* Name.Variable.Magic */
+        .mh { color: $bright_purple }
 
-        .il {
-          color: #ae81ff;
-        } /* Literal.Number.Integer.Long */
+        .mi { color: $bright_purple }
+
+        .mo { color: $bright_purple }
+
+        .p { color: $bright_orange }
+
+        .sa { color: $bright_green }
+
+        .sb { color: $bright_green }
+
+        .sc { color: $bright_green }
+
+        .dl { color: $bright_green }
+
+        .sd { color: $bright_green }
+
+        .s2 { color: $bright_green }
+
+        .se { color: $bright_orange }
+
+        .sh { color: $bright_green }
+
+        .si { color: $bright_green }
+
+        .sx { color: $bright_green }
+
+        .sr { color: $bright_green }
+
+        .s1 { color: $bright_green }
+
+        .ss { color: $bright_green }
+
+        .bp { color: $bright_orange }
+
+        .fm { color: $bright_aqua }
+
+        .vc { color: $bright_blue }
+
+        .vg { color: $bright_blue }
+
+        .vi { color: $bright_blue }
+
+        .vm { color: $bright_blue }
+
+        .il { color: $bright_purple }
       }
     }
 
-    /* Comments */
+    .spacer {
+      height: MIN(3vw, 22.25px);
+      background-color: $background;
+    }
+
     .post-detail-comments {
-      margin: MIN(0.64vw, 4.8px) MIN(6.4vw, 48px);
+      margin: MIN(2.4vw, 18px) MIN(6.4vw, 48px) MIN(2vw, 15px);
 
       h2 {
-        font-size: MIN(5.33vw, 40px);
+        font-family: $header;
+        font-size: MIN(5.12vw, 38.4px);
+        font-weight: 600;
+        padding-bottom: MIN(2.133vw, 16px);
       }
 
       .post-comment-comment {
-        margin: 0 0 MIN(2.13vw, 16px);
+        margin-bottom: MIN(4vw, 30px);
 
         a {
           display: block;
           font-size: MIN(2.4vw, 18px);
           font-weight: 600;
           text-decoration: none;
-          padding: MIN(0.427vw, 3.2px) MIN(3.2vw, 24px) MIN(1vw, 7.5px);
+          text-align: center;
+          padding: MIN(1vw, 7.5px) 0;
           color: $brightfont;
-          background-color: $accent;
-          //border: 1px solid $borderdark;
-          position: relative;
+          background-color: $accent_dark;
 
           &:hover {
-            background-color: $accent2;
-          }
-
-          i {
-            position: absolute;
-            top: 50%;
-            right: MIN(3.2vw, 24px);
-            transform: translateY(-50%);
+            background-color: $accent_bright;
           }
         }
 
         form {
-          display: grid;
-          grid-template-columns: auto auto auto;
-          grid-template-rows: auto auto auto;
-          grid-template-areas:
-            "helptext helptext helptext"
-            "content content content"
-            ". . submit";
+
+          .markdownx {
+
+            #id_body {
+              height: 5em;
+              width: 100%;
+              font-family: $code;
+              font-size: MIN(2.133vw, 16px);
+              margin-bottom: MIN(1vw, 7.5px);
+              padding: MIN(1vw, 7.5px);
+              color: $brightfont;
+              background-color: $foreground;
+              overflow-x: auto;
+              border: none;
+              outline: none;
+              resize: vertical;
+            }
+          }
         }
 
         .markdownx-preview {
           display: none;
-        }
-
-        .helptext {
-          grid-area: helptext;
-          margin: MIN(0.8vw, 6.4px) 0 MIN(1vw, 7.5px) MIN(2.5vw, 18.75px);
-          color: $dullfont;
-        }
-
-        #id_body {
-          width: 100%;
-          height: MIN(12.8vw, 96px);
-          margin-bottom: MIN(1vw, 7.5px);
-          overflow-x: auto;
-          background-color: $foreground;
-        }
-
-        input[type="submit"] {
-          grid-area: submit;
-          width: MIN(10.67vw, 80px);
-          margin-left: auto;
-          padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
-          font-size: MIN(2.13vw, 16px);
-          color: $accentfont;
-          background-color: $accent;
-
-          &:hover {
-            color: #fff;
-            background-color: $accent2;
-            cursor: pointer;
-          }
         }
       }
 
@@ -2595,15 +2057,15 @@ button {
           grid-template-areas:
             "author time"
             "body body";
-          margin-top: MIN(2.13vw, 16px);
+          margin: MIN(3vw, 22.25px) 0;
 
           .post-comments-author {
             grid-area: author;
             background-color: $background;
+            font-family: $header;
             font-size: MIN(2.4vw, 18px);
             font-weight: 600;
-            padding: MIN(0.427vw, 3.2px) MIN(2.13vw, 16px) MIN(1vw, 7.5px);
-            //border: 1px solid $borderlight;
+            padding: MIN(1vw, 7.5px) MIN(2.133vw, 16px) MIN(0.8vw, 6px);
             border-right: none;
             border-bottom: none;
           }
@@ -2615,17 +2077,265 @@ button {
             font-size: MIN(2.13vw, 16px);
             font-weight: 400;
             text-align: right;
-            padding: MIN(0.427vw, 3.2px) MIN(2.13vw, 16px) MIN(1vw, 7.5px);
-            //border: 1px solid $borderlight;
+            padding: MIN(0.8vw, 6px) MIN(2.133vw, 16px);
             border-left: none;
             border-bottom: none;
           }
 
           .post-comments-body {
             grid-area: body;
-            padding: MIN(1vw, 7.5px) MIN(3.2vw, 24px) MIN(0.427vw, 3.2px);
-            //border: 1px solid $borderlight;
+            padding: MIN(0.8vw, 6px) MIN(2vw, 15px);
             border-top: none;
+            border-right: MIN(0.267vw, 2px) solid $background;
+            border-bottom: MIN(0.267vw, 2px) solid $background;
+            border-left: MIN(0.267vw, 2px) solid $background;
+
+            * {
+              font-weight: 500;
+              font-size: MIN(2vw, 15px);
+              margin: MIN(1vw, 7.5px) 0;
+              padding: 0;
+            }
+
+            h1 {
+              font-family: $header;
+              font-weight: 600;
+              font-size: MIN(3vw, 22.25px);
+            }
+
+            h2 {
+              font-family: $header;
+              font-size: MIN(2.75vw, 20.625px);
+            }
+
+            h3 {
+              font-family: $header;
+              font-size: MIN(2.5vw, 18.75px);
+            }
+
+            h4 {
+              font-family: $header;
+              font-size: MIN(2.5vw, 18.75px);
+            }
+
+            h5 {
+              font-family: $header;
+              font-size: MIN(2.5vw, 18.75px);
+            }
+
+            h6 {
+              font-family: $header;
+              font-size: MIN(2.5vw, 18.75px);
+            }
+
+            p {
+              font-family: $sans;
+
+              code {
+                margin: MIN(1vw, 7.5px) 0;
+                padding: MIN(0.3vw, 2.25px) MIN(0.5vw, 3.75px);
+                font-family: $code;
+                font-size: MIN(2vw, 16px);
+                color: $brightfont;
+                background-color: $background;
+                overflow-x: auto;
+              }
+            }
+
+            img {
+              display: block;
+              max-width: 100%;
+              margin: MIN(1vw, 7.5px) auto;
+              object-fit: cover;
+            }
+
+            ul {
+              margin: MIN(1vw, 7.5px) 0 MIN(2.13vw, 16px) MIN(3.2vw, 24px);
+              padding-left: MIN(3.2vw, 24px);
+
+              li {
+                font-family: $sans;
+                margin-bottom: MIN(2.13vw, 16px);
+              }
+            }
+
+            ol {
+              margin: MIN(1vw, 7.5px) 0 MIN(2.13vw, 16px) MIN(3.2vw, 24px);
+              padding-left: MIN(3.2vw, 24px);
+
+              li {
+                font-family: $sans;
+                margin-bottom: MIN(2.13vw, 16px);
+              }
+            }
+
+            a {
+              font-family: $sans;
+              text-decoration: none;
+              color: $accent_dark;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+
+            blockquote {
+              font-family: $body;
+              color: $dullfont;
+              margin-bottom: MIN(2vw, 15px);
+              padding-left: MIN(3.2vw, 24px);
+              border-left: MIN(1.3vw, 9.75px) solid $dullfont;
+            }
+
+            hr {
+              height: MIN(0.4vw, 3px);
+              margin: MIN(1vw, 7.5px) 20%;
+              background-color: $dullfont;
+              border: 0;
+            }
+
+            .codehilite {
+              padding: 0 MIN(1.8vw, 13.5px);
+              font-family: $code;
+              font-size: MIN(2.25vw, 16.875px);
+              color: $brightfont;
+              background-color: $background;
+              overflow-x: auto;
+
+              .hll { background-color: $fg1 }
+
+              .c { color: $gray; font-style: italic }
+
+              .err { color: $bg0; background-color: $bright_red }
+
+              .k { color: $bright_red }
+
+              .ch { color: $gray; font-style: italic }
+
+              .cm { color: $gray; font-style: italic }
+
+              .c-PreProc { color: $bright_aqua; font-style: italic }
+
+              .cp { color: $gray; font-style: italic }
+
+              .cpf { color: $gray; font-style: italic }
+
+              .c1 { color: $gray; font-style: italic }
+
+              .cs { color: $fg1; font-weight: bold; font-style: italic }
+
+              .gd { color: $bg0; background-color: $bright_red }
+
+              .ge { font-style: italic }
+
+              .gr { color: $bright_red }
+
+              .gh { color: $fg1; font-weight: bold }
+
+              .gi { color: $bg0; background-color: $bright_green }
+
+              .go { color: $fg0 }
+
+              .gp { color: $fg4 }
+
+              .gs { font-weight: bold }
+
+              .gu { color: $fg1; text-decoration: underline }
+
+              .gt { color: $bright_red }
+
+              .kc { color: $bright_red }
+
+              .kd { color: $bright_red }
+
+              .kn { color: $bright_aqua }
+
+              .kp { color: $bright_red }
+
+              .kr { color: $bright_red }
+
+              .kt { color: $bright_red }
+
+              .m { color: $bright_purple }
+
+              .s { color: $bright_green }
+
+              .n { color: $bright_purple }
+
+              .na { color: $bright_yellow }
+
+              .nb { color: $bright_green }
+
+              .nc { color: $bright_aqua }
+
+              .no { color: $bright_purple }
+
+              .nd { color: $bright_red }
+
+              .ne { color: $bright_red }
+
+              .nf { color: $bright_green; font-weight: bold; }
+
+              .nn { color: $fg }
+
+              .nt { color: $bright_aqua }
+
+              .nv { color: $bright_blue }
+
+              .ow { color: $bright_red }
+
+              .mb { color: $bright_purple }
+
+              .mf { color: $bright_purple }
+
+              .mh { color: $bright_purple }
+
+              .mi { color: $bright_purple }
+
+              .mo { color: $bright_purple }
+
+              .p { color: $bright_orange }
+
+              .sa { color: $bright_green }
+
+              .sb { color: $bright_green }
+
+              .sc { color: $bright_green }
+
+              .dl { color: $bright_green }
+
+              .sd { color: $bright_green }
+
+              .s2 { color: $bright_green }
+
+              .se { color: $bright_orange }
+
+              .sh { color: $bright_green }
+
+              .si { color: $bright_green }
+
+              .sx { color: $bright_green }
+
+              .sr { color: $bright_green }
+
+              .s1 { color: $bright_green }
+
+              .ss { color: $bright_green }
+
+              .bp { color: $bright_orange }
+
+              .fm { color: $bright_aqua }
+
+              .vc { color: $bright_blue }
+
+              .vg { color: $bright_blue }
+
+              .vi { color: $bright_blue }
+
+              .vm { color: $bright_blue }
+
+              .il { color: $bright_purple }
+            }
           }
 
           .post-comments-else {
@@ -2637,214 +2347,36 @@ button {
     }
   }
 
-  /* Create Post */
-  .post-form-container {
-    grid-area: content;
-    min-height: 100vh;
-    color: $brightfont;
-    background-color: $foreground;
-    margin: 0 0 MIN(2.13vw, 16px);
-    padding: MIN(4.27vw, 32px) 0;
-    //border: 1px solid $borderdark;
-
-    h2 {
-      font-size: MIN(6.4vw, 48px);
-      padding: 0 MIN(2.5vw, 18.75px) MIN(2.13vw, 16px) MIN(2.13vw, 16px);
-
-      form {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto auto auto auto auto;
-        grid-template-areas:
-          "image"
-          "title"
-          "description"
-          "tags"
-          "helptext"
-          "content"
-          "status"
-          "submit";
-        padding: MIN(2.13vw, 16px);
-        * {
-          width: 87vw;
-          max-width: 87vw;
-        }
-      }
-    }
-
-    #id_image {
-      grid-area: image;
-      margin-bottom: MIN(4.27vw, 32px);
-      font-size: MIN(2.13vw, 16px);
-      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-      border: none;
-      border: 1px solid $borderlight;
-      color: $brightfont;
-      background-color: $midground;
-    }
-
-    #id_title {
-      grid-area: title;
-      font-size: MIN(4.27vw, 32px);
-      margin-bottom: MIN(4.27vw, 32px);
-      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-      border: none;
-      border: 1px solid $borderlight;
-      color: $brightfont;
-      background-color: $midground;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    #id_description {
-      grid-area: description;
-      margin-bottom: MIN(4.27vw, 32px);
-      font-size: MIN(2.13vw, 16px);
-      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-      border: none;
-      border: 1px solid $borderlight;
-      color: $brightfont;
-      background-color: $midground;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    #id_tags {
-      grid-area: tags;
-      font-family: $code;
-      font-size: MIN(2.13vw, 16px);
-      padding: MIN(2.13vw, 16px) MIN(2.5vw, 18.75px);
-      border: none;
-      border: 1px solid $borderlight;
-      color: $brightfont;
-      background-color: $midground;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    br {
-      display: none;
-    }
-
-    .helptext {
-      grid-area: helptext;
-      margin: MIN(0.8vw, 6.4px) 0 MIN(1vw, 7.5px) MIN(2.5vw, 18.75px);
-      color: $dullfont;
-    }
-
-    /* Markdownx */
-    .markdownx {
-      grid-area: content;
-
-      textarea {
-        width: 100%;
-        font-size: MIN(2.13vw, 16px);
-        margin: MIN(2.13vw, 16px) 0.5vw MIN(2.13vw, 16px) 0;
-        padding: MIN(2.8vw, 21px) MIN(2.8vw, 21px);
-        //border: 1px solid $borderlight;
-        color: $brightfont;
-        background-color: $midground;
-        resize: vertical;
-        overflow-x: auto;
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      .markdownx-preview {
-        margin: MIN(2.13vw, 16px) 0 MIN(2.13vw, 16px) 0.5vw;
-        padding: MIN(2.8vw, 21px) MIN(3.2vw, 24px);
-        background-color: $midground;
-        //border: $accent solid 2px;
-
-        img {
-          display: block;
-          width: 70%;
-          margin-left: auto;
-          margin-right: auto;
-          object-fit: cover;
-        }
-      }
-    }
-
-    #id_status {
-      grid-area: status;
-      width: MIN(15vw, 112.5px);
-      margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
-      padding: MIN(0.427vw, 3.2px);
-      font-size: MIN(2.13vw, 16px);
-      border: none;
-      border: 1px solid $borderlight;
-      color: $brightfont;
-      background-color: $midground;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    input[type="submit"] {
-      grid-area: submit;
-      width: MIN(10.67vw, 80px);
-      margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
-      padding: MIN(1vw, 7.5px) MIN(1.7vw, 12.75px);
-      font-size: MIN(2.13vw, 16px);
-      color: $accentfont;
-      background-color: $accent;
-
-      &:hover {
-        color: $accentfont;
-        background-color: $accent2;
-        cursor: pointer;
-      }
-    }
-  }
-
-  /* Footer */
   .footer {
     grid-area: footer;
+    display: grid;
+    grid-template-columns: auto MIN(90vw, 1200px) auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      ". contact ."
+      ". feeds .";
+    background-color: $footer;
 
-    .footer-content {
-      display: grid;
-      grid-template-columns: auto MIN(62.25vw, 830px) MIN(27.75vw, 370px) auto;
-      grid-template-rows: auto MIN(8.5vw, 64px);
-      grid-template-areas:
-        ". contact feeds ."
-        ". legal legal .";
-      background-color: $footer;
+    .footer-contact {
+      grid-area: contact;
+      font-size: MIN(5.12vw, 38.4px);
       text-align: center;
-      padding: MIN(3.2vw, 24px) 0 0;
+      margin: auto;
+      padding-top: MIN(3.2vw, 24px);
+      color: $dullfont;
 
-      .footer-contact {
-        grid-area: contact;
-        display: grid;
-        grid-template-columns: auto auto auto auto auto;
-        grid-template-areas: "website twitter linkedin github gitlab";
-        font-size: MIN(5.12vw, 38.4px);
-        text-align: center;
-        margin: auto;
-        color: $dullfont;
+      div {
+        display: inline-block;
+        margin: 0 MIN(2.13vw, 16px);
 
-        div {
-          margin: 0 MIN(2.13vw, 16px);
+        a {
 
-          a {
-
-            .fab {
-              color: $dullfont;
-            }
+          .fab {
+            color: $dullfont;
           }
         }
 
-        .website {
-          grid-area: website;
+        &.website {
 
           a {
             color: $dullfont;
@@ -2862,8 +2394,7 @@ button {
           }
         }
 
-        .twitter {
-          grid-area: twitter;
+        &.twitter {
 
           a {
 
@@ -2876,8 +2407,7 @@ button {
           }
         }
 
-        .linkedin {
-          grid-area: linkedin;
+        &.linkedin {
 
           a{
 
@@ -2890,8 +2420,7 @@ button {
           }
         }
 
-        .github {
-          grid-area: github;
+        &.github {
 
           a {
 
@@ -2904,8 +2433,7 @@ button {
           }
         }
 
-        .gitlab {
-          grid-area: gitlab;
+        &.gitlab {
 
           a {
 
@@ -2918,115 +2446,51 @@ button {
           }
         }
       }
+    }
 
-      .footer-feeds {
-        grid-area: feeds;
-        margin: auto auto;
-        text-align: right;
+    .footer-feeds {
+      grid-area: feeds;
+      display: inline-block;
+      text-align: center;
+      padding: MIN(3.2vw, 24px) 0;
 
-        div {
-          padding-bottom: MIN(0.64vw, 4.8px);
-
-          a {
-            color: $dullfont;
-            font-size: MIN(2.5vw, 18.75px);
-
-            &:hover {
-              color: $brightfont;
-              text-decoration: none;
-            }
-
-            .fas {
-              text-decoration: none;
-              margin-right: MIN(0.8vw, 6.4px);
-              padding: MIN(0.64vw, 4.8px) 0;
-
-              .fa-rss-square {
-                font-size: MIN(3.4vw, 25.5px);
-                color: #ee802f;
-              }
-
-              .fa-atom {
-                font-size: MIN(3.4vw, 25.5px);
-                color: $accent;
-              }
-
-              .fa-sitemap {
-                font-size: MIN(2.5vw, 18.75px);
-              }
-            }
-          }
-        }
-      }
-
-      .footer-legal {
-        grid-area: legal;
-        padding: MIN(2.8vw, 21px) 0;
-        margin: 0;
+      div {
+        display: inline-block;
 
         p {
           font-size: MIN(2.5vw, 18.75px);
           color: $dullfont;
+          margin-right: MIN(6vw, 45px);
         }
-      }
-    }
-  }
-}
 
-/* Logout */
-.logout-modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: #00000090;
+        a {
+          color: $dullfont;
+          font-size: MIN(2.5vw, 18.75px);
+          margin: 0 MIN(1.6vw, 12px);
 
-  .logout-content {
-    color: $brightfont;
-    background-color: $foreground;
-    margin: 15% auto;
-    padding: MIN(3.2vw, 24px);
-    //border: $borderdark 1px solid;
-    width: MIN(53.33vw, 400px);
+          .fas {
+            text-decoration: none;
+            margin-right: MIN(0.8vw, 6.4px);
+            padding: MIN(0.64vw, 4.8px) 0;
 
-    .logout-close {
-      color: $dullfont;
-      float: right;
-      font-size: MIN(4.27vw, 32px);
-      font-weight: bold;
+            .fa-rss-square {
+              font-size: MIN(3.4vw, 25.5px);
+              color: $bright_orange;
+            }
 
-      &:hover {
-        color: $accent;
-        text-decoration: none;
-        cursor: pointer;
-      }
+            .fa-atom {
+              font-size: MIN(3.4vw, 25.5px);
+              color: $accent_dark;
+            }
 
-      &:focus {
-        color: $accent;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    }
-
-    .logout-form {
-
-      form {
-
-        .logout-form-submit {
-          width: MIN(12.8vw, 96px);
-          margin: MIN(2.13vw, 16px) auto MIN(1vw, 7.5px);
-          padding: MIN(0.64vw, 4.8px) MIN(1.7vw, 12.75px);
-          font-size: MIN(2.13vw, 16px);
-          color: $accentfont;
-          background-color: $accent;
+            .fa-sitemap {
+              font-size: MIN(2vw, 15px);
+            }
+          }
 
           &:hover {
-            background-color: $accent2;
-            cursor: pointer;
+            color: $brightfont;
+            text-decoration: none;
           }
         }
       }
@@ -3034,342 +2498,102 @@ button {
   }
 }
 
-/*
-@media only screen and (max-width: 42rem) {
+@media only screen and (max-width: 700px) {
   .container {
-
-    .navbar {
-
-      &.small {
-        grid-template-columns: 10vw min-content auto MIN(19.2vw, 144px) 10vw;
-        grid-template-rows: auto min-content;
-        grid-template-areas:
-          "search search search search search"
-          ". home . account .";
-
-        .search-container {
-
-          form {
-
-            input[type="text"] {
-              margin-bottom: 0;
-            }
-
-            button {
-              margin-bottom: 0;
-            }
-          }
-        }
-
-        .account {
-
-          .account-content {
-            margin-top: MIN(1vw, 7.5px);
-          }
-        }
-
-        &.logout {
-          grid-template-columns: 5vw auto 2vw auto auto 5vw;
-          grid-template-rows: auto min-content;
-          grid-template-areas:
-            "search search search search search search"
-            ". home . login create .";
-        }
-      }
-    }
-
-    .content {
-
-      .sidebar-container {
-
-        .sidebar-section-container {
-
-          &.tags {
-            margin: 0 0.25rem 0 0;
-          }
-
-          &.account {
-            margin: 0 0.25rem 0 0;
-          }
-        }
-
-        .sidebar-section-wrapper {
-
-          .sidebar-section-container {
-
-            &.account {
-              margin: 0 0.25rem 0 0;
-            }
-          }
-        }
-      }
-
-      .main-container {
-
-        .section-container {
-          margin: 0;
-
-          .account-form-container {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: 0;
-            margin-right: 0;
-
-            &.email {
-
-              .account-form-addresses {
-
-                h4 {
-                  margin: MIN(3.2vw, 24px) 0 0;
-                }
-
-                .email-form-entry {
-                  padding-left: 0;
-                  padding-right: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-
-                  form {
-
-                    .blockLabels {
-
-                      .ctrlHolder {
-
-                        &.small {
-
-                          label {
-                            font-size: 4vw;
-                            text-align: right;
-                            grid-template-columns: min-content min-content auto auto;
-                            grid-template-rows: auto auto;
-                            grid-template-areas:
-                              "radio . email"
-                              ". verified primary";
-                            grid-gap: MIN(0.64vw, 4.8px);
-                          }
-                        }
-                      }
-
-                      .buttonHolder {
-                        &.small {
-                          grid-template-columns: auto;
-                          grid-template-rows: auto auto auto;
-                          grid-gap: MIN(1vw, 7.5px);
-                          margin: MIN(3.8vw, 28.5px) auto 0;
-
-                          button {
-                            margin: MIN(0.64vw, 4.8px) auto MIN(0.64vw, 4.8px) 0;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-
-            hr {
-              padding-left: 0;
-              padding-right: 0;
-              margin-left: 0;
-              margin-right: 0;
-            }
-
-            .account-form-add {
-              padding-left: 0;
-              padding-right: 0;
-              margin-left: 0;
-              margin-right: 0;
-
-              .account-form-entry {
-                padding-left: 0;
-                padding-right: 0;
-                margin-left: 0;
-                margin-right: 0;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .logout-content {
-    width: 90vw;
-  }
-
-  .settings-link-container {
-
-    i {
-      font-size: MIN(2.13vw, 16px);
-    }
-
-    .settings-link-title {
-      font-size: MIN(2.4vw, 18px);
-    }
-  }
-
-  .post-entry-image {
-
-    &.detail {
-      min-width: calc(100% + MIN(4.27vw, 32px));
-      max-width: 100%;
-      margin: -3rem -1rem MIN(2.13vw, 16px) -1rem;
-      object-position: 50% 0;
-    }
-  }
-
-  .post-detail-header {
-    margin-left: MIN(2.13vw, 16px);
-    margin-right: MIN(2.13vw, 16px);
-  }
-
-  .post-detail-content {
-    margin-left: MIN(2.13vw, 16px);
-    margin-right: MIN(2.13vw, 16px);
-  }
-
-  .post-detail-comments {
-    margin-left: MIN(2.13vw, 16px);
-    margin-right: MIN(2.13vw, 16px);
-  }
-
-  .post-form-container {
-    
-    form {
-      
-      input {
-        max-width: calc(100% - MIN(5.33vw, 40px));
-      }
-
-      div {
-        max-width: calc(100% - MIN(5.33vw, 40px));
-      }
-
-      span {
-        max-width: calc(100% - MIN(5.33vw, 40px));
-      }
-    }
-  }
-
-  .post-comments-else {
-    font-size: 3vw;
-  }
-}
-
-@media only screen and (max-width: 60rem) {
-  .container {
-    grid-template-columns: calc(100vw - MIN(1.7vw, 12.75px));
+    min-height: 0vh;
+    grid-template-columns: auto;
     grid-template-areas:
       "header"
       "content"
       "footer";
-  }
+  
+    .navbar {
+      grid-template-columns: 6vw 90vw;
+      grid-template-areas: "home search";
+      margin: 0 MIN(2vw, 26.67px) MIN(1vw, 13.33px);
+      padding-top: MIN(2.133vw, 16px);
+    }
 
-  .navbar {
-    grid-template-columns: MIN(2vw, 15px) auto MIN(19.2vw, 144px) MIN(1vw, 7.5px);
-  }
+    .content {
+      min-height: 0vh;
+      width: 100%;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "sidebar"
+        "main";
 
-  .navbar.logout {
-    grid-template-columns: MIN(2vw, 15px) auto MIN(12.8vw, 96px) MIN(21.33vw, 160px) MIN(1vw, 7.5px);
-  }
+      &.column {
+        grid-template-columns: auto;
 
-  .content {
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content auto;
-    grid-template-areas:
-      "main"
-      "sidebar";
-  }
+        .main-container {
+          margin: 0 MIN(2vw, 26.67px);
+        }
+      }
 
-  .sidebar-container {
-    grid-template-columns: auto auto;
-    grid-template-rows: min-content;
-    grid-template-areas: "tags account";
-    margin: 0 MIN(1vw, 7.5px);
-  }
+      .sidebar-container {
+        margin: 0 MIN(2vw, 26.67px);
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: min-content min-content;
+        grid-template-areas:
+          "account"
+          "tags";
+      }
 
-  .sidebar-section-list {
-    text-align: left;
-    padding: 0 MIN(1vw, 7.5px);
-  }
+      .main-container {
+        margin: 0 MIN(2vw, 26.67px);
 
-  .sidebar-section-list.account a {
-    width: auto;
-    text-align: left;
-    font-weight: 500;
-    margin: MIN(0.233vw, 1.6px);
-    padding: MIN(0.8vw, 6.4px);
-  }
+        .main-section-container {
 
-  .color-mode-container {
-    grid-template: "icon switch" / MIN(5.33vw, 40px) min-content;
-  }
+          .main-list {
 
-  .post-form-container > form > * {
-    width: 92vw;
-    max-width: 92vw;
-  }
+            .list-entry-container {
 
-  .markdownx textarea {
-    margin: MIN(2.13vw, 16px) 0;
-  }
+              &.form {
 
-  .markdownx-preview {
-    margin: MIN(2.13vw, 16px) 0;
-    overflow-x: auto;
-  }
+                .form-entry {
+                  width: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
-  .footer-content {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto MIN(8.5vw, 64px);
-    grid-template-areas:
-      "contact"
-      "feeds"
-      "legal";
-  }
+    .post-detail-container {
+      min-height: 0vh;
+      margin-left: MIN(2vw, 26.67px);
+      margin-right: MIN(2vw, 26.67px);
 
-  .footer-contact {
-    font-size: MIN(3.2vw, 24px);
-  }
+      .post-detail-header {
+        margin-left: MIN(3vw, 22.25px);
+        margin-right: MIN(3vw, 22.25px);
 
-  .footer-feeds {
-    text-align: center;
-    margin-top: MIN(2.13vw, 16px);
+        .post-entry-image {
+          min-width: calc(100% + MIN(6.13vw, 46px));
+          margin: -3rem -1.45rem MIN(2.13vw, 16px);
+        }
+      }
+
+      .post-detail-content {
+        margin-left: MIN(3vw, 22.25px);
+        margin-right: MIN(3vw, 22.25px);
+      }
+
+      .post-detail-comments {
+        margin-left: MIN(3vw, 22.25px);
+        margin-right: MIN(3vw, 22.25px);
+      }
+    }
+
+    .footer {
+      grid-template-columns: auto;
+      grid-template-areas:
+        "contact"
+        "feeds";
+      background-color: $footer;
+    }
   }
 }
-
-@media only screen and (min-width: 90rem) {
-  .container {
-    grid-template-columns: auto 80rem auto;
-  }
-
-  .navbar {
-    grid-template-columns: auto MIN(19.2vw, 144px) auto MIN(19.2vw, 144px) auto;
-  }
-
-  .navbar.logout {
-    grid-template-columns: auto MIN(19.2vw, 144px) auto MIN(12.8vw, 96px) MIN(21.33vw, 160px) auto;
-  }
-
-  .post-form-container > form > * {
-    width: 78rem;
-    max-width: 78rem;
-  }
-
-  .markdownx textarea {
-    margin: MIN(2.13vw, 16px) 0;
-  }
-
-  .markdownx-preview {
-    margin: MIN(2.13vw, 16px) 0;
-    overflow-x: auto;
-  }
-
-  .footer-content {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-  }
-}
-*/

@@ -10,13 +10,17 @@
   {% block sidebar %}
   {% endblock sidebar %}
   <div class="main-container">
-    <div class="section-container">
-      <div class="account-header">
-        <h1>{% trans "Verify Your E-mail Address" %}</h1>
+    <div class="main-section-container">
+      <div class="main-header">
+        <div class="main-title">
+          <h1>{% trans "Verify Your E-mail Address" %}</h1>
+        </div>
       </div>
       
-      <div class="account-form-container">
-        <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+      <div class="main-list">
+        <div class="list-entry-container account">
+          <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+        </div>
       </div>
     </div>
   </div>
