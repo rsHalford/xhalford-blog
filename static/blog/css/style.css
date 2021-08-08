@@ -608,7 +608,6 @@ input::placeholder {
                     text-align: center; }
             .container .content .main-container .main-section-container .main-list .list-entry-container.email .connections-form-entry {
               color: #fbf1c7;
-              background-color: #3c3836;
               margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) MIN(1.6vw, 12px);
               padding: 0; }
               .container .content .main-container .main-section-container .main-list .list-entry-container.email .connections-form-entry form .blockLabels {
@@ -928,7 +927,8 @@ input::placeholder {
                       background-color: #d5c4a1;
                       border: 0; }
                     .container .content .main-container .main-section-container .main-list .list-entry-container.create form .markdownx .markdownx-preview .codehilite {
-                      margin: MIN(4vw, 30px) 0;
+                      max-width: MIN(86vw, 1147px);
+                      margin: MIN(4vw, 30px) auto;
                       padding: 0 MIN(1.8vw, 13.5px);
                       font-family: "JetBrains Mono", monospace;
                       font-size: MIN(2.25vw, 16.875px);
@@ -1550,6 +1550,8 @@ input::placeholder {
             background-color: #d5c4a1;
             border: 0; }
           .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-body .codehilite {
+            max-width: MIN(73vw, 973.33px);
+            margin: 0 auto;
             padding: 0 MIN(1.8vw, 13.5px);
             font-family: "JetBrains Mono", monospace;
             font-size: MIN(2.25vw, 16.875px);
@@ -1818,9 +1820,13 @@ input::placeholder {
       .container .post-detail-container .post-detail-content {
         margin-left: MIN(3vw, 22.25px);
         margin-right: MIN(3vw, 22.25px); }
+        .container .post-detail-container .post-detail-content .codehilite {
+          max-width: 90vw; }
       .container .post-detail-container .post-detail-comments {
         margin-left: MIN(3vw, 22.25px);
         margin-right: MIN(3vw, 22.25px); }
+        .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-body .codehilite {
+          max-width: 84vw; }
     .container .footer {
       grid-template-columns: auto;
       grid-template-areas: "contact" "feeds";
