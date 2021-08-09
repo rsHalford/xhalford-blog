@@ -295,11 +295,6 @@ input {
       }
     }
 
-    img {
-      max-width: 300px;
-      object-fit: cover;
-    }
-
     .sidebar-container {
       grid-area: sidebar;
       position: sticky;
@@ -613,13 +608,32 @@ input {
                 "interaction interaction interaction interaction";
               position: relative;
               padding: 0;
-              background-color: $foreground;
+              background-color: $midground;
+
+              &:hover {
+                background-color: $foreground;
+
+                .post-entry-tags {
+
+                  a {
+                    background-color: $foreground;
+                  }
+                }
+
+                .post-entry-interactions {
+
+                  a {
+                    background-color: $foreground;
+                  }
+                }
+              }
 
               .post-entry-image {
                 grid-area: image;
 
                 img {
                   min-width: 100%;
+                  max-width: 100%;
                   height: auto;
                   object-fit: cover;
                   object-position: 0 0;
@@ -648,14 +662,13 @@ input {
 
                 a {
                   position: absolute;
-                  top: MIN(3.2vw, 24px);
-                  right: MIN(3.2vw, 24px);
+                  top: 0;
+                  right: 0;
                   display: inline-block;
                   font-size: MIN(3.2vw, 24px);
                   text-decoration: none;
-                  padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
+                  padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px) MIN(0.64vw, 4.8px);
                   color: $accent_dark;
-                  background-color: $foreground;
                   vertical-align: middle;
 
                   &:hover {
@@ -689,10 +702,10 @@ input {
                   font-family: $code;
                   font-size: MIN(2vw, 15px);
                   color: $dullfont;
-                  background-color: $foreground;
+                  background-color: $midground;
                   text-align: center;
                   margin-bottom: MIN(0.64vw, 4.8px);
-                  padding: 0.25rem MIN(1vw, 7.5px);
+                  padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px);
                   text-decoration: none;
 
                   &:hover {
@@ -709,10 +722,10 @@ input {
                 a {
                   display: inline-block;
                   color: $brightfont;
-                  background-color: $foreground;
+                  background-color: $midground;
                   text-align: center;
                   margin-bottom: MIN(0.64vw, 4.8px);
-                  padding: 0.25rem MIN(1vw, 7.5px);
+                  padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px);
                   text-decoration: none;
 
                   .fa-comment-alt {
@@ -1324,7 +1337,7 @@ input {
 
                     h2 {
                       margin: MIN(4vw, 30px) 0 MIN(2vw, 15px);
-                      font-size: 1.5rem;
+                      font-size: MIN(3.2vw, 24px);
                       font-family: $header;
                     }
 
@@ -1607,8 +1620,8 @@ input {
     min-height: 100vh;
     color: $brightfont;
     background-color: $midground;
-    margin: 0 0 MIN(2.13vw, 16px);
-    padding: MIN(4.27vw, 32px) 0;
+    margin: MIN(1vw, 13.33px) 0 MIN(2.13vw, 16px);
+    padding: 0 0 MIN(4.27vw, 32px);
 
     .post-detail-header {
       display: grid;
@@ -1619,15 +1632,13 @@ input {
         "title"
         "author"
         "tags";
-      margin: MIN(2.13vw, 16px) MIN(6.4vw, 48px) MIN(4.27vw, 32px);
       position: relative;
 
       .post-entry-image {
         grid-area: image;
-        min-width: calc(100% + MIN(12.8vw, 96px));
+        min-width: 100%;
         max-width: 100%;
         height: auto;
-        margin: -3rem -3rem MIN(2.13vw, 16px);
         object-fit: cover;
         object-position: 0 0;
       }
@@ -1637,6 +1648,7 @@ input {
         font-family: $header;
         font-size: MIN(6.4vw, 48px);
         font-weight: 600;
+        margin: MIN(4vw, 30px) MIN(6.4vw, 48px) MIN(2.13vw, 16px);
         padding-bottom: MIN(1vw, 7.5px);
 
         a {
@@ -1644,7 +1656,7 @@ input {
           top: 0;
           right: 0;
           font-size: MIN(3.2vw, 24px);
-          padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
+          padding: MIN(0.8vw, 6.4px) MIN(1vw, 7.5px) MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
           color: $brightfont;
           text-decoration: none;
         }
@@ -1659,9 +1671,8 @@ input {
           display: inline-block;
           font-size: MIN(3.2vw, 24px);
           text-decoration: none;
-          padding: MIN(0.8vw, 6.4px) 0.45rem MIN(0.64vw, 4.8px) MIN(1.5vw, 11.25px);
+          padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px) MIN(0.64vw, 4.8px);
           color: $accent_dark;
-          background-color: $midground;
           vertical-align: middle;
 
           &:hover {
@@ -1675,6 +1686,7 @@ input {
         grid-area: author;
         font-size: MIN(2.5vw, 18.75px);
         font-weight: 600;
+        margin: 0 MIN(6.4vw, 48px);
         padding-bottom: MIN(1vw, 7.5px);
 
         span {
@@ -1686,6 +1698,7 @@ input {
 
       .post-entry-tags {
         grid-area: tags;
+        margin: 0 MIN(6.4vw, 48px);
         padding: MIN(1vw, 7.5px) 0;
 
         a {
@@ -1695,7 +1708,7 @@ input {
           background-color: $midground;
           text-align: center;
           margin-bottom: MIN(0.64vw, 4.8px);
-          padding: 0.25rem MIN(1vw, 7.5px);
+          padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px);
           text-decoration: none;
 
           &:hover {
@@ -1709,7 +1722,7 @@ input {
     .post-detail-content {
       font-family: $body;
       font-size: MIN(2.5vw, 18.75px);
-      margin: MIN(0.64vw, 4.8px) MIN(6.4vw, 48px);
+      margin: MIN(0.64vw, 4.8px) MIN(6.4vw, 48px) MIN(6vw, 45px);
       height: auto;
       width: auto;
 
@@ -1962,7 +1975,7 @@ input {
     }
 
     .post-detail-comments {
-      margin: MIN(2.4vw, 18px) MIN(6.4vw, 48px) MIN(2vw, 15px);
+      margin: MIN(4vw, 30px) MIN(6.4vw, 48px) MIN(2vw, 15px);
 
       h2 {
         font-family: $header;
@@ -2539,12 +2552,20 @@ input {
       margin-right: MIN(2vw, 26.67px);
 
       .post-detail-header {
-        margin-left: MIN(3vw, 22.25px);
-        margin-right: MIN(3vw, 22.25px);
 
-        .post-entry-image {
-          min-width: calc(100% + MIN(6.13vw, 46px));
-          margin: -3rem -1.45rem MIN(2.13vw, 16px);
+        .post-entry-title {
+          margin-left: MIN(3vw, 22.25px);
+          margin-right: MIN(3vw, 22.25px);
+        }
+
+        .post-entry-author {
+          margin-left: MIN(3vw, 22.25px);
+          margin-right: MIN(3vw, 22.25px);
+        }
+
+        .post-entry-tags {
+          margin-left: MIN(3vw, 22.25px);
+          margin-right: MIN(3vw, 22.25px);
         }
       }
 
