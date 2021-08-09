@@ -286,11 +286,6 @@ input::placeholder {
           padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px); }
         .container .content .sidebar-container .sidebar-section-container.account {
           grid-area: account; }
-          .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list hr {
-            height: MIN(0.267vw, 2px);
-            margin: MIN(0.427vw, 3.2px) MIN(0.233vw, 1.6px);
-            background-color: #d5c4a1;
-            border: 0; }
           .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a {
             display: block;
             color: #fbf1c7;
@@ -314,49 +309,23 @@ input::placeholder {
               background-color: #cc241d; }
               .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a.signup:hover {
                 background-color: #fb4934; }
-          .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 100vw;
-            backdrop-filter: blur(8px);
-            z-index: 1; }
-            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal .logout-content {
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              display: grid;
-              grid-template-columns: auto auto;
-              grid-template-rows: auto auto;
-              grid-template-areas: "title close" "form form";
-              padding: MIN(3.2vw, 24px);
+          .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list hr {
+            height: MIN(0.267vw, 2px);
+            margin: MIN(0.8vw, 6.4px) MIN(0.233vw, 1.6px) MIN(0.427vw, 3.2px);
+            background-color: #d5c4a1;
+            border: 0; }
+          .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list form button {
+            width: calc(100% - MIN(0.427vw, 3.2px));
+            font-size: MIN(2.4vw, 18px);
+            font-weight: 600;
+            text-align: left;
+            margin: MIN(0.427vw, 3.2px) MIN(0.233vw, 1.6px);
+            padding: MIN(0.8vw, 6.4px);
+            color: #fbf1c7;
+            background-color: #282828; }
+            .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list form button:hover {
               color: #fbf1c7;
-              background-color: #3c3836;
-              border: #282828 1px solid; }
-              .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal .logout-content h1 {
-                grid-area: title;
-                margin: 0 MIN(1vw, 13.33px) MIN(1vw, 13.33px) 0; }
-              .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal .logout-content .logout-close {
-                grid-area: close;
-                margin: 0 0 MIN(1vw, 13.33px) MIN(1vw, 13.33px);
-                color: #d5c4a1;
-                font-size: MIN(4.27vw, 32px);
-                font-weight: bold; }
-                .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal .logout-content .logout-close:hover {
-                  color: #cc241d;
-                  text-decoration: none;
-                  cursor: pointer; }
-                .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal .logout-content .logout-close:focus {
-                  color: #cc241d;
-                  text-decoration: none;
-                  cursor: pointer; }
-              .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list .logout-modal .logout-content .logout-form {
-                grid-area: form;
-                margin: 0 auto;
-                margin: MIN(1vw, 13.33px) auto 0; }
+              background-color: #cc241d; }
         .container .content .sidebar-container .sidebar-section-container.tags {
           grid-area: tags; }
           .container .content .sidebar-container .sidebar-section-container.tags .sidebar-section-list a {
@@ -435,13 +404,13 @@ input::placeholder {
               grid-template-rows: auto auto auto auto auto;
               grid-template-areas: "image image image image" "title title title ." "author author author author" "tags tags tags tags" "interaction interaction interaction interaction";
               position: relative;
+              padding: 0;
               background-color: #3c3836; }
               .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-image {
                 grid-area: image; }
                 .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-image img {
-                  min-width: calc(100% + MIN(6.4vw, 48px));
+                  min-width: 100%;
                   height: auto;
-                  margin: MIN(-3.2vw, -24px) MIN(-3.2vw, -24px) MIN(2.13vw, 16px);
                   object-fit: cover;
                   object-position: 0 0; }
               .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-title {
@@ -449,6 +418,7 @@ input::placeholder {
                 font-family: "Gelasio", "Vollkorn", serif;
                 font-size: MIN(4.8vw, 36px);
                 font-weight: 600;
+                margin: MIN(3.2vw, 24px) MIN(3.2vw, 24px) 0;
                 padding-bottom: MIN(1vw, 7.5px); }
                 .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-title a {
                   color: #fbf1c7;
@@ -473,6 +443,7 @@ input::placeholder {
                 grid-area: author;
                 font-size: MIN(2.4vw, 18px);
                 font-weight: 600;
+                margin: 0 MIN(3.2vw, 24px);
                 padding-bottom: MIN(1vw, 7.5px); }
                 .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-author span {
                   font-size: MIN(2.13vw, 16px);
@@ -480,6 +451,7 @@ input::placeholder {
                   margin-left: MIN(1vw, 7.5px); }
               .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-tags {
                 grid-area: tags;
+                margin: 0 MIN(3.2vw, 24px);
                 padding: MIN(1vw, 7.5px) 0; }
                 .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-tags a {
                   display: inline-block;
@@ -495,7 +467,8 @@ input::placeholder {
                     color: #cc241d;
                     background-color: #282828; }
               .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions {
-                grid-area: interaction; }
+                grid-area: interaction;
+                margin: 0 MIN(3.2vw, 24px) MIN(3.2vw, 24px); }
                 .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions a {
                   display: inline-block;
                   color: #fbf1c7;

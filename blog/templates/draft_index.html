@@ -19,6 +19,9 @@
       <div class="main-list">
         {% for post in post_list %}
         <div class="list-entry-container post">
+          {% if post.image %}
+          <a class="post-entry-image" href="{{ post.get_absolute_url }}"><img src="{{ post.image }}" /></a>
+          {% endif %}
           <h2 class="post-entry-title">
             <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
           </h2>

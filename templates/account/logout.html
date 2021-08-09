@@ -1,16 +1,8 @@
 {% load i18n %}
-<div class="logout-modal" id="logoutModal">
-  <div class="logout-content">
-    <h1>{% trans "Confirm sign out" %}</h1>
-    <div class="logout-close">&times;</div>
-    <div class="logout-form">
-      <form method="post" action="{% url 'account_logout' %}">
-        {% csrf_token %}
-        {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-        {% endif %}
-        <button class="logout-form-submit" type="submit">{% trans 'Sign out' %}</button>
-      </form>
-    </div>
-  </div>
-</div>
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit">{% trans 'Sign out' %}</button>
+</form>

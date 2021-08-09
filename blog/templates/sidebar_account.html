@@ -10,7 +10,6 @@
     <a class="sidebar-account password" href="{% url 'account_change_password' %}">Password</a>
     <a class="sidebar-account social" href="{% url 'socialaccount_connections' %}">Connections</a>
     <hr />
-    <a class="sidebar-account logout" id="logoutBtn">Sign out</a>
     {% include 'account/logout.html' %}
   </div>
   {% else %}
