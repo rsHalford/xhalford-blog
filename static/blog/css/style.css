@@ -156,7 +156,7 @@ input::placeholder {
     width: MIN(90vw, 1200px);
     display: grid;
     grid-template-columns: MIN(22.5vw, 300px) MIN(67.5vw, 900px);
-    grid-template-rows: auto;
+    grid-template-rows: min-content;
     grid-template-areas: "sidebar main";
     background-color: #1d2021;
     margin: 0 0 MIN(2.13vw, 16px);
@@ -172,6 +172,8 @@ input::placeholder {
       object-fit: cover; }
     .container .content .sidebar-container {
       grid-area: sidebar;
+      position: sticky;
+      top: MIN(1.8vw, 13.5px);
       margin-right: MIN(1vw, 13.33px);
       display: grid;
       grid-template-columns: auto;
@@ -608,6 +610,7 @@ input::placeholder {
                     text-align: center; }
             .container .content .main-container .main-section-container .main-list .list-entry-container.email .connections-form-entry {
               color: #fbf1c7;
+              background-color: #282828;
               margin: MIN(1vw, 7.5px) MIN(3.2vw, 24px) MIN(1.6vw, 12px);
               padding: 0; }
               .container .content .main-container .main-section-container .main-list .list-entry-container.email .connections-form-entry form .blockLabels {
@@ -1798,6 +1801,8 @@ input::placeholder {
         .container .content.column .main-container {
           margin: 0 MIN(2vw, 26.67px); }
       .container .content .sidebar-container {
+        position: static;
+        top: auto;
         margin: 0 MIN(2vw, 26.67px);
         display: grid;
         grid-template-columns: auto;

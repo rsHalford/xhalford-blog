@@ -279,7 +279,7 @@ input {
     width: MIN(90vw, 1200px);
     display: grid;
     grid-template-columns: MIN(22.5vw, 300px) MIN(67.5vw, 900px);
-    grid-template-rows: auto;
+    grid-template-rows: min-content;
     grid-template-areas: "sidebar main";
     background-color: $background;
     margin: 0 0 MIN(2.13vw, 16px);
@@ -302,6 +302,8 @@ input {
 
     .sidebar-container {
       grid-area: sidebar;
+      position: sticky;
+      top: MIN(1.8vw, 13.5px);
       margin-right: MIN(1vw, 13.33px);
       display: grid;
       grid-template-columns: auto;
@@ -2535,6 +2537,8 @@ input {
       }
 
       .sidebar-container {
+        position: static;
+        top: auto;
         margin: 0 MIN(2vw, 26.67px);
         display: grid;
         grid-template-columns: auto;
