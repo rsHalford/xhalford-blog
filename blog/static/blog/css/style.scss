@@ -299,6 +299,7 @@ input {
       grid-area: sidebar;
       position: sticky;
       top: MIN(1.8vw, 13.5px);
+      align-self: start;
       margin-right: MIN(1vw, 13.33px);
       display: grid;
       grid-template-columns: auto;
