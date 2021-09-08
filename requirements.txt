@@ -22,8 +22,8 @@ Markdown==3.3.3
 markdown2==2.4.0
 mod-wsgi==4.7.1
 oauthlib==3.1.0
-Pillow==8.2.0
-pkg-resources==0.0.0
+Pillow==8.3.2
+pkg_resources==0.0.0
 psycopg2==2.8.6
 pycparser==2.20
 Pygments==2.7.4
