@@ -2070,6 +2070,7 @@ input {
             border-right: MIN(0.267vw, 2px) solid $background;
             border-bottom: MIN(0.267vw, 2px) solid $background;
             border-left: MIN(0.267vw, 2px) solid $background;
+            word-break: break-word;
 
             * {
               font-weight: 500;

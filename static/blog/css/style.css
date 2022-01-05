@@ -1460,7 +1460,8 @@ input::placeholder {
           border-top: none;
           border-right: MIN(0.267vw, 2px) solid #1d2021;
           border-bottom: MIN(0.267vw, 2px) solid #1d2021;
-          border-left: MIN(0.267vw, 2px) solid #1d2021; }
+          border-left: MIN(0.267vw, 2px) solid #1d2021;
+          word-break: break-word; }
           .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-body * {
             font-weight: 500;
             font-size: MIN(2vw, 15px);
