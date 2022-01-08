@@ -1,47 +1,146 @@
 ## Personal blog hosted on xhalford.com
 
-# Setup:
 
-`git clone git@github.com:rsHalford/xhalford-blog.git`
+# Production
 
-`python3 -m venv /path/to/new/virtual/environment`
 
-`pip install -r requirements.txt`
+## Apache setup
 
- *NB: mod-wsgi, pkg-resources and psycopg2 may have to be removed from requirements.txt when only settings up for a development environment*
+/etc/apache2/sites-available/blog.conf
 
-## Settings.py
-```python
+```conf
+<VirtualHost *:80>
+        ServerName www.blog.com
+        ServerAlias blog.com
+        ServerAdmin user@blog.com
 
-from decouple import config, Csv
-import dj_database_url
+        DocumentRoot /home/user/blog
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
-SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=True, cast=bool)
-SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", default=True, cast=bool)
-CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", default=True, cast=bool)
-SECURE_REFERRER_POLICY = config("SECURE_REFERRER_POLICY", default="same-origin")
-EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
-EMAIL_HOST = config('EMAIL_HOST', default='')
-EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+        ErrorLog ${APACHE_LOG_DIR}/blog-error.log
+        CustomLog ${APACHE_LOG_DIR}/blog-access.log combined
 
+        Alias /static /home/user/blog/static
+        <Directory /home/user/blog/static>
+                Require all granted
+        </Directory>
+
+        Alias /media /home/user/blog/media
+        <Directory /home/user/blog/media>
+                Require all granted
+        </Directory>
+
+        WSGIScriptAlias / /home/user/blog/blog_backend/wsgi.py
+        WSGIDaemonProcess blog python-path=/home/user/blog python-home=/home/user/blog/venv
+        WSGIProcessGroup blog
+        <Directory /home/user/blog/blog_backend>
+                <Files wsgi.py>
+                        Require all granted
+                </Files>
+        </Directory>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.blog.com$ [OR]
+RewriteCond %{HTTP_HOST} ^blog.com$
+RewriteRule ^(.*)$ https://www.blog.com$1 [R=301,L]
+</VirtualHost>
 ```
 
-## Create an .env file at the project root. And add the following for either setup:
-
-### Local Environment
+```sh
+# enable the virtual host file
+$ sudo a2ensite blog.conf
+$ sudo systemctl restart apache2
+$ sudo apache2ctl configtest
 ```
-SECRET_KEY=
+
+
+## Certbot
+
+```sh
+# install certbot, then get and install certificates
+$ sudo snap install --classic certbot
+$ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+$ sudo certbot --apache
+
+# test automatic renewals
+$ sudo certbot renew --dry-run
+```
+
+
+## Prevent multiple WSGI processes
+
+/etc/apache2/sites-available/blog.conf
+
+```sh
+# comment/remove the following lines
+        WSGIScriptAlias / /home/user/blog/blog_backend/wsgi.py
+        WSGIDaemonProcess blog python-path=/home/user/blog python-home=/home/user/blog/venv
+        WSGIProcessGroup blog
+```
+
+
+## Clone and setup
+
+```sh
+# clone the project
+$ git clone git@github.com:rsHalford/xhalford-blog.git blog
+
+# change the project ownership to the apache group
+$ chown :www-data blog/
+
+$ cd blog/
+
+# create the python virtual environment and activate it
+$ python3 -m venv venv
+$ source venv/bin/activate
+
+# install the required production dependencies
+$ pip install -r requirements-prod.txt
+
+# propagate the model changes into the database schema
+$ python3 manage.py migrate
+
+# collect all app static files to be served
+$ python3 manage.py collectstatic
+```
+
+## Environment variables
+
+.env
+
+```sh
+SECRET_KEY={ secret_key }
+ALLOWED_HOSTS=.blog.com
+DATABASE_URL=postgres://{ db_user }:{ db_password }@{ db_host }:{ db_port }/{ db_name }
+EMAIL_HOST="{ smtp.blog.xyz }"
+EMAIL_HOST_USER="{ user@blog.com }"
+EMAIL_HOST_PASSWORD="{ password123 }"
+```
+
+
+# Development
+
+
+## Clone and setup
+
+```sh
+# clone the project
+$ git clone git@github.com:rsHalford/xhalford-blog.git
+
+# install poetry
+$ curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master
+
+$ cd xhalford-blog/
+
+# install the default, development and testing dependencies
+$ poetry install --no-root --with=development,testing
+```
+
+
+## Environment variables
+
+.env
+
+```
+SECRET_KEY={ secret_key }
 DEBUG=True
 ALLOWED_HOSTS=.localhost,127.0.0.1
 DATABASE_URL=sqlite:///db.sqlite3
@@ -52,12 +151,25 @@ SECURE_REFERRER_POLICY=""
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 ```
 
-### Production Environment
+
+## Create database
+
+```sh
+# enter the poetry shell
+$ poetry shell
+
+# propagate the model changes into the database schema
+$ python3 manage.py migrate
+
+# collect all app static files to be served
+$ python3 manage.py collectstatic
 ```
-SECRET_KEY=
-ALLOWED_HOSTS=
-DATABASE_URL=postgres://{ db_user }:{ db_password }@{ db_host }:{ db_port }/{ db_name }
-EMAIL_HOST="{ smtp.domain.xyz }"
-EMAIL_HOST_USER="{ joe@blogs.xyz }"
-EMAIL_HOST_PASSWORD="{ password123 }"
+
+
+## Export requirements-prod.txt
+
+```sh
+# poetry-export-plugin is used to export to a requirements-prod.txt for production
+$ poetry plugin add poetry-export-plugin
+$ poetry export --without=development,testing --format=requirements.txt --output=requirements-prod.txt --without-hashes
 ```
