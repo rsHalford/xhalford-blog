@@ -58,6 +58,7 @@ python-decouple = "^3.5"
 readtime = "^1.1.1"
 dj-database-url = "^0.5.0"
 django-taggit = {git = "https://github.com/jazzband/django-taggit.git"}
+libsass = "^0.21.0"
 
 [tool.poetry.group.production.dependencies]
 psycopg2 = "^2.9.3"
