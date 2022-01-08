@@ -1695,8 +1695,8 @@ input::placeholder {
     grid-area: footer;
     display: grid;
     grid-template-columns: auto MIN(90vw, 1200px) auto;
-    grid-template-rows: auto auto;
-    grid-template-areas: ". contact ." ". feeds .";
+    grid-template-rows: auto auto auto;
+    grid-template-areas: ". contact ." ". feeds ." ". licence .";
     background-color: #1d2021; }
     .container .footer .footer-contact {
       grid-area: contact;
@@ -1731,7 +1731,7 @@ input::placeholder {
       grid-area: feeds;
       display: inline-block;
       text-align: center;
-      padding: MIN(3.2vw, 24px) 0; }
+      padding-top: MIN(3.2vw, 24px); }
       .container .footer .footer-feeds div {
         display: inline-block; }
         .container .footer .footer-feeds div p {
@@ -1757,6 +1757,25 @@ input::placeholder {
           .container .footer .footer-feeds div a:hover {
             color: #fbf1c7;
             text-decoration: none; }
+    .container .footer .footer-licence {
+      grid-area: licence;
+      display: inline-block;
+      text-align: center;
+      padding: MIN(3.2vw, 24px) 0; }
+      .container .footer .footer-licence div {
+        display: inline-block; }
+        .container .footer .footer-licence div p {
+          color: #d5c4a1;
+          font-size: MIN(1.8vw, 13.5px); }
+        .container .footer .footer-licence div a {
+          color: #fb4934;
+          font-size: MIN(1.8vw, 13.5px); }
+          .container .footer .footer-licence div a img {
+            height: MIN(2.5vw, 18.75px);
+            margin-left: MIN(0.4vw, 3px);
+            vertical-align: text-bottom; }
+          .container .footer .footer-licence div a:hover {
+            text-decoration: underline; }
 
 @media only screen and (max-width: 700px) {
   .container {
@@ -1815,7 +1834,7 @@ input::placeholder {
           max-width: 84vw; }
     .container .footer {
       grid-template-columns: auto;
-      grid-template-areas: "contact" "feeds";
+      grid-template-areas: "contact" "feeds" "licence";
       background-color: #1d2021; } }
 
 /*# sourceMappingURL=style.css.map */
