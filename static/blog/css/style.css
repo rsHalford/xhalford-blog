@@ -1734,10 +1734,6 @@ input::placeholder {
       padding-top: MIN(3.2vw, 24px); }
       .container .footer .footer-feeds div {
         display: inline-block; }
-        .container .footer .footer-feeds div p {
-          font-size: MIN(2.5vw, 18.75px);
-          color: #d5c4a1;
-          margin-right: MIN(6vw, 45px); }
         .container .footer .footer-feeds div a {
           color: #d5c4a1;
           font-size: MIN(2.5vw, 18.75px);
