@@ -1427,7 +1427,7 @@ input {
                     .codehilite {
                       max-width: MIN(86vw, 1147px);
                       margin: MIN(4vw, 30px) auto;
-                      padding: 0 MIN(1.8vw, 13.5px);
+                      padding: MIN(1.8vw, 13.5px);
                       font-family: $code;
                       font-size: MIN(2.25vw, 16.875px);
                       color: $brightfont;
@@ -1828,7 +1828,7 @@ input {
 
       .codehilite {
         margin: MIN(4vw, 30px) 0;
-        padding: 0 MIN(1.8vw, 13.5px);
+        padding: MIN(1.8vw, 13.5px);
         font-family: $code;
         font-size: MIN(2.25vw, 16.875px);
         color: $brightfont;
@@ -2180,7 +2180,7 @@ input {
             .codehilite {
               max-width: MIN(73vw, 973.33px);
               margin: 0 auto;
-              padding: 0 MIN(1.8vw, 13.5px);
+              padding: MIN(1.8vw, 13.5px);
               font-family: $code;
               font-size: MIN(2.25vw, 16.875px);
               color: $brightfont;
