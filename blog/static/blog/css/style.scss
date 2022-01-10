@@ -354,6 +354,7 @@ input {
               }
 
               &.signup {
+                margin-top: MIN(1vw, 7.5px);
                 font-size: MIN(2.267vw, 17px);
                 background-color: $accent_dark;
 
