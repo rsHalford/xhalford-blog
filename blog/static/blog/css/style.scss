@@ -2322,11 +2322,10 @@ input {
               .il { color: $bright_purple }
             }
           }
+        }
 
-          .post-comments-else {
-            text-align: center;
-            font-size: MIN(3.2vw, 24px);
-          }
+        .post-comments-else {
+          font-size: MIN(3.2vw, 24px);
         }
       }
     }

@@ -1689,9 +1689,8 @@ input::placeholder {
               color: #83a598; }
             .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-body .codehilite .il {
               color: #d3869b; }
-        .container .post-detail-container .post-detail-comments .post-comments .post-comments-container .post-comments-else {
-          text-align: center;
-          font-size: MIN(3.2vw, 24px); }
+      .container .post-detail-container .post-detail-comments .post-comments .post-comments-else {
+        font-size: MIN(3.2vw, 24px); }
   .container .footer {
     grid-area: footer;
     display: grid;
