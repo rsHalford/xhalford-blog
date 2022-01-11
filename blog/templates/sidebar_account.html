@@ -1,7 +1,33 @@
-<div class="sidebar-section-container account">
+<div class="sidebar-section-container account wide">
   {% if user.is_authenticated %}
-  <h3 class="sidebar-section-title">{{ user.username }}</h3>
+  <div class="sidebar-section-header">
+    <h3 class="sidebar-section-title">{{ user.username }}</h3>
+  </div>
   <div class="sidebar-section-list account">
+    {% if user.is_superuser %}
+    <a class="sidebar-account create" href="{% url 'post_create' %}">Create</a>
+    <a class="sidebar-account drafts" href="{% url 'drafts' %}">Drafts</a>
+    {% endif %}
+    <a class="sidebar-account email" href="{% url 'account_email' %}">Emails</a>
+    <a class="sidebar-account password" href="{% url 'account_change_password' %}">Password</a>
+    <a class="sidebar-account social" href="{% url 'socialaccount_connections' %}">Connections</a>
+    <hr />
+    {% include 'account/logout.html' %}
+  </div>
+  {% else %}
+  <div class="sidebar-section-list account">
+    <a class="sidebar-account login" href="{% url 'account_login' %}">Sign in</a>
+    <a class="sidebar-account signup" href="{% url 'account_signup' %}">Create account</a>
+  </div>
+  {% endif %}
+</div>
+<div class="sidebar-section-container account column" x-data="{ expanded: false }" :style="expanded ? { padding: 'MIN(2vw, 15px)' } : { padding: 'MIN(2vw, 15px) MIN(2vw, 15px) 0' }">
+  {% if user.is_authenticated %}
+  <div class="sidebar-section-header">
+    <h3 class="sidebar-section-title">{{ user.username }}</h3>
+    <button class="sidebar-collapse" @click="expanded = ! expanded"><i :class="expanded ? 'fas fa-minus' : 'fas fa-plus'"></i></button>
+  </div>
+  <div class="sidebar-section-list account" x-show="expanded" x-collapse.duration.400ms>
     {% if user.is_superuser %}
     <a class="sidebar-account create" href="{% url 'post_create' %}">Create</a>
     <a class="sidebar-account drafts" href="{% url 'drafts' %}">Drafts</a>

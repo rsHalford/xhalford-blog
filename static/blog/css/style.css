@@ -277,11 +277,21 @@ input::placeholder {
           }
         }
         */ }
-        .container .content .sidebar-container .sidebar-section-container .sidebar-section-title {
-          text-align: left;
-          font-size: MIN(3.2vw, 24px);
-          color: #fbf1c7;
-          padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px); }
+        .container .content .sidebar-container .sidebar-section-container .sidebar-section-header {
+          display: grid;
+          grid-template-columns: auto min-content;
+          grid-template-areas: "title title"; }
+          .container .content .sidebar-container .sidebar-section-container .sidebar-section-header .sidebar-section-title {
+            text-align: left;
+            font-size: MIN(3.2vw, 24px);
+            color: #fbf1c7;
+            padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px); }
+          .container .content .sidebar-container .sidebar-section-container .sidebar-section-header .sidebar-collapse {
+            display: none; }
+        .container .content .sidebar-container .sidebar-section-container.wide {
+          display: block; }
+        .container .content .sidebar-container .sidebar-section-container.column {
+          display: none; }
         .container .content .sidebar-container .sidebar-section-container.account {
           grid-area: account; }
           .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a {
@@ -1836,11 +1846,28 @@ input::placeholder {
         grid-template-rows: min-content min-content;
         grid-template-areas: "account" "tags"; }
         .container .content .sidebar-container .sidebar-section-container {
-          margin: MIN(2vw, 16.66px) 0;
-          padding: MIN(2vw, 15px); }
-          .container .content .sidebar-container .sidebar-section-container .sidebar-section-title {
-            font-size: MIN(6.4vw, 48px);
-            padding: 0 0 MIN(1vw, 7.5px) MIN(2vw, 15px); }
+          margin: MIN(2vw, 16.66px) 0; }
+          .container .content .sidebar-container .sidebar-section-container .sidebar-section-header {
+            display: grid;
+            grid-template-columns: auto min-content;
+            grid-template-areas: "title collapse";
+            padding-bottom: MIN(1vw, 7.5px); }
+            .container .content .sidebar-container .sidebar-section-container .sidebar-section-header .sidebar-section-title {
+              grid-area: title;
+              font-size: MIN(6.4vw, 48px);
+              padding: 0 0 MIN(1vw, 7.5px) MIN(2vw, 15px); }
+            .container .content .sidebar-container .sidebar-section-container .sidebar-section-header .sidebar-collapse {
+              grid-area: collapse;
+              display: inline-block;
+              padding: MIN(0.75vw, 5.625px) MIN(1.6vw, 12.8px) 0;
+              margin-bottom: MIN(1vw, 7.5px); }
+              .container .content .sidebar-container .sidebar-section-container .sidebar-section-header .sidebar-collapse i {
+                font-size: MIN(6.4vw, 48px); }
+          .container .content .sidebar-container .sidebar-section-container.wide {
+            display: none;
+            visibility: hidden; }
+          .container .content .sidebar-container .sidebar-section-container.column {
+            display: block; }
           .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a {
             font-size: MIN(4.8vw, 36px);
             font-weight: 600;

@@ -314,11 +314,29 @@ input {
         padding: MIN(1vw, 7.5px);
         background-color: $midground;
 
-        .sidebar-section-title {
-          text-align: left;
-          font-size: MIN(3.2vw, 24px);
-          color: $brightfont;
-          padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px);
+        .sidebar-section-header {
+          display: grid;
+          grid-template-columns: auto min-content;
+          grid-template-areas: "title title";
+
+          .sidebar-section-title {
+            text-align: left;
+            font-size: MIN(3.2vw, 24px);
+            color: $brightfont;
+            padding: 0 0 MIN(1vw, 7.5px) MIN(1vw, 7.5px);
+          }
+
+          .sidebar-collapse {
+            display: none;
+          }
+        }
+
+        &.wide {
+          display: block;
+        }
+
+        &.column {
+          display: none;
         }
 
         &.account {
@@ -2615,11 +2633,37 @@ input {
 
         .sidebar-section-container {
           margin: MIN(2vw, 16.66px) 0;
-          padding: MIN(2vw, 15px);
 
-          .sidebar-section-title {
-            font-size: MIN(6.4vw, 48px);
-            padding: 0 0 MIN(1vw, 7.5px) MIN(2vw, 15px);
+          .sidebar-section-header {
+            display: grid;
+            grid-template-columns: auto min-content;
+            grid-template-areas: "title collapse";
+            padding-bottom: MIN(1vw, 7.5px);
+
+            .sidebar-section-title {
+              grid-area: title;
+              font-size: MIN(6.4vw, 48px);
+              padding: 0 0 MIN(1vw, 7.5px) MIN(2vw, 15px);
+            }
+
+            .sidebar-collapse {
+              grid-area: collapse;
+              display: inline-block;
+              padding: MIN(0.75vw, 5.625px) MIN(1.6vw, 12.8px) 0;
+              margin-bottom: MIN(1vw, 7.5px);
+
+              i {
+                font-size: MIN(6.4vw, 48px);
+              }
+            }
+          }
+
+          &.wide {
+            display: none;
+          }
+
+          &.column {
+            display: block;
           }
 
           &.account {

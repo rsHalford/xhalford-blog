@@ -1,6 +1,19 @@
-<div class="sidebar-section-container tags">
-  <h3 class="sidebar-section-title">Tags</h3>
+<div class="sidebar-section-container tags wide">
+  <div class="sidebar-section-header">
+    <h3 class="sidebar-section-title">Tags</h3>
+  </div>
   <div class="sidebar-section-list tags">
+    {% for tag in tag_list %}
+    <a href="{% url 'tag_index' tag.slug %}">#{{ tag.slug }}</a>
+    {% endfor %}
+  </div>
+</div>
+<div class="sidebar-section-container tags column" x-data="{ expanded: false }" :style="expanded ? { padding: 'MIN(2vw, 15px)' } : { padding: 'MIN(2vw, 15px) MIN(2vw, 15px) 0' }">
+  <div class="sidebar-section-header">
+    <h3 class="sidebar-section-title">Tags</h3>
+    <button class="sidebar-collapse" @click="expanded = ! expanded"><i :class="expanded ? 'fas fa-minus' : 'fas fa-plus'"></i></button>
+  </div>
+  <div class="sidebar-section-list tags" x-show="expanded" x-collapse.duration.400ms>
     {% for tag in tag_list %}
     <a href="{% url 'tag_index' tag.slug %}">#{{ tag.slug }}</a>
     {% endfor %}
