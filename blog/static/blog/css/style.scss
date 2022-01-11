@@ -2541,6 +2541,10 @@ input {
     font-size: MIN(4.8vw, 36px);
     font-weight: 600;
     padding: MIN(1.6vw, 12.8px);
+
+    &:hover {
+      background-color: $accent_dark;
+    }
   }
 
   input {
@@ -2549,6 +2553,10 @@ input {
       font-size: MIN(4.8vw, 36px);
       font-weight: 600;
       padding: MIN(1.6vw, 12.8px);
+
+      &:hover {
+        background-color: $accent_dark;
+      }
     }
   }
 
