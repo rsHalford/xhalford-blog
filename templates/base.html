@@ -50,64 +50,8 @@
     </div>
 
     <script>
-{% block remove_email %}
-{% endblock remove_email %}
-
-// Logout Modal
-var modal = document.getElementById("logoutModal");
-var btn = document.getElementById("logoutBtn");
-var span = document.getElementsByClassName("logout-close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-// Set Theme
-//function setTheme(themeName) {
-//    localStorage.setItem('theme', themeName);
-//    document.documentElement.className = themeName;
-//}
-// Toggle Theme
-//function toggleTheme() {
-//    if (localStorage.getItem('theme') === 'theme-dark') {
-//        setTheme('theme-light');
-//        document.getElementById("light-off").style.display = "none";
-//        document.getElementById("light-on").style.display = "inline-block";
-//    } else {
-//        setTheme('theme-dark');
-//        document.getElementById("light-off").style.display = "inline-block";
-//        document.getElementById("light-on").style.display = "none";
-//    }
-//}
-//(function () {
-//    if (localStorage.getItem('theme') === 'theme-dark') {
-//        setTheme('theme-dark');
-//        document.getElementById('slider').checked = false;
-//        document.getElementById("light-off").style.display = "inline-block";
-//        document.getElementById("light-on").style.display = "none";
-//    } else {
-//        setTheme('theme-light');
-//        document.getElementById('slider').checked = true;
-//        document.getElementById("light-off").style.display = "none";
-//        document.getElementById("light-on").style.display = "inline-block";
-//    }
-//})();
-//
-//  // Scroll Progress Indicator
-//  window.onscroll = function() {scrollIndicator()};
-//  function scrollIndicator() {
-//    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-//    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-//    var scrolled = (winScroll / height) * 100;
-//    document.getElementsByClassName("progress").style.width = scrolled + "%";
-//  }
+      {% block remove_email %}
+      {% endblock remove_email %}
     </script>
 
   </body>
