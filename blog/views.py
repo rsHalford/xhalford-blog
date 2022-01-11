@@ -54,6 +54,17 @@ class DraftList(ListView):
         return context
 
 
+class SavedList(ListView):
+    model = Post
+    template_name = "saved_index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(SavedList, self).get_context_data(**kwargs)
+        context["post_list"] = Post.objects.filter(saves=self.request.user)
+        context["tag_list"] = Tag.objects.all()
+        return context
+
+
 @method_decorator(user_passes_test(lambda u: u.is_superuser), name="dispatch")
 class PostCreate(CreateView):
     model = Post
@@ -101,6 +112,19 @@ class PostDetail(DetailView):
         )
         comment.save()
         return self.get(self, request, *args, **kwargs)
+
+
+def save_post(request, **kwargs):
+    user = request.user
+    post = Post.objects.get(slug=kwargs["slug"])
+    if not post.saves.filter(id=request.user.id).exists():
+        post.saves.add(user)
+        post.save()
+        return render(request, "partials/saves_area.html", context={"post": post})
+    else:
+        post.saves.remove(user)
+        post.save()
+        return render(request, "partials/saves_area.html", context={"post": post})
 
 
 class TagList(ListView):

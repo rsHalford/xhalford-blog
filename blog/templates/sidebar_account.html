@@ -8,6 +8,7 @@
     <a class="sidebar-account create" href="{% url 'post_create' %}">Create</a>
     <a class="sidebar-account drafts" href="{% url 'drafts' %}">Drafts</a>
     {% endif %}
+    <a class="sidebar-account saved" href="{% url 'saved' %}">Saved</a>
     <a class="sidebar-account email" href="{% url 'account_email' %}">Emails</a>
     <a class="sidebar-account password" href="{% url 'account_change_password' %}">Password</a>
     <a class="sidebar-account social" href="{% url 'socialaccount_connections' %}">Connections</a>
@@ -32,6 +33,7 @@
     <a class="sidebar-account create" href="{% url 'post_create' %}">Create</a>
     <a class="sidebar-account drafts" href="{% url 'drafts' %}">Drafts</a>
     {% endif %}
+    <a class="sidebar-account saved" href="{% url 'saved' %}">Saved</a>
     <a class="sidebar-account email" href="{% url 'account_email' %}">Emails</a>
     <a class="sidebar-account password" href="{% url 'account_change_password' %}">Password</a>
     <a class="sidebar-account social" href="{% url 'socialaccount_connections' %}">Connections</a>

@@ -35,6 +35,7 @@
     <div class="post-entry-author detail">
       <p>{{ post.author }}<span>&#183;&nbsp;{{ post.created_on_pretty }} &#183; {{ post.readtime }} read</span></p>
     </div>
+    {% include 'partials/saves_area.html' %}
     <div class="post-entry-tags detail">
       {% for tag in post.tags.all %}
       <a class="post-entry-tag detail" href="{% url 'tag_index' tag.slug %}">

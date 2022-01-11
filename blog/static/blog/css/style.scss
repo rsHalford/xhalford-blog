@@ -748,12 +748,15 @@ input {
                   padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px);
                   text-decoration: none;
 
-                  .fa-comment-alt {
+                  i {
                     color: $accent_dark;
                   }
 
                   .fas {
-                    display: none;
+
+                    &.fa-comment-alt {
+                      display: none;
+                    }
                   }
 
                   &:hover {
@@ -1646,11 +1649,12 @@ input {
     .post-detail-header {
       display: grid;
       grid-template-columns: 100%;
-      grid-template-rows: auto auto auto auto;
+      grid-template-rows: auto auto auto auto auto;
       grid-template-areas:
         "image"
         "title"
         "author"
+        "saves"
         "tags";
       position: relative;
 
@@ -1704,15 +1708,86 @@ input {
 
       .post-entry-author {
         grid-area: author;
-        font-size: MIN(2.5vw, 18.75px);
-        font-weight: 600;
         margin: 0 MIN(6.4vw, 48px);
         padding-bottom: MIN(1vw, 7.5px);
 
-        span {
-          font-size: MIN(2.4vw, 18px);
-          font-weight: 400;
-          margin-left: MIN(1vw, 7.5px);
+        p {
+          grid-area: author;
+          font-size: MIN(2.5vw, 18.75px);
+          font-weight: 600;
+
+          span {
+            font-size: MIN(2.4vw, 18px);
+            font-weight: 400;
+            margin-left: MIN(1vw, 7.5px);
+          }
+        }
+      }
+
+      .post-entry-saves {
+        grid-area: saves;
+        margin: 0 MIN(6.4vw, 48px);
+        padding: MIN(2vw, 15px) 0 MIN(1vw, 7.5px);
+
+        button {
+          display: inline-block;
+          color: $brightfont;
+          background-color: $midground;
+          text-align: center;
+          padding: 0;
+          text-decoration: none;
+          font-size: MIN(3vw, 22.5px);
+
+          i {
+            color: $accent_dark;
+          }
+
+          .fas {
+
+            &.fa-heart-broken {
+              display: none;
+            }
+
+            &.fa-heart {
+
+              &.save {
+                display: none;
+              }
+            }
+          }
+
+          &:hover {
+            color: $brightfont;
+            background-color: $midground;
+
+            .fas {
+
+              &.fa-heart-broken {
+                display: inline-block;
+              }
+            }
+
+            .fas {
+
+              &.fa-heart {
+
+                &.save {
+                  display: inline-block;
+                }
+
+                &.unsave {
+                  display: none;
+                }
+              }
+            }
+
+            .far {
+
+              &.fa-heart {
+                display: none;
+              }
+            }
+          }
         }
       }
 
@@ -3213,16 +3288,26 @@ input {
         }
 
         .post-entry-author {
-          font-size: MIN(4vw, 30px);
-          font-weight: 600;
           margin: 0 MIN(3vw, 22.25px);
           padding-bottom: MIN(2vw, 15px);
 
+          p {
+            font-size: MIN(4vw, 30px);
 
-          span {
-            font-size: MIN(4.8vw, 36px);
-            font-weight: 400;
-            margin-left: MIN(2vw, 15px);
+            span {
+              font-size: MIN(4.8vw, 36px);
+              font-weight: 400;
+              margin-left: MIN(2vw, 15px);
+            }
+          }
+        }
+
+        .post-entry-saves {
+          margin: 0 MIN(3vw, 22.25px);
+          padding: MIN(2vw, 15px) 0;
+
+          button {
+            font-size: MIN(6vw, 45px);
           }
         }
 

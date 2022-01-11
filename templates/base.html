@@ -21,6 +21,7 @@
     <script src="https://kit.fontawesome.com/5ffae73fef.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
     {% block extra_head %}
     {% endblock extra_head %}
   </head>
@@ -52,6 +53,9 @@
     <script>
       {% block remove_email %}
       {% endblock remove_email %}
+      document.body.addEventListener('htmx:configRequest', (e) => {
+          e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+          })
     </script>
 
   </body>

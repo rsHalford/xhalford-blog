@@ -492,9 +492,9 @@ input::placeholder {
                   margin-bottom: MIN(0.64vw, 4.8px);
                   padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px);
                   text-decoration: none; }
-                  .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions a .fa-comment-alt {
+                  .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions a i {
                     color: #cc241d; }
-                  .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions a .fas {
+                  .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions a .fas.fa-comment-alt {
                     display: none; }
                   .container .content .main-container .main-section-container .main-list .list-entry-container.post .post-entry-interactions a:hover {
                     color: #fbf1c7;
@@ -1114,8 +1114,8 @@ input::placeholder {
     .container .post-detail-container .post-detail-header {
       display: grid;
       grid-template-columns: 100%;
-      grid-template-rows: auto auto auto auto;
-      grid-template-areas: "image" "title" "author" "tags";
+      grid-template-rows: auto auto auto auto auto;
+      grid-template-areas: "image" "title" "author" "saves" "tags";
       position: relative; }
       .container .post-detail-container .post-detail-header .post-entry-image {
         grid-area: image;
@@ -1154,14 +1154,45 @@ input::placeholder {
           background-color: #cc241d; }
       .container .post-detail-container .post-detail-header .post-entry-author {
         grid-area: author;
-        font-size: MIN(2.5vw, 18.75px);
-        font-weight: 600;
         margin: 0 MIN(6.4vw, 48px);
         padding-bottom: MIN(1vw, 7.5px); }
-        .container .post-detail-container .post-detail-header .post-entry-author span {
-          font-size: MIN(2.4vw, 18px);
-          font-weight: 400;
-          margin-left: MIN(1vw, 7.5px); }
+        .container .post-detail-container .post-detail-header .post-entry-author p {
+          grid-area: author;
+          font-size: MIN(2.5vw, 18.75px);
+          font-weight: 600; }
+          .container .post-detail-container .post-detail-header .post-entry-author p span {
+            font-size: MIN(2.4vw, 18px);
+            font-weight: 400;
+            margin-left: MIN(1vw, 7.5px); }
+      .container .post-detail-container .post-detail-header .post-entry-saves {
+        grid-area: saves;
+        margin: 0 MIN(6.4vw, 48px);
+        padding: MIN(2vw, 15px) 0 MIN(1vw, 7.5px); }
+        .container .post-detail-container .post-detail-header .post-entry-saves button {
+          display: inline-block;
+          color: #fbf1c7;
+          background-color: #282828;
+          text-align: center;
+          padding: 0;
+          text-decoration: none;
+          font-size: MIN(3vw, 22.5px); }
+          .container .post-detail-container .post-detail-header .post-entry-saves button i {
+            color: #cc241d; }
+          .container .post-detail-container .post-detail-header .post-entry-saves button .fas.fa-heart-broken {
+            display: none; }
+          .container .post-detail-container .post-detail-header .post-entry-saves button .fas.fa-heart.save {
+            display: none; }
+          .container .post-detail-container .post-detail-header .post-entry-saves button:hover {
+            color: #fbf1c7;
+            background-color: #282828; }
+            .container .post-detail-container .post-detail-header .post-entry-saves button:hover .fas.fa-heart-broken {
+              display: inline-block; }
+            .container .post-detail-container .post-detail-header .post-entry-saves button:hover .fas.fa-heart.save {
+              display: inline-block; }
+            .container .post-detail-container .post-detail-header .post-entry-saves button:hover .fas.fa-heart.unsave {
+              display: none; }
+            .container .post-detail-container .post-detail-header .post-entry-saves button:hover .far.fa-heart {
+              display: none; }
       .container .post-detail-container .post-detail-header .post-entry-tags {
         grid-area: tags;
         margin: 0 MIN(6.4vw, 48px);
@@ -1868,8 +1899,7 @@ input::placeholder {
               .container .content .sidebar-container .sidebar-section-container .sidebar-section-header .sidebar-collapse i {
                 font-size: MIN(6.4vw, 48px); }
           .container .content .sidebar-container .sidebar-section-container.wide {
-            display: none;
-            visibility: hidden; }
+            display: none; }
           .container .content .sidebar-container .sidebar-section-container.column {
             display: block; }
           .container .content .sidebar-container .sidebar-section-container.account .sidebar-section-list a {
@@ -2150,14 +2180,19 @@ input::placeholder {
         font-size: MIN(6.4vw, 48px);
         padding: MIN(0.5vw, 3.75px) MIN(1vw, 7.5px) MIN(0.64vw, 4.8px); }
       .container .post-detail-container .post-detail-header .post-entry-author {
-        font-size: MIN(4vw, 30px);
-        font-weight: 600;
         margin: 0 MIN(3vw, 22.25px);
         padding-bottom: MIN(2vw, 15px); }
-        .container .post-detail-container .post-detail-header .post-entry-author span {
-          font-size: MIN(4.8vw, 36px);
-          font-weight: 400;
-          margin-left: MIN(2vw, 15px); }
+        .container .post-detail-container .post-detail-header .post-entry-author p {
+          font-size: MIN(4vw, 30px); }
+          .container .post-detail-container .post-detail-header .post-entry-author p span {
+            font-size: MIN(4.8vw, 36px);
+            font-weight: 400;
+            margin-left: MIN(2vw, 15px); }
+      .container .post-detail-container .post-detail-header .post-entry-saves {
+        margin: 0 MIN(3vw, 22.25px);
+        padding: MIN(2vw, 15px) 0; }
+        .container .post-detail-container .post-detail-header .post-entry-saves button {
+          font-size: MIN(6vw, 45px); }
       .container .post-detail-container .post-detail-header .post-entry-tags {
         margin: 0 MIN(3vw, 22.25px);
         padding: MIN(1vw, 7.5px) 0; }

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<head>{% block title %}Home{% endblock %}</head>
+<head>{% block title %}Saved{% endblock %}</head>
 {% block content %}
 <div class="content">
   {% block sidebar %}
@@ -10,17 +10,10 @@
   {% endblock sidebar %}
   <div class="main-container">
     <div class="main-section-container">
-      <header class="main-header index">
+      <header class="main-header">
         <div class="main-title">
-          <h1>Posts</h1>
+          <h1>Saved</h1>
         </div>
-        <!--
-        <div class="posts-sorting">
-          <a class="posts-sorting-feed" href="#"><h2>Feed</h2></a>
-          <a class="posts-sorting-hot" href="#"><h2>Hot</h2></a>
-          <a class="posts-sorting-top" href="#"><h2>Top</h2></a>
-        </div>
-        -->
       </header>
       <!-- Blog Entries Column -->
       <div class="main-list">
@@ -30,7 +23,7 @@
           <a class="post-entry-image" href="{{ post.get_absolute_url }}"><img src="{{ post.image }}" /></a>
           {% endif %}
           <h2 class="post-entry-title">
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
           </h2>
           {% if user.is_superuser %}
           <div class="post-entry-edit">
@@ -54,7 +47,7 @@
         </div>
         {% empty %}
         <div class="no-content">
-          <h2>There are no posts to read.</h2>
+          <h2>There are no saved posts.</h2>
         </div>
         {% endfor %}
       </div>

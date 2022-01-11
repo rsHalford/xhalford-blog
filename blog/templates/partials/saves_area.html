@@ -1,0 +1,9 @@
+<div class="post-entry-saves detail" id="savesArea">
+  <button hx-post="{% url 'save_post' post.slug %}" id="save-button" hx-target="#savesArea" hx-swap="outerHTML">
+    {% if request.user in post.saves.all %}
+    Remove <i class="fas fa-heart unsave"></i><i class="fas fa-heart-broken unsave"></i>
+    {% else %}
+    Save <i class="far fa-heart save"></i><i class="fas fa-heart save"></i>
+    {% endif %}
+  </button>
+</div>
