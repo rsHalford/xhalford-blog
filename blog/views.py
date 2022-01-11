@@ -1,15 +1,16 @@
-from django.contrib.auth.decorators import user_passes_test, login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
 from django.utils.text import slugify
 from django.views.generic import TemplateView
-from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
-from .models import Post, Comment
+from django.views.generic.list import ListView
 from taggit.models import Tag
-from .forms import PostForm, CommentForm
+
+from .forms import CommentForm, PostForm
+from .models import Comment, Post
 
 
 class PostIndex(TemplateView):

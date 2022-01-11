@@ -1,12 +1,13 @@
-from django.db import models
+import math
+
+import readtime
 from django.contrib.auth.models import User
+from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from taggit.managers import TaggableManager
-import math
-import readtime
 
 STATUS = ((0, "Draft"), (1, "Publish"))
 

@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import Post, Comment
-from django.utils import timezone
-
-from markdownx.widgets import AdminMarkdownxWidget
 from markdownx.models import MarkdownxField
+from markdownx.widgets import AdminMarkdownxWidget
+
+from .models import Comment, Post
 
 
 class PostAdmin(admin.ModelAdmin):

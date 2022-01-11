@@ -1,6 +1,7 @@
 from django.urls import path
+
 from . import views
-from .feeds import RSSFeed, AtomFeed
+from .feeds import AtomFeed, RSSFeed
 
 urlpatterns = [
     path("", views.PostIndex.as_view(), name="index"),
