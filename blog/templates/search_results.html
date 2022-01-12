@@ -42,6 +42,7 @@
           </div>
           <div class="post-entry-interactions">
             <a class="post-entry-comments" href="{% url 'post_detail' post.slug %}#discussion"><i class="far fa-comment-alt"></i><i class="fas fa-comment-alt"></i> {{ post.comments.count }} comment{{ post.comments.count|pluralize }}</a>
+            <a href="{% url 'post_detail' post.slug %}"><i class="fas fa-heart"></i> {{ post.saves.count }} save{{ post.saves.count|pluralize }}</a>
           </div>
         </div>
         {% empty %}
@@ -54,4 +55,3 @@
   </div>
 </div>
 {% endblock %}
-
