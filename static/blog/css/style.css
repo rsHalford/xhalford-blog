@@ -1881,7 +1881,8 @@ input::placeholder {
         grid-template-rows: min-content min-content;
         grid-template-areas: "account" "tags"; }
         .container .content .sidebar-container .sidebar-section-container {
-          margin: MIN(2vw, 16.66px) 0; }
+          margin: MIN(2vw, 16.66px) 0;
+          cursor: pointer; }
           .container .content .sidebar-container .sidebar-section-container .sidebar-section-header {
             display: grid;
             grid-template-columns: auto min-content;

@@ -2716,6 +2716,7 @@ input {
 
         .sidebar-section-container {
           margin: MIN(2vw, 16.66px) 0;
+          cursor: pointer;
 
           .sidebar-section-header {
             display: grid;
