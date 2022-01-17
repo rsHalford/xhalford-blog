@@ -178,6 +178,79 @@ input {
   }
 }
 
+[x-cloak] { display: none !important; }
+
+.newsletter {
+  position: relative;
+  background-color: $foreground;
+
+  .newsletter-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: MIN(0.8vw, 6.4px) MIN(1.6vw, 12.8px);
+    color: $background;
+    background-color: transparent;
+
+    &:hover {
+      color: $accent_dark;
+    }
+  }
+
+  .newsletter-title {
+    font-family: $code;
+    font-size: MIN(5vw, 37.5px);
+    text-align: center;
+    margin: 0 auto;
+    padding: MIN(2.133vw, 16px) 0 MIN(1vw, 7.5px);
+    color: $brightfont;
+  }
+
+  .newsletter-container {
+
+    .newsletter-message {
+      font-family: $code;
+      font-size: MIN(2.6vw, 19.5px);
+      text-align: center;
+      white-space: pre-line;
+      padding: MIN(1vw, 7.5px);
+      color: $brightfont;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: auto MIN(75vw, 1000px) MIN(15vw, 200px) auto;
+      grid-template-areas: ". email submit .";
+      padding: MIN(1vw, 7.5px) MIN(1vw, 7.5px) MIN(2.133vw, 16px);
+
+      input[type="email"] {
+        grid-area: email;
+        font-family: $sans;
+        font-size: MIN(2.13vw, 16px);
+        padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px);
+        border: none;
+        background-color: $brightfont;
+        color: $foreground;
+
+        &:focus {
+          color: $foreground;
+          outline: none;
+        }
+
+        &::placeholder {
+          color: $gray;
+        }
+      }
+
+      input[type="submit"] {
+        grid-area: submit;
+        width: MIN(14vw, 187px);
+        margin-left: auto;
+      }
+    }
+  }
+}
+
 .container {
   display: grid;
   grid-template-columns: auto MIN(90vw, 1200px) auto;
@@ -2631,6 +2704,38 @@ input {
 
       &:hover {
         background-color: $accent_dark;
+      }
+    }
+  }
+
+  .newsletter {
+
+    .newsletter-title {
+      font-size: MIN(7vw, 52.5px);
+      padding: MIN(2.133vw, 16px) MIN(2.133vw, 16px) MIN(1vw, 7.5px);
+    }
+
+    .newsletter-container {
+
+      .newsletter-message {
+        font-size: MIN(4vw, 30px);
+        padding: 0 MIN(2.133vw, 16px) MIN(1vw, 7.5px);
+      }
+
+      form {
+        grid-template-columns: auto min-content;
+        grid-template-areas: "email submit";
+        grid-gap: MIN(2.133vw, 16px);
+        padding: MIN(1vw, 7.5px) MIN(2.133vw, 16px) MIN(2.133vw, 16px);
+
+        input[type="email"] {
+          font-size: MIN(4.26vw, 32px);
+          padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px);
+        }
+
+        input[type="submit"] {
+          width: auto;
+        }
       }
     }
   }

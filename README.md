@@ -107,6 +107,7 @@ $ python3 manage.py collectstatic
 .env
 
 ```sh
+ENCRYPT_KEY={ encrypt_key }
 SECRET_KEY={ secret_key }
 ALLOWED_HOSTS=.blog.com
 DATABASE_URL=postgres://{ db_user }:{ db_password }@{ db_host }:{ db_port }/{ db_name }
@@ -140,6 +141,7 @@ $ poetry install --no-root --with=development,testing
 .env
 
 ```
+ENCRYPT_KEY={ encrypt_key }
 SECRET_KEY={ secret_key }
 DEBUG=True
 ALLOWED_HOSTS=.localhost,127.0.0.1

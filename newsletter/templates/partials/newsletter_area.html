@@ -1,0 +1,12 @@
+<div class="newsletter-container" id="newsletterArea">
+  {% if msg %}
+  <p class="newsletter-message">{{ msg }}</p>
+  {% else %}
+  <p class="newsletter-message">Subscribe to the get the latest articles sent to your mailbox.</p>
+  {% endif %}
+  <form class="newsletter-form" hx-post="{% url 'subscribe' %}" hx-target="#newsletterArea" hx-swap="outerHTML">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="submit" value="Subscribe">
+  </form>
+</div>
