@@ -64,7 +64,6 @@ $body: "Gelasio", "Vollkorn", serif;
 $sans: "Open Sans", sans-serif;
 $code: "JetBrains Mono", monospace;
 $icon: "Font Awesome 5 Brands";
-$rhIcon: "Playfair Display";
 
 *,
 *::before,
@@ -2431,31 +2430,6 @@ input {
         display: inline-block;
         margin: 0 MIN(2.13vw, 16px);
 
-        a {
-
-          .fab {
-            color: $dullfont;
-          }
-        }
-
-        &.website {
-
-          a {
-            color: $dullfont;
-            font-family: $rhIcon;
-            font-weight: 500;
-            text-decoration: none;
-
-            &:hover {
-              color: $brightfont;
-
-              span {
-                color: $rhColor;
-              }
-            }
-          }
-        }
-
         &.twitter {
 
           a {
@@ -3552,13 +3526,6 @@ input {
 
         div {
           margin: 0 MIN(2.13vw, 16px);
-
-          &.website {
-
-            a {
-              font-weight: 500;
-            }
-          }
         }
       }
 

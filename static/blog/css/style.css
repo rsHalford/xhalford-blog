@@ -1737,17 +1737,6 @@ input::placeholder {
       .container .footer .footer-contact div {
         display: inline-block;
         margin: 0 MIN(2.13vw, 16px); }
-        .container .footer .footer-contact div a .fab {
-          color: #d5c4a1; }
-        .container .footer .footer-contact div.website a {
-          color: #d5c4a1;
-          font-family: "Playfair Display";
-          font-weight: 500;
-          text-decoration: none; }
-          .container .footer .footer-contact div.website a:hover {
-            color: #fbf1c7; }
-            .container .footer .footer-contact div.website a:hover span {
-              color: #b71c1c; }
         .container .footer .footer-contact div.twitter a:hover .fa-twitter {
           color: #1da1f2; }
         .container .footer .footer-contact div.linkedin a:hover .fa-linkedin {
@@ -2322,8 +2311,6 @@ input::placeholder {
         padding-top: MIN(3.2vw, 24px); }
         .container .footer .footer-contact div {
           margin: 0 MIN(2.13vw, 16px); }
-          .container .footer .footer-contact div.website a {
-            font-weight: 500; }
       .container .footer .footer-feeds {
         padding-top: MIN(5vw, 37.5px); }
         .container .footer .footer-feeds div a {
