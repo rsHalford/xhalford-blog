@@ -96,25 +96,13 @@ input::placeholder {
     background-color: #1d2021;
     padding-top: MIN(2.133vw, 16px);
     margin-bottom: MIN(1vw, 13.33px); }
-    .container .navbar a {
-      display: block;
-      height: MIN(6vw, 45px);
-      line-height: MIN(6vw, 45px);
-      text-align: center;
-      text-decoration: none;
-      color: #ebdbb2; }
-      .container .navbar a:hover {
-        color: #fbf1c7; }
-      .container .navbar a.home {
-        grid-area: home;
-        width: MIN(6vw, 45px);
-        font-family: "Gelasio", "Vollkorn", serif;
-        font-weight: 600;
-        font-size: MIN(4.3vw, 32.25px);
-        padding-top: MIN(0.2vw, 1.5px);
-        background-color: #cc241d; }
-        .container .navbar a.home:hover {
-          background-color: #fb4934; }
+    .container .navbar .home {
+      grid-area: home;
+      margin: 0 auto 0 0; }
+      .container .navbar .home img {
+        display: block;
+        height: MIN(6vw, 45px);
+        width: auto; }
     .container .navbar .search-container {
       grid-area: search; }
       .container .navbar .search-container form {
@@ -1842,14 +1830,8 @@ input::placeholder {
       grid-template-areas: "home search";
       margin: 0 MIN(2vw, 26.67px) MIN(2vw, 16.66px);
       padding-top: MIN(2.133vw, 16px); }
-      .container .navbar a {
-        height: MIN(12vw, 90px);
-        line-height: MIN(12.67vw, 95px); }
-        .container .navbar a.home {
-          width: MIN(12vw, 90px);
-          font-weight: 600;
-          font-size: MIN(8.6vw, 64.5px);
-          padding-top: MIN(0.2vw, 1.5px); }
+      .container .navbar .home img {
+        height: MIN(12vw, 90px); }
       .container .navbar .search-container form input[type="text"] {
         font-size: MIN(4.26vw, 32px);
         padding: MIN(1vw, 7.5px) MIN(2.13vw, 16px); }

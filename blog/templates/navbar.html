@@ -1,6 +1,7 @@
+{% load static %}
 <!-- Navigation -->
 <nav class="navbar small">
-  <a class="home" href="{% url 'index' %}">H</a>
+  <a class="home" href="{% url 'index' %}"><img src="{% static 'blog/img/xhalford.png' %}"></a>
   <div class="search-container">
     <form action="{% url 'search_results' %}" method="GET">
       <input name="q" type="text" placeholder="Search" />
