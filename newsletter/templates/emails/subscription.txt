@@ -1,0 +1,20 @@
+Hi there,
+
+Thanks for subscribing to the newsletter.
+
+We will be sending you the latest articles on xhalford.com. Mail frequency won't be more than twice a month. We hate spamming as much as you do.
+
+To confirm your subscription, please follow the link below.
+
+{{ confirmation_url }}
+
+If you think this is a mistake, just ignore this email and we won't bother you again.
+
+Please do not reply to this email.
+
+
+Follow Me
+
+https://www.twitter.com/richardhalford_
+https://www.github.com/rsHalford
+https://www.linkedin.com/in/richard-halford

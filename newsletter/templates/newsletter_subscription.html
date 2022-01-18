@@ -1,0 +1,5 @@
+<div class="newsletter" x-data="{ banner: $persist(true).using(sessionStorage) }" x-show="banner" x-collapse.duration.400ms x-cloak>
+  <button class="newsletter-close" x-on:click="banner = false"><i class="fas fa-times"></i></button>
+  <h1 class="newsletter-title">Join the newsletter</h1>
+  {% include 'partials/newsletter_area.html' %}
+</div>

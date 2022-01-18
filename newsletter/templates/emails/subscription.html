@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <title>Newsletter Subscription | xHalford</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="font-family: serif; font-size: 16px; margin:0; padding:0; background-color:#1d2021; color: #fcf1c7;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+      width="100%" bgcolor="#1d2021" style="width: 100%; background-color: #1d2021;">
+      <tbody>
+        <tr>
+          <td width="600" valign="top" style="font-family: sans-serif; font-size: 16px; vertical-align: top; margin: 0 auto !important; max-width: 600px; padding: 12px; width: 600px;">
+            <div style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 600px; padding: 0;">
+              <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; visibility: hidden; width: 0;"></span>
+              <!-- HEADER -->
+              <div style="margin-bottom: 12px; margin-top: 0; width: 100%;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: separate; width: 100%; min-width: 100%;">
+                  <tbody>
+                    <tr>
+                      <td valign="top" align="center" style="font-family: sans-serif; font-size: 16px; vertical-align: top; text-align: center;">
+                        <a href="{% url 'index' %}"><img style="display: block;" src="{% static 'newsletter/img/xhalford.png' %}" align="left" width="45px"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- END HEADER -->
+              <!-- MAIN -->
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: separate; width: 100%; background-color: #282828;">
+                <tbody>
+                  <!-- CONTENT -->
+                  <tr>
+                    <td valign="top" style="font-family: sans-serif; font-size: 16px; vertical-align: top; box-sizing: border-box;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: separate; width: 100%;">
+                        <tbody>
+                          <tr>
+                            <td valign="top" style="font-family: sans-serif; font-size: 16px; vertical-align: top; padding: 24px;">
+                              <p style="margin: 0;">Hi there,</p>
+                              <br>
+                              <p style="margin: 0;">Thanks for subscribing to the newsletter.</p>
+                              <br>
+                              <p style="margin: 0;">We will be sending you the latest articles on <a style="color: #cc241d;" href="https://www.xhalford.com">xhalford.com</a>. Mail frequency won't be more than twice a month. We hate spamming as much as you do.</p>
+                              <br>
+                              <p style="margin: 0;">To confirm your subscription, please follow the link below.</p>
+                              <br>
+                              <p style="margin: 0;"><a style="color: #cc241d;" href="{{ confirmation_url }}">{{ confirmation_url }}</a></p>
+                              <br>
+                              <p style="margin: 0;">If you think this is a mistake, just ignore this email and we won't bother you again.</p>
+                              <br>
+                              <p style="margin: 0;">Please do not reply to this email.</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- CONTENT END -->
+                  <tr>
+                    <td><hr style="margin: 0; border: 6px solid #1d2021"></td>
+                  </tr>
+                  <!-- SOCIAL -->
+                  <tr>
+                    <td valign="top" style="font-family: sans-serif; font-size: 16px; vertical-align: top; box-sizing: border-box;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: separate; width: 100%;">
+                        <tbody>
+                          <tr>
+                            <td valign="top" style="font-family: sans-serif; font-size: 16px; vertical-align: top; text-align: center; padding: 24px;">
+                              <a style="margin: 0 12px;" href="https://www.twitter.com/richardhalford_"><img style="display: inline-block;" src="{% static 'newsletter/img/twitter.png' %}" height="30px"></a>
+                              <a style="margin: 0  12px;" href="https://www.github.com/rsHalford"><img style="display: inline-block;" src="{% static 'newsletter/img/github.png' %}" height="30px"></a>
+                              <a style="margin: 0 12px;" href="https://www.linkedin.com/in/richard-halford"><img style="display: inline-block;" src="{% static 'newsletter/img/linkedin.png' %}" height="30px"></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- END SOCIAL -->
+                </tbody>
+              </table>
+              <!-- MAIN END -->
+              <!-- FOOTER -->
+              <div style="margin-top: 12px; width: 100%;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: separate; width: 100%; min-width: 100%;">
+                  <tbody>
+                    <tr>
+                      <td valign="top" style="font-family: sans-serif; font-size: 12px; vertical-align: top; padding-top: 0; color: #928374;">
+                        <p style="margin: 0;">You are receiving this email because you opted in via our <a style="color: #cc241d;" href="https://www.xhalford.com/">website</a>.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td valign="top" style="font-family: sans-serif; font-size: 12px; vertical-align: top; padding-top: 0; color: #928374;">
+                        <p style="margin: 0;">Copyright © {% now 'Y' %} Richard Halford</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- END FOOTER -->
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
