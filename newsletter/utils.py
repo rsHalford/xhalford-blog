@@ -5,7 +5,6 @@ from cryptography.fernet import Fernet
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
-from django.utils.html import strip_tags
 
 
 class Encryption:
@@ -59,7 +58,6 @@ def subscription_email(email, confirmation_url):
     data["to"] = [email]
     data["subject"] = "Newsletter Confirmation"
     data["from_email"] = settings.EMAIL_HOST_USER
-    template = get_template("emails/subscription.html")
-    data["html_content"] = template.render(data)
-    data["text_content"] = strip_tags(data["html_content"])
+    data["html_content"] = get_template("emails/subscription.html").render(data)
+    data["text_content"] = get_template("emails/subscription.txt").render(data)
     return send_mail(data)
