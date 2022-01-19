@@ -1960,6 +1960,8 @@ input::placeholder {
             font-weight: 600;
             margin: MIN(0.854vw, 6.4px) MIN(0.466vw, 3.2px);
             padding: MIN(1.6vw, 12.8px); }
+          .container .content .sidebar-container .sidebar-section-container.login {
+            cursor: default; }
           .container .content .sidebar-container .sidebar-section-container.tags .sidebar-section-list a {
             font-size: MIN(4vw, 30px);
             margin: MIN(0.854vw, 6.4px) MIN(0.466vw, 3.2px);
