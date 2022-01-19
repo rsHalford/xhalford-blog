@@ -2843,6 +2843,10 @@ input {
             }
           }
 
+          &.login {
+            cursor: default;
+          }
+
           &.tags {
 
             .sidebar-section-list {
