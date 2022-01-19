@@ -1,6 +1,6 @@
 <div class="newsletter-container" id="newsletterArea">
-  {% if msg %}
-  <p class="newsletter-message">{{ msg }}</p>
+  {% if request.session.msg %}
+  <p class="newsletter-message">{{ request.session.msg }}</p>
   {% else %}
   <p class="newsletter-message">Subscribe to the get the latest articles sent to your mailbox.</p>
   {% endif %}

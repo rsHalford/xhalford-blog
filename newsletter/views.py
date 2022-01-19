@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from django.http.response import Http404, HttpResponseRedirect
-from django.shortcuts import render
+from django.http.response import Http404
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils import timezone
 
@@ -27,8 +27,8 @@ def subscribe(request):
         email = data.get("email", None)
         error_msg = validate_email(email)
         if error_msg:
-            context = {"msg": error_msg}
-            return HttpResponseRedirect(reverse("subscribe"), context)
+            request.session["msg"] = error_msg
+            return redirect("subscribe")
 
         save_status = save_email(email)
 
@@ -49,8 +49,8 @@ def subscribe(request):
                     + email
                     + ".\nConfirm subscription with the link provided."
                 )
-                context = {"msg": msg}
-                return render(request, "partials/newsletter_area.html", context)
+                request.session["msg"] = msg
+                return redirect("subscribe")
     else:
         return render(request, "partials/newsletter_area.html")
 
@@ -63,8 +63,8 @@ def confirm(request):
 
     if not token:
         msg = "Invalid link."
-        context = {"msg": msg}
-        return HttpResponseRedirect(reverse("subscribe"), context)
+        request.session["msg"] = msg
+        return redirect("index")
 
     key = bytes(settings.ENCRYPT_KEY, "utf-8")
     token = Encryption(key, token).decrypt()
@@ -81,8 +81,8 @@ def confirm(request):
     else:
         msg = "Invalid link."
 
-    context = {"msg": msg}
-    return render(request, "index.html", context)
+    request.session["msg"] = msg
+    return redirect("index")
 
 
 def unsubscribe(request):
@@ -93,8 +93,8 @@ def unsubscribe(request):
 
     if not token:
         msg = "Invalid link."
-        context = {"msg": msg}
-        return HttpResponseRedirect(reverse("subscribe"), context)
+        request.session["msg"] = msg
+        return redirect("index")
 
     key = bytes(settings.ENCRYPT_KEY, "utf-8")
     token = Encryption(key, token).decrypt()
@@ -104,11 +104,13 @@ def unsubscribe(request):
         try:
             subscriber = Subscriber.objects.get(email=email)
             subscriber.delete()
-            msg = "Subscription deleted."
+            msg = (
+                "Subscription deleted.\nIf this was a mistake, just resubscribe below."
+            )
         except ObjectDoesNotExist:
             msg = "Invalid link."
     else:
         msg = "Invalid link."
 
-    context = {"msg": msg}
-    return render(request, "newsletter_subscription.html", context)
+    request.session["msg"] = msg
+    return redirect("index")
