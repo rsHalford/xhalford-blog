@@ -61,7 +61,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 ./media/
-./static/
+/static/blog/css/style.css.map
 
 # Flask stuff:
 instance/
@@ -139,4 +139,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-/static/blog/css/style.css.map
