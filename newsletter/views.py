@@ -28,6 +28,7 @@ def subscribe(request):
         error_msg = validate_email(email)
         if error_msg:
             request.session["msg"] = error_msg
+            request.session.set_expiry(0)
             return redirect("subscribe")
 
         save_status = save_email(email)
@@ -64,6 +65,7 @@ def confirm(request):
     if not token:
         msg = "Invalid link."
         request.session["msg"] = msg
+        request.session.set_expiry(0)
         return redirect("index")
 
     key = bytes(settings.ENCRYPT_KEY, "utf-8")
@@ -82,6 +84,7 @@ def confirm(request):
         msg = "Invalid link."
 
     request.session["msg"] = msg
+    request.session.set_expiry(0)
     return redirect("index")
 
 
@@ -94,6 +97,7 @@ def unsubscribe(request):
     if not token:
         msg = "Invalid link."
         request.session["msg"] = msg
+        request.session.set_expiry(0)
         return redirect("index")
 
     key = bytes(settings.ENCRYPT_KEY, "utf-8")
@@ -113,4 +117,5 @@ def unsubscribe(request):
         msg = "Invalid link."
 
     request.session["msg"] = msg
+    request.session.set_expiry(0)
     return redirect("index")
