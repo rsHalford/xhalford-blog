@@ -1,0 +1,42 @@
+{% extends "socialaccount/base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="content column">
+  {% block sidebar %}
+  {% endblock sidebar %}
+  <div class="main-container">
+    <div class="main-section-container">
+      <div class="main-header">
+        <div class="main-title">
+          {% if process == "connect" %}<h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>{% else %}<h1>{% blocktrans with provider.name as provider %}Sign in via {{ provider }}{% endblocktrans %}</h1>{% endif %}
+        </div>
+      </div>
+
+      <div class="main-list">
+        <div class="list-entry-container form">
+          {% if process == "connect" %}<h3>{% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}</h3>{% else %}<h3>{% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}</h3>{% endif %}
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit">{% trans "Continue" %}</button>
+          </form>
+        </div>
+
+        {% if process != "connect" %}
+        <div class="list-entry-container navigate">
+          <div class="one">
+            <a href="{% url 'account_signup' %}">Create account</a>
+          </div>
+          <div class="two">
+            <a href="{% url 'account_reset_password' %}">{% trans "Forgot password?" %}</a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

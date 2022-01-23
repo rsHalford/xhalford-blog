@@ -1134,6 +1134,11 @@ input {
                 font-size: MIN(4vw, 30px);
               }
 
+              h3 {
+                font-size: MIN(3vw, 22.5px);
+                padding-bottom: MIN(1vw, 7.5px);
+              }
+
               .account-form-note {
 
                 p {
@@ -3092,6 +3097,10 @@ input {
 
                 h2 {
                   font-size: MIN(8vw, 60px);
+                }
+
+                h3 {
+                  font-size: MIN(6vw, 45px);
                 }
 
                 .account-form-note {

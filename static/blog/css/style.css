@@ -731,6 +731,9 @@ input::placeholder {
                     text-align: center; }
             .container .content .main-container .main-section-container .main-list .list-entry-container.form h2 {
               font-size: MIN(4vw, 30px); }
+            .container .content .main-container .main-section-container .main-list .list-entry-container.form h3 {
+              font-size: MIN(3vw, 22.5px);
+              padding-bottom: MIN(1vw, 7.5px); }
             .container .content .main-container .main-section-container .main-list .list-entry-container.form .account-form-note p {
               margin-bottom: MIN(1.6vw, 12px); }
               .container .content .main-container .main-section-container .main-list .list-entry-container.form .account-form-note p strong {
@@ -2084,6 +2087,8 @@ input::placeholder {
                   font-size: MIN(4.26vw, 32px); }
             .container .content .main-container .main-section-container .main-list .list-entry-container.form h2 {
               font-size: MIN(8vw, 60px); }
+            .container .content .main-container .main-section-container .main-list .list-entry-container.form h3 {
+              font-size: MIN(6vw, 45px); }
             .container .content .main-container .main-section-container .main-list .list-entry-container.form .account-form-note p {
               margin-bottom: MIN(3.2vw, 24px); }
             .container .content .main-container .main-section-container .main-list .list-entry-container.form .form-entry {
