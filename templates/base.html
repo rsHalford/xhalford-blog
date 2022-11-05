@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" class="theme-dark">
-  {% load sass_tags %}
-  {% load static %}
+{% load sass_tags %}
+{% load static %}
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'blog/img/favicon-16x16.png' %}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'blog/img/favicon-32x32.png' %}" />
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'blog/img/favicon-96x96.png' %}" />
-    <title>{% block title %}{% endblock %} | xHalford</title>
-    <meta name="keywords" content="blog, articles, tutorials, information, linux, technology, programming, code" />
-    <meta name="description" content="Richard Halford's blog." />
-    <meta name="author" content="Richard Halford" />
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'blog/css/style.scss' %}"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5ffae73fef.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
-    {% block extra_head %}
-    {% endblock extra_head %}
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'blog/img/favicon-16x16.png' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'blog/img/favicon-32x32.png' %}" />
+  <link rel="icon" type="image/png" sizes="96x96" href="{% static 'blog/img/favicon-96x96.png' %}" />
+  <title>{% block title %}{% endblock %} | xHalford</title>
+  <meta name="keywords" content="blog, articles, tutorials, information, linux, technology, programming, code" />
+  <meta name="description" content="Richard Halford's blog." />
+  <meta name="author" content="Richard Halford" />
+  <link rel="me" href="https://mastodon.social/@rshalford">
+  <link rel="stylesheet" type="text/css" href="{% sass_src 'blog/css/style.scss' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/5ffae73fef.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
 
-  <body>
-    <!-- Banner -->
-    {% block banner %}
-    {% endblock banner %}
+<body>
+  <!-- Banner -->
+  {% block banner %}
+  {% endblock banner %}
 
-    <!-- Container -->
-    <div class="container">
-      {% block main %}
+  <!-- Container -->
+  <div class="container">
+    {% block main %}
 
-      <!-- Header -->
-      {% block header %}
-        {% block navbar %}
-          {% include 'navbar.html' %}
-        {% endblock navbar %}
-      {% endblock header %}
+    <!-- Header -->
+    {% block header %}
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock navbar %}
+    {% endblock header %}
 
-      <!-- Main -->
-      {% block content %}
-        {% block sidebar %}{% endblock sidebar %}
-      {% endblock content %}
+    <!-- Main -->
+    {% block content %}
+    {% block sidebar %}{% endblock sidebar %}
+    {% endblock content %}
 
-      {% endblock main %}
+    {% endblock main %}
 
-      <!-- Footer -->
-      {% block footer %}
-        {% include 'footer.html' %}
-      {% endblock footer %}
-    </div>
+    <!-- Footer -->
+    {% block footer %}
+    {% include 'footer.html' %}
+    {% endblock footer %}
+  </div>
 
-    <script>
-      {% block remove_email %}
-      {% endblock remove_email %}
-      document.body.addEventListener('htmx:configRequest', (e) => {
-        e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-      })
-    </script>
+  <script>
+    {% block remove_email %}
+    {% endblock remove_email %}
+    document.body.addEventListener('htmx:configRequest', (e) => {
+      e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    })
+  </script>
 
-  </body>
+</body>
 
 </html>
