@@ -1,3 +1,10 @@
+# Archived
+
+## I have moved to [rshalford.com](https://www.rshalford.com).
+
+Under that domain I will continue my blog posts and consolidate other parts of my online presence.
+
+
 ## Personal blog hosted on xhalford.com
 
 
